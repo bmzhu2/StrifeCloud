@@ -1,0 +1,110 @@
+html, body {
+  margin: 0 auto;
+  background: rgb(240, 240, 240);
+  height: 100%;
+  font-family: "interstatelight";
+  letter-spacing: 0.05em;
+}
+
+main {
+  width: 1240px;
+  height: 100%;
+  margin: inherit;
+  background: white;
+  position: relative;
+}
+
+.home-banner {
+  position: absolute;
+  width: inherit;
+
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.home-logo {
+  padding: 25px;
+
+  text-transform: uppercase;
+  color: white;
+  font-size: 0.95em;
+  font-weight: 500;
+  font-family: "interstateregular";
+}
+
+.home-log {
+  cursor: default;
+}
+
+.home-nav {
+  padding: 25px;
+}
+
+.home-sign-in {
+  background: transparent;
+
+  color: white;
+  font-size: 10pt;
+  font-weight: lighter;
+  padding: 6px 15px 6px 15px;
+  border-radius: 3px;
+}
+
+.home-create-account {
+  margin-left: 5px;
+
+  color: white;
+  font-size: 10pt;
+  font-weight: lighter;
+  background-color: #ff5700;
+  padding: 6px 15px 6px 15px;
+  border-color: transparent;
+  border-radius: 3px;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./church_2.png");
+  background-size: cover;
+
+  width: 100%;
+  height: 450px;
+  border-top: 4px solid #ff5700;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hero-text {
+  width: 55%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 24pt;
+  font-weight: lighter;
+}
+
+.hero-text p {
+  margin: 20px 0 30px 0;
+  
+  font-size: 14pt;
+  font-weight: lighter\;
+  line-height: 1.6;
+}
+
+.hero-text button {
+  color: white;
+  font-size: 14pt;
+  font-weight: lighter;
+  background-color: #ff5700;
+  padding: 10px 15px 10px 15px;
+  border-color: transparent;
+  border-radius: 3px;
+}

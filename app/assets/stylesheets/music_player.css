@@ -1,0 +1,186 @@
+.music-player {
+  height: 48.5px;
+  background: rgb(240, 240, 240);
+
+  border-top: .5px solid rgb(200, 200, 200);
+  position: sticky;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 8pt;
+}
+
+/* PLAY CONTROLS */
+
+.music-player > .play-controls {
+  font-size: 10pt;
+  display: flex;
+  align-items: center;
+}
+
+.music-player > .play-controls .icon{
+  display: inline-block;
+  background-color: transparent;
+  background-size: 25px 25px;
+
+  width: 25px;
+  padding-top: 22px;
+  height: 0px;
+  border: none;
+  margin: 0 8px 0 8px;
+  overflow: hidden;
+}
+
+.prev {
+  background-image: url("sprites/prev.png")
+}
+
+.play {
+  background-image: url("sprites/play.png")
+}
+
+.pause {
+  background-image: url("sprites/pause.png")
+}
+
+.next {
+  background-image: url("sprites/next.png")
+}
+
+/* PLAY BAR */
+.progress{
+  width: 620px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.progress > .elapsed-time {
+  padding: 20px;
+  color: #ff5700;
+}
+
+.progress > .remaining-time {
+  padding: 20px;
+}
+
+.progress > .play-bar {
+  width: 80%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.progress > .play-bar:hover {
+  cursor: pointer;
+}
+
+.progress > .play-bar > .full-line {
+  width: 100%;
+  height: .5px;
+  border: 0.25px solid rgb(200, 200, 200);
+}
+
+.progress > .play-bar > .current-line {
+  position: absolute;
+  width: 21%;
+  height: .5px;
+  border: 0.25px solid #ff5700;
+}
+
+.progress > .play-bar > .circle {
+  display: none;
+  position: absolute;
+  left: 193px;
+  bottom: 21.5px;
+
+  height: 8px;
+  width: 8px;
+  background-color: #ff5700;
+  border-radius: 50%;
+} 
+
+.progress > .play-bar:hover .circle {
+  display: inline;
+}
+
+/* VOLUME CONTROL */
+
+.music-player > .volume-control {
+  font-size: 10pt;
+  display: flex;
+  align-items: center;
+}
+
+.music-player > .volume-control .icon {
+  display: inline-block;
+  background-color: transparent;
+  background-size: 25px 25px;
+
+  width: 25px;
+  padding-top: 22px;
+  height: 0px;
+  margin: 10px;
+  border: none;
+  overflow: hidden;
+}
+
+.unmuted {
+  background-image: url("sprites/volume.png");
+}
+
+.muted {
+  background-image: url("sprites/mute.png");
+}
+
+/* SONG INFO */
+
+.song-info {
+  width: 300px;
+  height: 80%;
+  display: flex;
+  align-items: center;
+}
+
+.song-info > .thumbnail > a {
+  background-image: url("advent_children_cover.png");
+  display: inline-block;
+  background-size: 30px 30px;
+
+  width: 30px;
+  padding-top: 30px;
+  height: 0;
+  margin: 10px;
+
+  border: .25px solid rgb(200, 200, 200);
+  overflow: hidden;
+}
+  
+
+.song-info > .text-info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.song-info > .text-info > .uploader-name {
+  color: rgb(160, 160, 160);
+  text-decoration: none;
+}
+
+.song-info > .text-info > .track-title {
+  color: rgb(90, 90, 90);
+  text-decoration: none;
+}
+
+.song-info > .text-info > .uploader-name:hover {
+  color: black;
+}
+
+.song-info > .text-info > .track-title:hover {
+  color: black;
+}
