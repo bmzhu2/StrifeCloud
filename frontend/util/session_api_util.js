@@ -1,10 +1,3 @@
-export const checkName = (name) => {
-  $.ajax({
-    method: 'GET',
-    url: `/api/users?name=${name}`
-  })
-}
-
 export const signup = (user) => (
   $.ajax({
     method: 'POST',

@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
 
     if errorsJson[:errors].length == 0 && @user.save
       login!(@user)
-      render :create
+      render :show
     else
       errorsJson[:errors] += @user.errors.full_messages
       render json: errorsJson, status: 403

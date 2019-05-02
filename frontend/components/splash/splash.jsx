@@ -6,10 +6,10 @@ class Splash extends React.Component {
 
   render() {
     return(
-      <main>
+      <div className="main-body">
         <Banner />
         <HeroImage />
-      </main>
+      </div>
     )
   }
 }

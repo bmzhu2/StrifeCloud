@@ -15,24 +15,22 @@ const logoutCurrentUser = () => ({
 });
 
 const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
+  type: RECEIVE_SESSION_ERRORS,
   errors
 });
 
-export const checkName = name => dispatch => SessionAPIUtil.checkName(name)
-  .then(payload => {
-    if(payload.email) {
-      dispatch(receiveNewEmail(payload));
-    } else {
-      dispatch(receiveCurrentUser(payload));
-    }
-  })
+export const signup = user => dispatch => (
+  SessionAPIUtil.signup(user).then(user => dispatch(receiveCurrentUser(user)),
+  err => dispatch(receiveErrors(err.responseJSON)))
+)
 
-export const signup = user => dispatch => SessionAPIUtil.signup(user)
-  .then(user => dispatch(receiveCurrentUser(user)));
+export const login = user => dispatch => (
+  SessionAPIUtil.login(user).then(user => dispatch(receiveCurrentUser(user)),
+  err => dispatch(receiveErrors(err.responseJSON)))
+)
 
-export const login = user => dispatch => SessionAPIUtil.login(user)
-  .then(user => dispatch(receiveCurrentUser(user)));
 
-export const logout = () => dispatch => SessionAPIUtil.logout()
-  .then(() => dispatch(logoutCurrentUser()));
+export const logout = () => dispatch => (
+  SessionAPIUtil.logout().then(() => dispatch(logoutCurrentUser()),
+  err => dispatch(receiveErrors(err.responseJSON)))
+)

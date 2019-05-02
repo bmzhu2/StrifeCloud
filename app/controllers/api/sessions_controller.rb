@@ -1,21 +1,53 @@
 class Api::SessionsController < ApplicationController
   def create
-        @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
-
-        if @user 
-            login!(@user)
-            redirect_to "/api/users/#{@user.id}"
-        else
-            render json: {errors: ["Invalid password"]}, status: 403
-        end
+    email, pw = params[:user][:email], params[:user][:password]
+    unless parse_type(email) == "email"
+      render json: ["Enter a valid email address."], status: 403
+      return
+    end
+    unless User.find_by(email: email)
+      render json: ["This email is not registered. Did you mean to sign up?"], status: 403
+      return
+    end
+    unless pw.length > 5
+      render json: ["Use at least 6 characters."], status: 403
     end
 
-    def destroy
-        if current_user
-            logout!
-            render json: {}
-        else
-            render json: {errors: ["Not logged in"]}, status: 404
-        end
+    @user = User.find_by_credentials(email, pw)
+
+    if @user 
+      login!(@user)
+      redirect_to "/api/users/#{@user.id}"
+    else
+      render json: errors << ["This password is incorrect."], status: 403
     end
+  end
+
+  def destroy
+    if current_user
+      logout!
+      render json: {}
+    else
+      render json: {errors: ["Not logged in"]}, status: 404
+    end
+  end
+
+  private
+  def parse_type(input)
+  temp_input = input
+  type = "none"
+
+  unless input =~ /\W/
+    type="username"
+  else
+    temp_input = input.split("@")
+    if temp_input.length == 2 && temp_input[1].split(".").length == 2
+      address = temp_input[0].split(".").join("")
+      domain = temp_input[1].split(".").join()
+      type = "email" unless (address =~ /\W/ || domain =~ /\W/)
+    end
+  end
+
+  type
+  end
 end

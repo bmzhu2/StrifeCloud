@@ -19,8 +19,9 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, {user: this.state});
-    this.props.processForm(user);
-    this.props.closeModal();
+    this.props.processForm(user)
+      .then(() => this.props.closeModal())
+      .then(() => this.props.history.push('/discover'));
   }
 
   updateEmail(e) {
@@ -55,7 +56,7 @@ class SessionForm extends React.Component {
           />
         </label>
       )
-      buttonText = "Create account"
+      displayText = "Create account"
     }
     return (
       <form className="session-form">
