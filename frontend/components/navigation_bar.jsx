@@ -24,16 +24,9 @@ class NavigationBar extends React.Component {
   }
 
   render() {
-    // let settingsControls = (
-    //   <div></div>
-    // )
-    // if (this.props.currentUserId) {
-    //   settingsControls = (
-        
-    //   )
-    // }
-
     let user = (<div></div>);
+    let sessionButtons = (<div></div>);
+
     if (this.props.currentUser) {
       user = (
         <button className="user" id="user">
@@ -41,6 +34,13 @@ class NavigationBar extends React.Component {
           <div className="name">{this.props.currentUser.username}</div>
           <i className="fas fa-angle-down"></i>
         </button>
+      )
+    } else {
+      sessionButtons = (
+        <div className="session-buttons">
+          <button className="login" onClick={() => this.props.openModal("login")}>Sign In</button>
+          <button className="signup" onClick={() => this.props.openModal("signup")}>Create account</button>
+        </div>
       )
     }
 
@@ -68,6 +68,7 @@ class NavigationBar extends React.Component {
               placeholder="Search"></input>
             <button className="search-submit"><i className="fas fa-search"></i></button>
           </form>
+          {sessionButtons}
           <button className="upload"
             onClick={() => this.props.history.push("/upload")}
           >Upload</button>

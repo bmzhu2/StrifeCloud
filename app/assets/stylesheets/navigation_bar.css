@@ -55,7 +55,7 @@
 }
 
 .search-bar {
-  max-width: 550px;
+  max-width: 475px;
   width: inherit;
   display: flex;
   align-items: center;
@@ -72,13 +72,19 @@
 
   padding: 5px;
   margin: 10px;
-  background: rgb(230, 230, 230);
+  background: rgb(220, 220, 220);
   border: none;
   border-radius: 4px;
   box-sizing: border-box;
 
   font-size: .9em;
   color: rgb(100, 100, 100);
+
+  transition: background-color 700ms;
+}
+
+.search-bar > .search-box:focus {
+  background: white;
 }
 
 .search-bar > .search-box::placeholder {
@@ -103,6 +109,34 @@
 
   font-size: .9em;
   color: rgb(70, 70, 70);
+}
+
+.session-buttons {
+  width: 225px;
+  display: flex;
+  align-items: center;
+}
+
+.session-buttons > button {
+  height: 55%;
+  margin: 5px;
+  border-radius: 4px;
+  color: white;
+  font-size: .9em;
+}
+
+.session-buttons > .login {
+  background: transparent;
+  border: 1px solid rgb(100, 100, 100);
+}
+
+.session-buttons > .login:hover {
+  border-color: rgb(170, 170, 170);
+}
+
+.session-buttons > .signup {
+  background: #ff5700;
+  border: none;
 }
 
 .upload {

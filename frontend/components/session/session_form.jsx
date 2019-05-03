@@ -60,9 +60,7 @@ class SessionForm extends React.Component {
         }
       })
     }
-
-    debugger;
-
+    
     let usernameField = undefined;
     let displayText = "Sign In"
     if(this.props.formType === "signup") {

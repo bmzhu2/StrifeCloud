@@ -24,7 +24,6 @@ class Api::UsersController < ApplicationController
       render :show
     else
       errorsJson += @user.errors.full_messages
-      debugger;
       render json: errorsJson, status: 403
     end
 
