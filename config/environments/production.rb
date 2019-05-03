@@ -94,4 +94,6 @@ Rails.application.configure do
 
   config.serve_static_assets = true
   config.assets.compile = true
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+  config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)$/
 end

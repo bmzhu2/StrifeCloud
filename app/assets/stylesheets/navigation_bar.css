@@ -11,6 +11,7 @@
 
   margin: 0 auto;
   display: flex;
+  justify-content: space-between;
 }
 
 .navigation-bar * {
@@ -153,7 +154,6 @@
 
   font-size: .9em;
 }
-
 
 .user > .profile-picture {
   height: 25px;

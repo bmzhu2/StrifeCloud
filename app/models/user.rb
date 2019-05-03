@@ -20,6 +20,11 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_many :songs,
+    primary_key: :id,
+    foreign_key: :uploader_id,
+    class_name: :Song
+
   has_one_attached :profile_picture
 
   def self.find_by_credentials(email, password)
