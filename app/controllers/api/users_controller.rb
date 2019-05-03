@@ -48,6 +48,10 @@ class Api::UsersController < ApplicationController
     temp_input = input
     type = "none"
 
+    if input.length == 0
+      return type
+    end
+
     unless input =~ /\W/
       type="username"
     else
