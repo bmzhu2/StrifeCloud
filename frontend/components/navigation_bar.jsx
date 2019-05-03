@@ -30,7 +30,7 @@ class NavigationBar extends React.Component {
     if (this.props.currentUser) {
       user = (
         <button className="user" id="user">
-          <div className="profile-picture"></div>
+          <div className="profile-picture"><img src={window.placeholderProfilePic}></img></div>
           <div className="name">{this.props.currentUser.username}</div>
           <i className="fas fa-angle-down"></i>
         </button>
@@ -49,7 +49,7 @@ class NavigationBar extends React.Component {
         <nav className="navigation-bar">
           <button className="logo"
             onClick={() => this.props.history.push("/")}>
-            <img src="./assets/logo.png" />
+            <img src={window.logoURL} />
             StrifeCloud
           </button>
           <button className="home"
