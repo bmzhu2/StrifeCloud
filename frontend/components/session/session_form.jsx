@@ -10,17 +10,23 @@ class SessionForm extends React.Component {
       password: ""
     };
 
+    this.closeAndClear = this.closeAndClear.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateEmail = this.updateEmail.bind(this);
     this.updateUsername = this.updateUsername.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
   }
 
+  closeAndClear() {
+    this.props.closeModal();
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, {user: this.state});
     this.props.processForm(user)
-      .then(() => this.props.closeModal())
+      .then(() => this.closeAndClear())
       .then(() => this.props.history.push('/discover'));
   }
 

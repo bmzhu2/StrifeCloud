@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
     elsif User.find_by(email: @user.email) 
       errorsJson << "This email is already registered."
     end
-    if parse_type(@user.username) != "name" 
+    if parse_type(@user.username) != "username" 
       errorsJson << "Enter a valid username. (no symbols)"
     elsif User.find_by(username: @user.username)
       errorsJson << "This username is already taken."

@@ -10,6 +10,7 @@ class Modal extends React.Component {
   constructor(props) {
     super(props)
 
+    this.closeAndClear = this.closeAndClear.bind(this);
     this.switchForms = this.switchForms.bind(this);
   }
 
@@ -25,6 +26,11 @@ class Modal extends React.Component {
         break;
     }
 
+    this.props.clearErrors();
+  }
+
+  closeAndClear() {
+    this.props.closeModal();
     this.props.clearErrors();
   }
 
@@ -54,7 +60,7 @@ class Modal extends React.Component {
         return null;
     }
     return (
-      <div className="modal-background fadeIn" onClick={this.props.closeModal}>
+      <div className="modal-background fadeIn" onClick={this.closeAndClear}>
         <button className="modal-close-button fadeIn"><i className="fas fa-times"></i></button>
         <div className="modal-child slideInDown" onClick={e => e.stopPropagation()}>
           <div className="modal-box">
@@ -66,7 +72,7 @@ class Modal extends React.Component {
               <button 
                 className="demo-user"
                 onClick={() => this.props.login({user: {email: "springfield@springfield.com", password: "springfield"}})
-                  .then(() => this.props.closeModal())}>Demo User</button>
+                  .then(() => this.closeAndClear())}>Demo User</button>
             </div>
           </div>
         </div>
