@@ -30,6 +30,11 @@ html, body, main {
   position: relative;
 } 
 
+.error-404 {
+  font-size: 3em;
+  text-align: center;
+}
+
 .modal-background {
   position: fixed;
   top: 0;

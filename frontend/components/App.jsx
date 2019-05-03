@@ -5,6 +5,7 @@ import Modal from './session/modal';
 import NavigationBar from './navigation_bar';
 import Splash from './splash/splash';
 import Discover from './discover/discover';
+import ErrorPage from './error_page';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Switch>
         <AuthRoute exact path="/" component={Splash} />
         <Route path="/discover" component={Discover} />
+        <Route path="/" component={ErrorPage}/>
       </Switch>
 
       {/* <MusicPlayer/> */}
