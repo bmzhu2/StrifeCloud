@@ -3,20 +3,28 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    errorsJson = {errors: []}
+    errorsJson = []
 
-    unless parse_type(@user.email) == "email"
-      errorsJson[:errors] << "Invalid email address"
+    if parse_type(@user.email) != "email"
+      errorsJson << "Enter a valid email address."
+    elsif User.find_by(email: @user.email) 
+      errorsJson << "This email is already registered."
     end
-    unless parse_type(@user.username) != "name" 
-      errorsJson[:errors] << "Invalid username"
+    if parse_type(@user.username) != "name" 
+      errorsJson << "Enter a valid username. (no symbols)"
+    elsif User.find_by(username: @user.username)
+      errorsJson << "This username is already taken."
+    end
+    if @user.password.length < 7
+      errorsJson << "Use at least 7 characters."
     end
 
-    if errorsJson[:errors].length == 0 && @user.save
+    if errorsJson.length == 0 && @user.save
       login!(@user)
       render :show
     else
-      errorsJson[:errors] += @user.errors.full_messages
+      errorsJson += @user.errors.full_messages
+      debugger;
       render json: errorsJson, status: 403
     end
 
@@ -28,7 +36,7 @@ class Api::UsersController < ApplicationController
     if @user
       render :show
     else
-      render json: {:errors => ["User not found"]}, status: 404
+      render json: ["User not found"], status: 404
     end
   end
 

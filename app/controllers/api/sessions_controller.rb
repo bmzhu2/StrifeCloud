@@ -9,8 +9,8 @@ class Api::SessionsController < ApplicationController
       render json: ["This email is not registered. Did you mean to sign up?"], status: 403
       return
     end
-    unless pw.length > 5
-      render json: ["Use at least 6 characters."], status: 403
+    if pw.length < 7
+      render json: ["Use at least 7 characters."], status: 403
     end
 
     @user = User.find_by_credentials(email, pw)
@@ -28,7 +28,7 @@ class Api::SessionsController < ApplicationController
       logout!
       render json: {}
     else
-      render json: {errors: ["Not logged in"]}, status: 404
+      render json: ["Not logged in"], status: 404
     end
   end
 

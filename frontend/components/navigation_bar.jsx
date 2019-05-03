@@ -4,6 +4,24 @@ import { openModal } from '../actions/modal_actions';
 import { logout } from '../actions/session_actions';
 
 class NavigationBar extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.toggleUser = this.toggleUser.bind(this);
+    this.toggleSettings = this.toggleSettings.bind(this);
+  }
+
+  toggleUser() {
+
+  }
+
+  toggleSettings() {
+    let settingsButton = document.getElementById("settings-button");
+    let settingsDropdown = document.getElementById("settings-dropdown-content");
+
+    settingsButton.classList.toggle("clicked");
+    settingsDropdown.classList.toggle("show");
+  }
 
   render() {
     // let settingsControls = (
@@ -14,14 +32,14 @@ class NavigationBar extends React.Component {
         
     //   )
     // }
+
     let user = (<div></div>);
     if (this.props.currentUser) {
       user = (
-        <button className="user">
+        <button className="user" id="user">
           <div className="profile-picture"></div>
-          {/* <div className="name">{this.props.currentUser.username}</div> */}
-          <div className="name">Eventide Mirage</div>
-          <div>|v</div>
+          <div className="name">{this.props.currentUser.username}</div>
+          <i className="fas fa-angle-down"></i>
         </button>
       )
     }
@@ -30,8 +48,10 @@ class NavigationBar extends React.Component {
       <div className="full-bar">
         <nav className="navigation-bar">
           <button className="logo"
-            onClick={() => this.props.history.push("/")}
-          >logo placeholder</button>
+            onClick={() => this.props.history.push("/")}>
+            <img src="./assets/logo.png" />
+            StrifeCloud
+          </button>
           <button className="home"
             onClick={() => this.props.history.push("/discover")}
           >Home</button>
@@ -52,9 +72,19 @@ class NavigationBar extends React.Component {
             onClick={() => this.props.history.push("/upload")}
           >Upload</button>
           {user}
-          <button className="settings"
-            onClick={() => this.props.logout().then(() => this.props.history.push("/"))}
-          ><i className='fas fa-ellipsis-h'></i></button>
+          <div className="settings">
+            <button 
+              className="settings-button" 
+              id="settings-button"
+              onClick={this.toggleSettings}
+            ><i className='fas fa-ellipsis-h'></i></button>
+            <div className="settings-dropdown-content" id="settings-dropdown-content">
+              <button 
+                className="logout" 
+                onClick={() => this.props.logout().then(() => this.props.history.push("/"))}
+              ><p> Sign out</p></button>
+            </div>
+          </div>
         </nav>
       </div>    
     );

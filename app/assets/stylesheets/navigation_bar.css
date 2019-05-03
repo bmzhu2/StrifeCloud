@@ -22,9 +22,22 @@
   width: 185px;
   border: none;
   background: #ff5700;
+
+  text-transform: uppercase;
+  color: white;
+  font-size: 0.95em;
+  font-weight: 500;
+  font-family: "interstateregular";
+  user-select: none;
+  line-height: 46px;
 }
 
-.home, .stream, .library, .upload, .user, .settings {
+.logo > img {
+  width: 50px;
+  height: 30px;
+}
+
+.home, .stream, .library, .upload, .user {
   background: transparent;
   border: none;
 
@@ -32,7 +45,7 @@
   color: rgb(200, 200, 200);
 }
 
-.home:hover, .stream:hover, .library:hover, .upload:hover, .user:hover, .settings:hover {
+.home:hover, .stream:hover, .library:hover, .upload:hover, .user:hover {
   color: white;
 }
 
@@ -42,7 +55,7 @@
 }
 
 .search-bar {
-  max-width: 500px;
+  max-width: 550px;
   width: inherit;
   display: flex;
   align-items: center;
@@ -100,8 +113,6 @@
 }
 
 .user {
-  /* min-width: 100px; */
-  /* max-width: 200px; */
   width: auto;
   display: flex;
   align-items: center;
@@ -124,13 +135,62 @@
 
 .settings {
   width: 45px;
+  position: relative;
+}
 
+.settings > .settings-button {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: transparent;
+  border: none;
+
+  font-size: .9em;
+  color: rgb(200, 200, 200);
 }
 
-.settings > i {
+.settings > .settings-button:hover {
+  color: white;
+}
+
+.settings > .settings-button.clicked {
+  color: white;
+  background: black;
+}
+
+.settings > .settings-button > i {
   font-size: 1.5em;
   transform: translate(0%, 10%);
 }
+
+.settings > .settings-dropdown-content {
+  display: none;
+
+  height: auto;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 45px;
+}
+
+.settings > .settings-dropdown-content.show {
+  display: block;
+}
+
+.settings > .settings-dropdown-content > .logout {
+  width: 170px;
+  height: 30px;
+  border: none;
+  background: black;
+  color: rgb(200, 200, 200);
+  font-size: .8em;
+  text-align: left;
+  line-height: 30px;
+}
+.settings > .settings-dropdown-content > .logout:hover {
+  background: rgb(50, 50, 50);
+  color: white;
+}
+

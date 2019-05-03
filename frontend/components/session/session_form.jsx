@@ -43,39 +43,68 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    let emailErrText = <p></p>, usernameErrText = <p></p>, passwordErrText = <p></p>
+    let emailErrField = "no-error", usernameErrField = "no-error", passwordErrField = "no-error";
+
+    if(this.props.errors.errors) {
+      this.props.errors.errors.forEach(err => {
+        if (err.search("email") !== -1) {
+          emailErrText = (<p className="error-text">{err}</p>)
+          emailErrField = "error";
+        } else if (err.search("username") !== -1) {
+          usernameErrText = (<p className="error-text">{err}</p>)
+          usernameErrField = "error";
+        } else {
+          passwordErrText = (<p className="error-text">{err}</p>)
+          passwordErrField = "error";
+        }
+      })
+    }
+
+    debugger;
+
     let usernameField = undefined;
     let displayText = "Sign In"
     if(this.props.formType === "signup") {
       usernameField = (
         <label htmlFor="username">
-            <input
-            type="text"
-            value={this.state.username}
-            placeholder="Your Username"
-            onChange={this.updateUsername}
+          <input
+          className={usernameErrField}
+          type="text"
+          value={this.state.username}
+          placeholder="Your Username"
+          onChange={this.updateUsername}
           />
+          {usernameErrText}
         </label>
       )
       displayText = "Create account"
     }
+
+   
+
     return (
       <form className="session-form">
         <label htmlFor="email">
           <input
+            className={emailErrField}
             type="text"
             value={this.state.email}
             placeholder="Your Email Address"
             onChange={this.updateEmail}
           />
+          {emailErrText}
         </label>
         {usernameField}
         <label htmlFor="password">
           <input
+            className={passwordErrField}
             type="password"
             value={this.state.password}
             placeholder="Your Password"
             onChange={this.updatePassword}
           />
+          {passwordErrText}
         </label>
         <input type="submit" value={`${displayText}`} onClick={this.handleSubmit} />
       </form>

@@ -1,20 +1,29 @@
 import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
+import { login } from '../../actions/session_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal, openModal, login}) {
   if (!modal) {
     return null;
   }
-  let component;
+  let form;
+  let otherFormDescription;
+  let otherFormButton;
   switch (modal) {
     case 'login':
-      component = <LoginFormContainer />;
+      form = <LoginFormContainer />;
+      otherFormDescription = <p>Don't have an account?</p>
+      otherFormButton = <button className="other-form" onClick={() => openModal("signup")}>
+      Click to create an account.</button>;
       break;
     case 'signup':
-      component = <SignupFormContainer />;
+      form = <SignupFormContainer />;
+      otherFormDescription = <p>Have an account already?</p>
+      otherFormButton = <button className="other-form" onClick={() => openModal("login")}>
+      Click to sign in.</button>;
       break;
     default:
       return null;
@@ -22,7 +31,18 @@ function Modal({ modal, closeModal }) {
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        {component}
+        <div className="modal-box">
+          {form}
+          <div className="other-buttons">
+            {otherFormDescription}
+            {otherFormButton}
+            <p>or test the site with a demo account:</p>
+            <button 
+              className="demo-user"
+              onClick={() => login({user: {email: "springfield@springfield.com", password: "springfield"}})
+                .then(() => closeModal())}>Demo User</button>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -33,7 +53,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  closeModal: () => dispatch(closeModal())
+  login: (user) => dispatch(login(user)),
+  closeModal: () => dispatch(closeModal()),
+  openModal: mode => dispatch(openModal(mode))
 })
 
 

@@ -51,32 +51,34 @@ html, body, main {
   background: white;
 }
 
-.session-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
+.modal-box {
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+.modal-box > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .session-form > * {
   width: 85%;
 
-  border-radius: 3px;
+  border-radius: 4px;
   margin: 5px;
 }
 
 .session-form > label > input {
   width: 100%;
 
-  padding: 10px;
-  border: .5px solid rgb(160, 160, 160);
-  
+
+  padding: 10px;  
   border-radius: 4px;
   box-sizing: border-box;
+  box-shadow: none;
 }
 
 .session-form > input {
@@ -88,3 +90,47 @@ html, body, main {
   font-size: 1.1em;
 }
 
+.session-form .no-error {
+  border: 1px solid rgb(200, 200, 200);
+}
+
+.session-form .error {
+  border: 1px solid red;
+}
+
+.session-form .error-text { 
+  padding: 5px;
+  color: red;
+  font-size: .8em;
+}
+
+.modal-box > .other-buttons {
+  margin-top: 50px;
+}
+
+.modal-box > .other-buttons > * {
+  width: 85%;
+
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.modal-box > .other-buttons > button {
+  border: none;
+  padding: 10px;
+  
+  color: white;
+  font-size: 1.1em;
+}
+
+.modal-box > .other-buttons > .other-form {
+  background: #ff5700;
+}
+
+.modal-box > .other-buttons > p {
+  text-align: center;
+}
+
+.modal-box > .other-buttons > .demo-user {
+  background: #7d1fdb;
+}
