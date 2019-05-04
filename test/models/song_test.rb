@@ -7,6 +7,7 @@
 #  updated_at  :datetime         not null
 #  title       :string           default("Untitled"), not null
 #  uploader_id :integer          not null
+#  description :string
 #
 
 require 'test_helper'

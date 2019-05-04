@@ -2,15 +2,15 @@ class Api::SessionsController < ApplicationController
   def create
     email, pw = params[:user][:email], params[:user][:password]
     unless parse_type(email) == "email"
-      render json: ["Enter a valid email address."], status: 403
+      render json: ["Enter a valid email address."], status: 400
       return
     end
     unless User.find_by(email: email)
-      render json: ["This email is not registered. Did you mean to sign up?"], status: 403
+      render json: ["This email is not registered. Did you mean to sign up?"], status: 400
       return
     end
     if pw.length < 7
-      render json: ["Use at least 7 characters."], status: 403
+      render json: ["Use at least 7 characters."], status: 400
     end
 
     @user = User.find_by_credentials(email, pw)
@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       redirect_to "/api/users/#{@user.id}"
     else
-      render json: errors << ["This password is incorrect."], status: 403
+      render json: errors << ["This password is incorrect."], status: 400
     end
   end
 
@@ -28,7 +28,7 @@ class Api::SessionsController < ApplicationController
       logout!
       render json: {}
     else
-      render json: ["Not logged in"], status: 404
+      render json: ["Not logged in"], status: 400
     end
   end
 

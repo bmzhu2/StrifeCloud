@@ -5,7 +5,7 @@ import UploadFormContainer from './upload_form_container';
 
 class Upload extends React.Component {
   render() {
-    const component = (!!this.props.currentUser ? <UploadFormContainer currentUser={currentUser}/> : <UploadSplash />);
+    const component = (!!this.props.currentUser ? <UploadFormContainer /> : <UploadSplash />);
 
     return(
       <div className="main-body">

@@ -7,6 +7,7 @@
 #  updated_at  :datetime         not null
 #  title       :string           default("Untitled"), not null
 #  uploader_id :integer          not null
+#  description :string
 #
 
 class Song < ApplicationRecord
@@ -17,5 +18,6 @@ class Song < ApplicationRecord
     foreign_key: :uploader_id,
     class_name: :User
 
-  has_one_attached: :song_file
+  has_one_attached :song_file
+  has_one_attached :picture_file
 end

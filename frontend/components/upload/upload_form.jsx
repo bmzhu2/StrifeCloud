@@ -5,40 +5,47 @@ class UploadForm extends React.Component {
     super(props);
 
     this.state = {
+      uploaderId: this.props.currentUser.id,
       title: "",
       picture: null, 
-      file: null,
+      song: null,
       description: ""
     }
     this.handleSongFile = this.handleSongFile.bind(this);
     this.handlePictureFile = this.handlePictureFile.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
+    this.clearForm = this.clearForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit() {
-    // const user = Object.assign({}, { user: this.state });
-    // this.props.processForm(user)
-    //   .then(() => this.closeAndClear())
-    //   .then(() => this.props.history.push('/discover'));
-    // }
+    const formData = new FormData();
+    formData.append('song[uploader_id]', this.state.uploaderId)
+    formData.append('song[title]', this.state.title)
+    formData.append('song[picture_file]', this.state.picture)
+    formData.append('song[song_file]', this.state.song)
+    formData.append('song[description]', this.state.description)
+
+    this.props.upload(formData)
+      .then(() => this.props.history.push('/discover'));
   }
 
-  handleCancel() {
-    this.setState = {
+  clearForm() {
+    this.setState({
+      uploaderId: this.props.currentUser.id,
       title: "",
       picture: null,
-      file: null,
+      song: null,
       description: ""
-    }
+    })
+    debugger;
   }
 
   handleSongFile(e) {
     let songFile = e.currentTarget.files[0]
-    if(songFile.type.search("audio") !== -1) {
-      this.setState({file: songFile})
+    if(songFile && songFile.type.search("audio") !== -1) {
+      this.setState({song: songFile})
     }
 
     let songFileForm = document.getElementsByClassName("song-form")[0]
@@ -47,13 +54,12 @@ class UploadForm extends React.Component {
 
   handlePictureFile(e) {
     let pictureFile = e.currentTarget.files[0]
-    debugger;
-    // if (pictureFile.type.search("image") !== -1) {
-    //   this.setState({ file: pictureFile })
-    // }
+    if (pictureFile && pictureFile.type.search("image") !== -1) {
+      this.setState({ picture: pictureFile })
+    }
 
     let pictureFileInput = document.getElementsByClassName("picture-input")[0]
-    songFileForm.classList.add("selected");
+    pictureFileInput.classList.add("selected");
   }
 
   updateTitle(e) {
@@ -70,23 +76,42 @@ class UploadForm extends React.Component {
 
   render() {
     let songInfo = null;
-    if (this.state.songFile) {
+    if (this.state.song) {
       songInfo = (
         <>
-          <div class="song-picture-mini-form">
-            <div class="song-picture-preview"></div>
-            <input type="file" className="picture-input" onChange={this.handlePictureFile}></input>
+          <div className="song-picture-mini-form">
+            <div className="song-picture-preview"></div>
+            <input 
+              type="file" 
+              className="picture-input"
+              id="picture-input"
+              onChange={this.handlePictureFile}></input>
+            <label htmlFor="picture-input"></label>
           </div>
-          <input type="text" className="song-title"></input>
-          <textarea className="song-description"></textarea>
-          <button class="song-form-cancel" onClick={this.handleCancel}>Cancel</button>
-          <button class="song-form-submit" onClick={this.handleSubmit}>Save</button>
+          <input 
+            type="text" 
+            className="song-title"
+            value={this.state.title}
+            placeholder="Name your song"
+            onChange={this.updateTitle}></input>
+          <textarea 
+            className="song-description"
+            value={this.state.description}
+            placeholder="Describe your song"
+            onChange={this.updateDescription}></textarea>
+          <button className="song-form-cancel" onClick={this.clearForm}>Cancel</button>
+          <button className="song-form-submit" onClick={this.handleSubmit}>Save</button>
         </>
       )
     }
+
     return(
       <form className="song-form">
-        <input type="file" className="song-input" onChange={this.handleSongFile}></input>
+        <div className="song-input-box">
+          <input type="file" className="song-input" id="song-input" onChange={this.handleSongFile}></input>
+          <label className="song-input-button" htmlFor="song-input">choose file to upload</label>
+          <p>Provide FLAC, WAV, ALAC or AIFF for best audio quality.</p>
+        </div>
 
         {songInfo}
       </form>

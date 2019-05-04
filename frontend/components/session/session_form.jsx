@@ -85,8 +85,6 @@ class SessionForm extends React.Component {
       displayText = "Create account"
     }
 
-   
-
     return (
       <form className="session-form">
         <label htmlFor="email">
