@@ -5,7 +5,6 @@ class SongDetail extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -16,6 +15,14 @@ class SongDetail extends React.Component {
   componentDidMount(){
     this.props.fetchSong(this.props.match.params.id)
       .then(result => this.props.fetchUser(result.song.uploader_id));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.url !== nextProps.match.url) {
+      this.props.clearRouteErrors();
+      this.props.fetchSong(nextProps.match.params.id)
+        .then(result => this.props.fetchUser(result.song.uploader_id));
+    }
   }
 
   handleDelete() {

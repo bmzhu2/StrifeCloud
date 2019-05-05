@@ -29,7 +29,9 @@ class UploadForm extends React.Component {
     const formData = new FormData();
     formData.append('song[uploader_id]', this.state.uploaderId)
     formData.append('song[title]', this.state.title)
-    formData.append('song[picture_file]', this.state.picture)
+    if (this.state.picture) {
+      formData.append('song[picture_file]', this.state.picture)
+    }
     formData.append('song[song_file]', this.state.song)
     formData.append('song[description]', this.state.description)
 
