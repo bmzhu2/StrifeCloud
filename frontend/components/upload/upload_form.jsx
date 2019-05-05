@@ -9,8 +9,10 @@ class UploadForm extends React.Component {
       title: "",
       picture: null, 
       song: null,
-      description: ""
+      description: "",
+      songFileError: false
     }
+
     this.handleSongFile = this.handleSongFile.bind(this);
     this.handlePictureFile = this.handlePictureFile.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
@@ -28,7 +30,7 @@ class UploadForm extends React.Component {
     formData.append('song[description]', this.state.description)
 
     this.props.upload(formData)
-      .then(() => this.props.history.push('/discover'));
+      .then(result => this.props.history.push(`/songs/${result.song.id}`));
   }
 
   clearForm() {
@@ -37,29 +39,38 @@ class UploadForm extends React.Component {
       title: "",
       picture: null,
       song: null,
-      description: ""
+      description: "",
+      songFileError: false
     })
-    debugger;
   }
 
   handleSongFile(e) {
     let songFile = e.currentTarget.files[0]
     if(songFile && songFile.type.search("audio") !== -1) {
-      this.setState({song: songFile})
+      this.setState({song: songFile});
+      let songFileForm = document.getElementsByClassName("song-form")[0];
+      songFileForm.classList.add("small");
+    } else {
+      this.showSongFileError()
     }
-
-    let songFileForm = document.getElementsByClassName("song-form")[0]
-    songFileForm.classList.add("small");
   }
+
+  // showSongFileError() {
+  //   this.setState({songFileError: true})
+  //   let error = document.getElementsByClassName("song-file-error")[0];
+  //   error.classList.add("present");
+  //   setInterval(() => {
+  //     error.classList.remove("present");
+  //   }, 6000)
+  // }
 
   handlePictureFile(e) {
     let pictureFile = e.currentTarget.files[0]
     if (pictureFile && pictureFile.type.search("image") !== -1) {
       this.setState({ picture: pictureFile })
+      let pictureFileInput = document.getElementsByClassName("song-picture-section")[0]
+      pictureFileInput.classList.add("selected");
     }
-
-    let pictureFileInput = document.getElementsByClassName("picture-input")[0]
-    pictureFileInput.classList.add("selected");
   }
 
   updateTitle(e) {
@@ -78,30 +89,46 @@ class UploadForm extends React.Component {
     let songInfo = null;
     if (this.state.song) {
       songInfo = (
-        <>
-          <div className="song-picture-mini-form">
-            <div className="song-picture-preview"></div>
-            <input 
-              type="file" 
-              className="picture-input"
-              id="picture-input"
-              onChange={this.handlePictureFile}></input>
-            <label htmlFor="picture-input"></label>
+        <div className="song-info">
+          <div className="input-section">
+            <div className="song-picture-section">
+              <div className="song-picture-preview"></div>
+              <input
+                type="file"
+                className="picture-input"
+                id="picture-input"
+                accept=".jpg,.png"
+                onChange={this.handlePictureFile}></input>
+              <label className="picture-input-button" htmlFor="picture-input">
+                <i className="fas fa-camera"><p>Upload image</p></i>
+                <p>Replace image</p>
+              </label>
+            </div>
+              <div className="text-input-section">
+                <label className="title-label">
+                  <p>Title</p>
+                  <input
+                    type="text"
+                    className="song-title"
+                    value={this.state.title}
+                    placeholder="Name your song"
+                    onChange={this.updateTitle}></input>
+                </label>
+                <label className="description-label">
+                  <p>Description</p>
+                  <textarea
+                    className="song-description"
+                    value={this.state.description}
+                    placeholder="Describe your song"
+                    onChange={this.updateDescription}></textarea>
+                </label>
+              </div>
           </div>
-          <input 
-            type="text" 
-            className="song-title"
-            value={this.state.title}
-            placeholder="Name your song"
-            onChange={this.updateTitle}></input>
-          <textarea 
-            className="song-description"
-            value={this.state.description}
-            placeholder="Describe your song"
-            onChange={this.updateDescription}></textarea>
-          <button className="song-form-cancel" onClick={this.clearForm}>Cancel</button>
-          <button className="song-form-submit" onClick={this.handleSubmit}>Save</button>
-        </>
+          <div className="button-section">
+            <button className="song-form-cancel" onClick={this.clearForm}>Cancel</button>
+            <button className="song-form-submit" onClick={this.handleSubmit}>Save</button>
+          </div>  
+        </div>
       )
     }
 

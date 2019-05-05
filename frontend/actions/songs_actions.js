@@ -42,12 +42,15 @@ const clearErrors = () => ({
   type: CLEAR_UPLOAD_ERRORS,
 });
 
-export const upload = song => dispatch => {
-  return (
-    SongAPIUtil.upload(song).then(song => dispatch(receiveSong(song)),
-      err => dispatch(receiveErrors(err.responseJSON)))
-  )
-}
+export const upload = song => dispatch => (
+  SongAPIUtil.upload(song).then(song => dispatch(receiveSong(song)),
+    err => dispatch(receiveErrors(err.responseJSON)))
+)
+
+export const fetchSong = id => dispatch => (
+  SongAPIUtil.fetch(id).then(song => dispatch(receiveSong(song)),
+    err => dispatch(receiveErrors(err.responseJSON)))
+)
 
 export const remove = id => dispatch => (
   SongAPIUtil.remove(id).then(id => dispatch(removeSong(id)),

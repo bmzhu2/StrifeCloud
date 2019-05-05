@@ -6,10 +6,13 @@
 
 .song-input-box {
   width: 800px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   border: 1px solid rgb(240, 240, 240);
   border-radius: 2px;
-  box-shadow: 3px 0 5px rgb(250, 250, 250), 0 3px 5px rgb(250, 250, 250), -3px 0 5px rgb(250, 250, 250), 0 -3px 5px rgb(250, 250, 250);
+  box-shadow: 3px 0 5px rgb(250, 250, 250), 
+    0 3px 5px rgb(250, 250, 250), 
+    -3px 0 5px rgb(250, 250, 250), 
+    0 -3px 5px rgb(250, 250, 250);
   padding-top: 140px;
 
   display: flex;
@@ -19,7 +22,7 @@
   transition: padding-top 250ms ease;
 }
 
-.song-input-box > label {
+.song-input-box > .song-input-button {
   width: 300px;
   background: #ff5700;
   border-radius: 4px;
@@ -61,7 +64,7 @@
   padding-top: 75px;
 }
 
-.song-form.small > .song-input-box > label {
+.song-form.small > .song-input-box > .song-input-button {
   padding: 6px 0 6px 0;
   font-size: 10pt;
 }
@@ -73,3 +76,144 @@
 
 /* INFO FORM */
 
+.song-info {
+  width: 800px;
+  margin: 50px auto;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 2px;
+  box-shadow: 3px 0 5px rgb(250, 250, 250), 
+    -3px 0 5px rgb(250, 250, 250), 
+    0 -3px 5px rgb(250, 250, 250);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.song-info > .input-section {
+  width: inherit;
+  display: flex;
+  justify-content: space-between;
+}
+
+.song-info > .button-section {
+  width: inherit;
+  border-top: 1px solid rgb(240, 240, 240);
+  padding: 20px 50px 20px 0;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.song-info .song-picture-section {
+  position: relative;
+}
+
+.song-info .song-picture-preview {
+  width: 260px;
+  height: 260px;
+  background: rgb(120, 122, 135);
+  margin: 25px 0 50px 25px;
+}
+
+.song-info .picture-input-button {
+  width: 125px;
+  position: absolute;
+  right: 60px;
+  top: 240px;
+  height: 22px;
+  background: rgb(230, 230, 230);
+  border-radius: 3px;
+  padding: 0 10px;
+  
+  cursor: pointer;
+  text-align: center;
+  line-height: 22px;
+
+  transition: background-color 500ms;
+}
+
+.song-info .picture-input-button:hover {
+  background: white;
+}
+
+.song-info .picture-input-button > i {
+  height: inherit;
+  font-size: 10pt;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.song-info .picture-input-button p {
+  font-family: "interstatelight";
+} 
+
+.song-info .picture-input-button > p {
+  font-size: 10pt;
+  display: none;
+}
+
+.song-info .button-section > button {
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.song-info .song-form-cancel {
+  background: transparent;
+  border: none;
+}
+
+.song-info .song-form-submit {
+  border-radius: 4px;
+  background: #ff5700;
+
+  color: white;
+}
+
+.song-picture-section.selected > .picture-input-button {
+  width: 110px;
+  top: 300px;
+  right: 0;
+  background: transparent;
+  border: 1px solid rgb(220, 220, 220);
+  transition: border-color 500ms;
+}
+
+.song-picture-section.selected > .picture-input-button:hover {
+  border-color: rgb(120, 120, 120);
+}
+
+.song-picture-section.selected > .picture-input-button > i {
+  display: none;
+}
+.song-picture-section.selected > .picture-input-button > p {
+  display: inline;
+}
+
+.text-input-section {
+  width: 475px;
+  padding: 25px 25px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-input-section p {
+  padding: 5px 0;
+  font-size: 10pt;
+}
+
+.text-input-section input, .text-input-section textarea {
+  width: 100%;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 3px 0 3px 10px;
+}
+
+.text-input-section .description-label {
+  margin-top: 25px;
+}
+
+.text-input-section textarea {
+  height: 100px;
+}

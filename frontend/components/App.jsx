@@ -7,6 +7,7 @@ import Splash from './splash/splash';
 import Discover from './discover/discover';
 import Upload from './upload/upload';
 import ErrorPage from './error_page';
+import SongDetailContainer from './song/song_detail_container';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <AuthRoute exact path="/" component={Splash} />
         <Route path="/discover" component={Discover} />
         <Route path="/upload" component={Upload} />
+        <Route path="/songs/:id" component={SongDetailContainer} />
         <Route path="/" component={ErrorPage}/>
       </Switch>
 
