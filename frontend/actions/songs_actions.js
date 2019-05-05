@@ -49,7 +49,7 @@ const receiveRouteErrors = errors => ({
   errors
 })
 
-const clearRouteErrors = () => ({
+const clearRouteErrs = () => ({
   type: CLEAR_ROUTE_ERRORS,
 });
 
@@ -70,4 +70,8 @@ export const remove = id => dispatch => (
 
 export const clearErrs = () => dispatch => (
   dispatch(clearUploadErrors())
+)
+
+export const clearRouteErrors = () => dispatch => (
+  dispatch(clearRouteErrs())
 )

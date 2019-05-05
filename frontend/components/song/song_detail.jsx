@@ -9,6 +9,10 @@ class SongDetail extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
+  componentWillMount(){
+    this.props.clearRouteErrors();
+  }
+
   componentDidMount(){
     this.props.fetchSong(this.props.match.params.id)
       .then(result => this.props.fetchUser(result.song.uploader_id));
@@ -48,7 +52,7 @@ class SongDetail extends React.Component {
       <div className="main-body">
         {banner}
         {editControls}
-        {/* {notFound} */}
+        {notFound}
       </div>
     )
   }
