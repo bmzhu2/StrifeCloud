@@ -16,24 +16,29 @@ class SongDetail extends React.Component {
 
   handleDelete() {
     this.props.delete(this.props.match.params.id);
+    this.render();
   }
 
   render() {
     let song = this.props.songs[this.props.match.params.id];
     let uploader;
-    let editControls = <div></div>
+    let editControls = null;
     if (song) {
       uploader = this.props.users[song.uploader_id];
       if (song.uploader_id === this.props.currentUserId) {
         editControls = (
           <div className="song-edit-controls">
-            <button className="edit-song">Edit</button>
+            <button className="edit-song"><i className="fas fa-pencil-alt"></i>Edit</button>
             <button 
               className="delete-song"
-              onClick={this.handleDelete}>Delete</button>
+              onClick={this.handleDelete}><i className="fas fa-trash"></i>Delete song</button>
           </div>
         )
       }
+    }
+    let notFound = null;
+    if (this.props.notFound) {
+      notFound = <div className="no-song">This song doesn't exist, or no longer exists.</div>
     }
     let banner = (<div></div>)
     if(song && uploader) {
@@ -43,6 +48,7 @@ class SongDetail extends React.Component {
       <div className="main-body">
         {banner}
         {editControls}
+        {/* {notFound} */}
       </div>
     )
   }

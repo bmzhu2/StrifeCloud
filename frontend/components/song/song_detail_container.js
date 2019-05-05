@@ -7,7 +7,8 @@ import {fetchUser} from '../../actions/user_actions';
 const mapStateToProps = state => ({
   users: state.entities.users,
   songs: state.entities.songs,
-  currentUserId: state.session.currentUserId
+  currentUserId: state.session.currentUserId,
+  notFound: state.errors.songRoute.errors
 })
 
 const mapDispatchToProps = dispatch => ({

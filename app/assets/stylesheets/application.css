@@ -31,7 +31,8 @@ body, main, html {
 } 
 
 .error-404 {
-  font-size: 3em;
+  font-size: 30pt;
+  padding-top: 25%;
   text-align: center;
 }
 

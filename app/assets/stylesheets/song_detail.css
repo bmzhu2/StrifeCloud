@@ -1,3 +1,9 @@
+.no-song {
+  font-size: 30pt;
+  padding-top: 25%;
+  text-align: center;
+}
+
 .song-banner {
   width: 100%;
   height: 380px;
@@ -66,3 +72,20 @@
   padding: 20px;
 }
 
+.song-edit-controls * {
+  font-size: 10pt;
+}
+
+.song-edit-controls button {
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.song-edit-controls button:hover {
+  border: 1px solid rgb(200,200,200);
+}
+
+.song-edit-controls button > i {
+  margin: 0 10px 0 5px;
+}

@@ -3,12 +3,11 @@ import {Link} from 'react-router-dom';
 
 class SongBanner extends React.Component {
 
-
   render() {
     return(
       <div className="song-banner">
         <div className="song-banner-main">
-          <button className="song-banner-play"><i class="fas fa-play-circle"></i></button>
+          <button className="song-banner-play"><i className="fas fa-play-circle"></i></button>
           <div className="song-banner-info">
             <Link 
               to={`/users/${this.props.uploader.id}`} 

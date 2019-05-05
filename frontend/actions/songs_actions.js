@@ -7,6 +7,8 @@ export const UPDATE_SONGS = "UPDATE_SONGS";
 export const REMOVE_SONG = "REMOVE_SONG";
 export const RECEIVE_UPLOAD_ERRORS = "RECEIVE_UPLOAD_ERRORS";
 export const CLEAR_UPLOAD_ERRORS = "CLEAR_UPLOAD_ERRORS";
+export const RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
+export const CLEAR_ROUTE_ERRORS = "CLEAR_ROUTE_ERRORS";
 
 const receiveCurrentSong = currentSong => ({
   type: RECEIVE_CURRENT_SONG,
@@ -33,30 +35,39 @@ const removeSong = songId => ({
   songId
 })
 
-const receiveErrors = errors => ({
+const receiveUploadErrors = errors => ({
   type: RECEIVE_UPLOAD_ERRORS,
   errors
 });
 
-const clearErrors = () => ({
+const clearUploadErrors = () => ({
   type: CLEAR_UPLOAD_ERRORS,
+});
+
+const receiveRouteErrors = errors => ({
+  type: RECEIVE_ROUTE_ERRORS,
+  errors
+})
+
+const clearRouteErrors = () => ({
+  type: CLEAR_ROUTE_ERRORS,
 });
 
 export const upload = song => dispatch => (
   SongAPIUtil.upload(song).then(song => dispatch(receiveSong(song)),
-    err => dispatch(receiveErrors(err.responseJSON)))
+    err => dispatch(receiveUploadErrors(err.responseJSON)))
 )
 
 export const fetchSong = id => dispatch => (
   SongAPIUtil.fetch(id).then(song => dispatch(receiveSong(song)),
-    err => dispatch(receiveErrors(err.responseJSON)))
+    err => dispatch(receiveRouteErrors(err.responseJSON)))
 )
 
 export const remove = id => dispatch => (
   SongAPIUtil.remove(id).then(id => dispatch(removeSong(id)),
-  err => dispatch(receiveErrors(err.responseJSON)))
+  err => dispatch(receiveRouteErrors(err.responseJSON)))
 ) 
 
 export const clearErrs = () => dispatch => (
-  dispatch(clearErrors())
+  dispatch(clearUploadErrors())
 )

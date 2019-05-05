@@ -101,7 +101,6 @@ class UploadForm extends React.Component {
       document.getElementsByClassName("title-label")[0].classList.add("title-error")
       titleError = <p className="missing-title">Enter a title.</p>
     }
-    debugger;
     if (this.state.song) {
       songInfo = (
         <div className="song-info">

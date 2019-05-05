@@ -3,18 +3,21 @@ import merge from 'lodash/merge';
 
 const songsReducer = (state = {}, action) => {
   Object.freeze(state);
+  let nextState = {};
   switch (action.type) {
     case RECEIVE_SONG:
       return merge({}, state, { [action.song.id]: action.song });
     case RECEIVE_SONGS:
-      const nextState = {};
       Object.values(action.songs).forEach(song => {
         nextState[song.id] = song;
       });
       return nextState;
     // case RECEIVE_CURRENT_SONG:
     // case UPDATE_SONG:
-    // case REMOVE_SONG:
+    case REMOVE_SONG:
+      nextState = merge({}, state);
+      delete nextState[action.songId]
+      return nextState;
     default:
       return state;
   }
