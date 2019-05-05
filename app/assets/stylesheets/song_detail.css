@@ -66,10 +66,14 @@
   font-size: 18pt;
 }
 
-.song-banner > .song-picture {
+.song-banner > .song-picture, .song-banner > .blank-image {
   width: 340px;
   height: 340px;
-  padding: 20px;
+  margin: 20px;
+}
+
+.song-banner > .blank-image {
+  background: rgb(120, 122, 135);
 }
 
 .song-edit-controls * {

@@ -4,6 +4,10 @@ import {Link} from 'react-router-dom';
 class SongBanner extends React.Component {
 
   render() {
+    const picture = (this.props.song.pictureFileUrl !== "") ? 
+      <img className="song-picture" src={`${this.props.song.pictureFileUrl}`} />
+      : <div className="blank-image"></div>
+
     return(
       <div className="song-banner">
         <div className="song-banner-main">
@@ -15,7 +19,7 @@ class SongBanner extends React.Component {
             <p className="song-banner-title">{this.props.song.title}</p>
           </div>
         </div>
-        <img className="song-picture" src={`${this.props.song.pictureFileUrl}`} />
+        {picture}
       </div>
     )
   }
