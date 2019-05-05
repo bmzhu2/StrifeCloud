@@ -65,7 +65,7 @@ class UploadForm extends React.Component {
     this.setState({songFileError: true})
     let error = document.getElementsByClassName("song-file-error")[0];
     error.classList.add("present");
-    setInterval(() => {
+    setTimeout(() => {
       error.classList.remove("present");
     }, 6000)
   }
@@ -97,7 +97,7 @@ class UploadForm extends React.Component {
 
   render() {
     let songInfo = null;
-    const preview = this.state.pictureUrl ? <img src={this.state.pictureUrl} /> : null
+    const preview = this.state.pictureUrl ? <img src={this.state.pictureUrl} /> : <div className="blank-preview"></div>
     let titleError = null
     if (this.state.noTitle) {
       document.getElementsByClassName("title-label")[0].classList.add("title-error")

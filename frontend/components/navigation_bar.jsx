@@ -65,7 +65,7 @@ class NavigationBar extends React.Component {
             <input 
               className="search-box"
               type="text" 
-              placeholder="Search"></input>
+              placeholder="Search is not implemented yet"></input>
             <button className="search-submit"><i className="fas fa-search"></i></button>
           </form>
           {sessionButtons}

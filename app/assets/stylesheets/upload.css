@@ -156,13 +156,18 @@
 .song-info .song-picture-preview {
   width: 260px;
   height: 260px;
-  background: rgb(120, 122, 135);
   margin: 25px 0 50px 25px;
 }
 
 .song-info .song-picture-preview > img {
   width: inherit;
   height: inherit;
+}
+
+.song-info .song-picture-preview > .blank-preview {
+  width: inherit;
+  height: inherit;
+  background: rgb(120, 122, 135);
 }
 
 .song-info .picture-input-button {
