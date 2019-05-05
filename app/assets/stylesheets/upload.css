@@ -4,6 +4,42 @@
   transition: padding-top 250ms ease;
 }
 
+.song-form .song-file-error {
+  display: none;
+  width: 300px;
+  height: 40px;
+  position: fixed;
+  right: 30px;
+  top: 60px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 3px 0 5px rgb(250, 250, 250), 
+    0 3px 5px rgb(250, 250, 250), 
+    -3px 0 5px rgb(250, 250, 250), 
+    0 -3px 5px rgb(250, 250, 250);
+
+  line-height: 40px;
+  font-size: 8pt;
+  overflow: hidden;
+}
+
+.song-form .song-file-error p {
+  padding-left: 30px;
+}
+
+.song-form .song-file-error .exclamation {
+  width: 40px;
+  height: inherit;
+  background: #ff5700;
+  font-size: 18pt;
+  color: white;
+  text-align: center;
+}
+
+.song-form .song-file-error.present {
+  display: flex;
+}
+
 .song-input-box {
   width: 800px;
   margin: 0 auto;

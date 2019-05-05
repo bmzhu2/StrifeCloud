@@ -59,14 +59,14 @@ class UploadForm extends React.Component {
     }
   }
 
-  // showSongFileError() {
-  //   this.setState({songFileError: true})
-  //   let error = document.getElementsByClassName("song-file-error")[0];
-  //   error.classList.add("present");
-  //   setInterval(() => {
-  //     error.classList.remove("present");
-  //   }, 6000)
-  // }
+  showSongFileError() {
+    this.setState({songFileError: true})
+    let error = document.getElementsByClassName("song-file-error")[0];
+    error.classList.add("present");
+    setInterval(() => {
+      error.classList.remove("present");
+    }, 6000)
+  }
 
   handlePictureFile(e) {
     const pictureFile = e.currentTarget.files[0]
@@ -150,6 +150,12 @@ class UploadForm extends React.Component {
 
     return(
       <form className="song-form">
+        <div className="song-file-error">
+          <div className="exclamation">
+            <i className="fas fa-exclamation"></i>
+          </div>
+          <p>Your file's type is not supported</p>
+        </div>
         <div className="song-input-box">
           <input type="file" className="song-input" id="song-input" onChange={this.handleSongFile}></input>
           <label className="song-input-button" htmlFor="song-input">choose file to upload</label>
