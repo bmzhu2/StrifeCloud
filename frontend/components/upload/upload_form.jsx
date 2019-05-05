@@ -9,8 +9,7 @@ class UploadForm extends React.Component {
       title: "",
       picture: null, 
       song: null,
-      description: "",
-      songFileError: false
+      description: ""
     }
 
     this.handleSongFile = this.handleSongFile.bind(this);
@@ -22,6 +21,11 @@ class UploadForm extends React.Component {
   }
 
   handleSubmit() {
+    if (!this.state.title) {
+      this.setState({noTitle: true})
+      return
+    }
+
     const formData = new FormData();
     formData.append('song[uploader_id]', this.state.uploaderId)
     formData.append('song[title]', this.state.title)
@@ -45,10 +49,10 @@ class UploadForm extends React.Component {
   }
 
   handleSongFile(e) {
-    let songFile = e.currentTarget.files[0]
+    const songFile = e.currentTarget.files[0]
     if(songFile && songFile.type.search("audio") !== -1) {
       this.setState({song: songFile});
-      let songFileForm = document.getElementsByClassName("song-form")[0];
+      const songFileForm = document.getElementsByClassName("song-form")[0];
       songFileForm.classList.add("small");
     } else {
       this.showSongFileError()
@@ -65,10 +69,14 @@ class UploadForm extends React.Component {
   // }
 
   handlePictureFile(e) {
-    let pictureFile = e.currentTarget.files[0]
+    const pictureFile = e.currentTarget.files[0]
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ picture: pictureFile, pictureUrl: fileReader.result });
+    }
     if (pictureFile && pictureFile.type.search("image") !== -1) {
-      this.setState({ picture: pictureFile })
-      let pictureFileInput = document.getElementsByClassName("song-picture-section")[0]
+      fileReader.readAsDataURL(pictureFile);
+      const pictureFileInput = document.getElementsByClassName("song-picture-section")[0];
       pictureFileInput.classList.add("selected");
     }
   }
@@ -87,17 +95,25 @@ class UploadForm extends React.Component {
 
   render() {
     let songInfo = null;
+    const preview = this.state.pictureUrl ? <img src={this.state.pictureUrl} /> : null
+    let titleError = null
+    if (this.state.noTitle) {
+      document.getElementsByClassName("title-label")[0].classList.add("title-error")
+      titleError = <p className="missing-title">Enter a title.</p>
+    }
+    debugger;
     if (this.state.song) {
       songInfo = (
         <div className="song-info">
+          <div className="file-name">{this.state.song.name}</div>
           <div className="input-section">
             <div className="song-picture-section">
-              <div className="song-picture-preview"></div>
+              <div className="song-picture-preview">{preview}</div>
               <input
                 type="file"
                 className="picture-input"
                 id="picture-input"
-                accept=".jpg,.png"
+                accept=".jpg,.png,.bmp,.gif"
                 onChange={this.handlePictureFile}></input>
               <label className="picture-input-button" htmlFor="picture-input">
                 <i className="fas fa-camera"><p>Upload image</p></i>
@@ -113,6 +129,7 @@ class UploadForm extends React.Component {
                     value={this.state.title}
                     placeholder="Name your song"
                     onChange={this.updateTitle}></input>
+                  {titleError}
                 </label>
                 <label className="description-label">
                   <p>Description</p>

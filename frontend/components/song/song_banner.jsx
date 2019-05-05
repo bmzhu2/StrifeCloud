@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 class SongBanner extends React.Component {
 
@@ -7,9 +8,11 @@ class SongBanner extends React.Component {
     return(
       <div className="song-banner">
         <div className="song-banner-main">
-          <button className="song-banner-play">Play</button>
+          <button className="song-banner-play"><i class="fas fa-play-circle"></i></button>
           <div className="song-banner-info">
-            <p className="song-banner-uploader">{this.props.uploader.username}</p>
+            <Link 
+              to={`/users/${this.props.uploader.id}`} 
+              className="song-banner-uploader">{this.props.uploader.username}</Link>
             <p className="song-banner-title">{this.props.song.title}</p>
           </div>
         </div>
