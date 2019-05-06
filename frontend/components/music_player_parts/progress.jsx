@@ -6,28 +6,82 @@ class Progress extends React.Component {
 
     this.state = {
       progress: 0,
+
     }
 
-    this.updateProgress = this.updateProgress.bind(this);
+    this.dragging = false;
     this.interval = null;
+    this.updateProgress = this.updateProgress.bind(this);
+    this.beginDrag = this.beginDrag.bind(this);
+    this.dragProgress = this.dragProgress.bind(this);
+    this.endDrag = this.endDrag.bind(this);
   }
 
-  updateProgress() {
-    this.setState({
-      progress: `${this.props.song.currentTime / this.props.song.duration}`
+  componentDidMount() {
+    document.addEventListener("mousemove", e => {
+      this.dragProgress(e);
+    });
+    document.addEventListener("mouseup", e => {
+      this.endDrag(e);
     })
   }
 
-  render() {
-    if(this.state.progress && this.props.song.currentTime === this.props.song.duration) {
+  updateProgress() {
+    if (this.props.song.currentTime === this.props.song.duration) {
       this.props.song.load();
       this.props.song.pause();
       this.setState({
         progress: 0
       })
       this.props.pause();
+    } else {
+      this.setState({
+        progress: `${this.props.song.currentTime / this.props.song.duration}`
+      })
     }
+  }
 
+  offsetX(e) {
+    const offset = e.clientX - document.getElementsByClassName("play-bar")[0].getClientRects()[0].x;
+    if (offset < 0) {
+      return 0;
+    } else if (offset > 500) {
+      return 500;
+    } else {
+      return offset;
+    }
+  }
+
+  beginDrag(e) {
+    if(this.props.song) {
+      e.preventDefault();
+      this.dragging = true;
+      this.setState({
+        currentMouseX: (this.offsetX(e))
+      })
+    }
+  }
+
+  dragProgress(e) {
+    if(this.props.song && this.dragging) {
+      this.setState({
+        currentMouseX: (this.offsetX(e))
+      })
+    }
+  }
+
+  endDrag(e) {
+    if(this.props.song && this.dragging) {
+      this.dragging = false;
+      this.setState({
+        progress: ((this.offsetX(e)) / 500)
+      }, () => {
+        this.props.song.currentTime = +(this.state.progress * this.props.song.duration).toFixed(6);
+      })
+    }
+  }
+
+  render() {
     let elapsedTime = "0:00";
     let remainingTime = "-0:00";
     if(this.props.song) {
@@ -61,13 +115,21 @@ class Progress extends React.Component {
         this.interval = null;
       }
     }
+
+    let progressLength = 500 * this.state.progress;
+    if(this.dragging) {
+      progressLength = this.state.currentMouseX;
+    }
+    const show = this.dragging ? " show" : "";
+
     return (
       <div className="progress">
         <div className="elapsed-time">{elapsedTime}</div>
         <div className="play-bar">
           <div className="full-line"></div>
-          <div className="current-line" style={{width: (500 * this.state.progress) + 'px'}}></div>
-          <div className="circle" style={{left: (58 + (500 * this.state.progress)) + 'px'}}></div>
+          <div className="current-line" style={{width: progressLength + 'px'}}></div>
+          <div className={`circle${show}`} style={{left: (progressLength - 4) + 'px'}}></div>
+          <div className="play-bar-seek" onMouseDown={this.beginDrag}></div>
         </div>
         <div className="remaining-time">{remainingTime}</div>
       </div>

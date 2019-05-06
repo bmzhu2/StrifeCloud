@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
 import {pause, unpause} from '../actions/songs_actions';
 import Progress from './music_player_parts/progress';
+import Volume from './music_player_parts/volume';
 
 class MusicPlayer extends React.Component {
   constructor(props) {
@@ -51,11 +52,13 @@ class MusicPlayer extends React.Component {
     let songRoute = "#";
     let userRoute = "#";
     let progress = <Progress />;
+    let volume = <Volume />;
     let songThumbnail = null;
     let uploaderName = null;
     let songTitle = null;
     if(this.props.song) {
       progress = <Progress song={this.state.song} pause={this.props.pause}/>
+      volume = <Volume song={this.state.song}/>
       songRoute = `/songs/${this.props.song.id}`
       userRoute = `users/${this.props.song.uploader_id}`
       songThumbnail = this.props.song.pictureFileUrl !== "" ? 
@@ -81,9 +84,7 @@ class MusicPlayer extends React.Component {
           <button className="icon next">Next</button>
         </div>
         {progress}
-        <div className="volume-control">
-          <button className="icon unmuted">Volume</button>
-        </div>
+        {volume}
         <div className="player-song-info">
           <Link to={songRoute} className="thumbnail">{songThumbnail}</Link>
           <div className="player-text-info">

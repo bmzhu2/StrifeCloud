@@ -6,13 +6,33 @@ import { logout } from '../actions/session_actions';
 class NavigationBar extends React.Component {
   constructor(props) {
     super(props)
-
+  
+    this.userShown = false;
+    this.settingsShown = false;
     this.toggleUser = this.toggleUser.bind(this);
     this.toggleSettings = this.toggleSettings.bind(this);
+    // this.closeMenu = this.closeMenu.bind(this);
   }
 
-  toggleUser() {
+  // closeMenu() {
+  //   if (this.userShown) {
+  //     this.toggleUser();
+  //   }
+  //   if (this.settingsShown) {
+  //     this.toggleSettings();
+  //   }
+  // }
 
+  // componentDidMount() {
+  //   document.addEventListener("click", this.closeMenu);
+  // }
+
+  // componentWillUnmount() {
+  //   document.removeEventListener("click", this.closeMenu);
+  // }
+
+  toggleUser() {
+    
   }
 
   toggleSettings() {
@@ -21,6 +41,11 @@ class NavigationBar extends React.Component {
 
     settingsButton.classList.toggle("clicked");
     settingsDropdown.classList.toggle("show");
+    this.settingsShown = !this.settingsShown;
+
+    if(userShown) {
+      this.toggleUser();
+    }
   }
 
   render() {
