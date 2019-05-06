@@ -53,7 +53,8 @@ class SongDetail extends React.Component {
     }
     let banner = (<div></div>)
     if(song && uploader) {
-      banner = <SongBanner song={song} uploader={uploader}/>
+      banner = <SongBanner song={song} uploader={uploader} currentSong={this.props.currentSong} paused={this.props.paused}
+        play={this.props.play} pause={this.props.pause} unpause={this.props.unpause}/>
     }
     return (
       <div className="main-body">

@@ -1,6 +1,8 @@
 import * as SongAPIUtil from '../util/song_util';
 
 export const RECEIVE_CURRENT_SONG = "RECEIVE_CURRENT_SONG";
+export const PAUSE_SONG = "PAUSE_SONG";
+export const UNPAUSE_SONG = "UNPAUSE_SONG";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
 export const UPDATE_SONGS = "UPDATE_SONGS";
@@ -14,6 +16,14 @@ const receiveCurrentSong = currentSong => ({
   type: RECEIVE_CURRENT_SONG,
   currentSong
 });
+
+const pauseSong = () => ({
+  type: PAUSE_SONG
+})
+
+const unpauseSong = () => ({
+  type: UNPAUSE_SONG
+})
 
 const receiveSong = song => ({
   type: RECEIVE_SONG,
@@ -52,6 +62,18 @@ const receiveRouteErrors = errors => ({
 const clearRouteErrs = () => ({
   type: CLEAR_ROUTE_ERRORS,
 });
+
+export const play = song => dispatch => (
+  dispatch(receiveCurrentSong(song))
+)
+
+export const pause = () => dispatch => (
+  dispatch(pauseSong())
+)
+
+export const unpause = () => dispatch => (
+  dispatch(unpauseSong())
+)
 
 export const upload = song => dispatch => (
   SongAPIUtil.upload(song).then(song => dispatch(receiveSong(song)),

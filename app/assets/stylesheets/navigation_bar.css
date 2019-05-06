@@ -1,8 +1,14 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .full-bar {
   width: 100%;
   height: 46px;
 
-  background: rgb(50, 50, 50)
+  background: rgb(50, 50, 50);
 }
 
 .navigation-bar {
@@ -22,7 +28,7 @@
 .logo {
   width: 185px;
   border: none;
-  background: #ff5700;
+  background-image: linear-gradient(#ff7b00, #d44700);
 
   text-transform: uppercase;
   color: white;

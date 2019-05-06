@@ -12,7 +12,6 @@ const songsReducer = (state = {}, action) => {
         nextState[song.id] = song;
       });
       return nextState;
-    // case RECEIVE_CURRENT_SONG:
     // case UPDATE_SONG:
     case REMOVE_SONG:
       nextState = merge({}, state);

@@ -2,16 +2,38 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 class SongBanner extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleButton = this.handleButton.bind(this);
+  }
+
+  handleButton() {
+    if (this.props.currentSong && this.props.currentSong.id === this.props.song.id) {
+      if(this.props.paused) {
+        this.props.unpause()
+      } else {
+        this.props.pause()
+      }
+    } else {
+      this.props.play(this.props.song);
+    }
+  }
 
   render() {
     const picture = (this.props.song.pictureFileUrl !== "") ? 
       <img className="song-picture" src={`${this.props.song.pictureFileUrl}`} />
       : <div className="blank-image"></div>
 
+    let playButton = <button className="song-banner-play" onClick={this.handleButton}><i className="fas fa-play-circle"></i></button>
+    if (!this.props.paused && this.props.song && this.props.currentSong && this.props.currentSong.id === this.props.song.id) {
+      playButton = <button className="song-banner-play" onClick={this.handleButton}><i className="fas fa-pause-circle"></i></button>
+    }
+      
     return(
       <div className="song-banner">
         <div className="song-banner-main">
-          <button className="song-banner-play"><i className="fas fa-play-circle"></i></button>
+          {playButton}
           <div className="song-banner-info">
             <Link 
               to={`/users/${this.props.uploader.id}`} 

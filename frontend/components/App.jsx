@@ -3,6 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './session/modal';
 import NavigationBar from './navigation_bar';
+import MusicPlayer from './music_player';
 import Splash from './splash/splash';
 import Discover from './discover/discover';
 import Upload from './upload/upload';
@@ -24,6 +25,10 @@ const App = () => {
         <Route path="/songs/:id" component={SongDetailContainer} />
         <Route path="/" component={ErrorPage}/>
       </Switch>
+
+      <footer>
+        <MusicPlayer />
+      </footer>
 
       {/* <MusicPlayer/> */}
     </>

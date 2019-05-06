@@ -62,7 +62,6 @@ class UploadForm extends React.Component {
   }
 
   showSongFileError() {
-    this.setState({songFileError: true})
     let error = document.getElementsByClassName("song-file-error")[0];
     error.classList.add("present");
     setTimeout(() => {
@@ -152,7 +151,7 @@ class UploadForm extends React.Component {
 
     return(
       <form className="song-form">
-        <div className="song-file-error">
+        <div className="song-file-error fadeIn">
           <div className="exclamation">
             <i className="fas fa-exclamation"></i>
           </div>
