@@ -1,0 +1,7 @@
+.side-panel {
+  width: 360px;
+  min-height: inherit;
+  position: fixed;
+  right: 100px;
+  border-left: 1px solid rgb(240, 240, 240);
+}
