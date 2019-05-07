@@ -7,13 +7,13 @@ class CategoryIndexItem extends React.Component {
   render() {
     return(
       <div className="category-index-item">
-        <h2 className="category-name">The Launch</h2>
-        <h3 className="category-description"> Music to start the week </h3>
+        <h2 className="category-name">{this.props.category}</h2>
+        <h3 className="category-description">{this.props.description}</h3>
         <div className="song-index">
-          <SongIndexItem songIds={[1,2,3,4]}/>
-          <SongIndexItem songIds={[1,2,3,4]}/>
-          <SongIndexItem songIds={[1,2,3,4]}/>
-          <SongIndexItem songIds={[1,2,3,4]}/>
+          <SongIndexItem songId={24}/>
+          <SongIndexItem songId={24}/>
+          <SongIndexItem songId={24}/>
+          <SongIndexItem songId={24}/>
         </div>
       </div>
     )
