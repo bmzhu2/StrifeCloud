@@ -62,7 +62,8 @@ class SongIndexItem extends React.Component {
 
       title = song.title;
       titleLink = `/songs/${song.id}`;
-      if(Object.keys(this.props.users).includes(song.uploader_id)) {
+      debugger;
+      if(Object.keys(this.props.users).includes(song.uploader_id.toString())) {
         uploader = this.props.users[song.uploader_id].username;
       }
       uploaderLink = `/users/${song.uploader_id}`;
