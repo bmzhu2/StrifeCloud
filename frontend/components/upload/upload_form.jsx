@@ -36,7 +36,9 @@ class UploadForm extends React.Component {
     formData.append('song[description]', this.state.description)
 
     this.props.upload(formData)
-      .then(result => this.props.history.push(`/songs/${result.song.id}`));
+      .then(result => {
+        this.props.history.push(`/songs/${result.song.id}`)
+      });
   }
 
   clearForm() {

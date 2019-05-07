@@ -71,7 +71,7 @@ class Modal extends React.Component {
               <p>or test the site with a demo account:</p>
               <button 
                 className="demo-user"
-                onClick={() => this.props.login({user: {email: "springfield@springfield.com", password: "springfield"}})
+                onClick={() => this.props.login({user: {email: "aerith@strifecloud.com", password: "password"}})
                   .then(() => this.closeAndClear())}>Demo User</button>
             </div>
           </div>

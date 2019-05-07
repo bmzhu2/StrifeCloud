@@ -34,6 +34,11 @@
   font-weight: lighter;
   padding: 6px 15px 6px 15px;
   border-radius: 3px;
+  border-color: rgb(220,220,220)
+}
+
+.home-sign-in:hover {
+  border-color: white;
 }
 
 .home-sign-in:active {
