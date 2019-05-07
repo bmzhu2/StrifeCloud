@@ -9,14 +9,14 @@ class UploadForm extends React.Component {
       title: "",
       picture: null, 
       song: null,
-      description: ""
+      description: "",
+      uploading: false
     }
 
     this.handleSongFile = this.handleSongFile.bind(this);
     this.handlePictureFile = this.handlePictureFile.bind(this);
     this.updateTitle = this.updateTitle.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
-    this.clearForm = this.clearForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -35,21 +35,11 @@ class UploadForm extends React.Component {
     formData.append('song[song_file]', this.state.song)
     formData.append('song[description]', this.state.description)
 
-    this.props.upload(formData)
-      .then(result => {
-        this.props.history.push(`/songs/${result.song.id}`)
-      });
-  }
+    this.setState({uploading: true})
 
-  clearForm() {
-    this.setState({
-      uploaderId: this.props.currentUser.id,
-      title: "",
-      picture: null,
-      song: null,
-      description: "",
-      songFileError: false
-    })
+    this.props.upload(formData)
+      .then(result => this.props.history.push(`/songs/${result.song.id}`), 
+        err => this.setState({uploading: false}) );
   }
 
   handleSongFile(e) {
@@ -104,6 +94,16 @@ class UploadForm extends React.Component {
       document.getElementsByClassName("title-label")[0].classList.add("title-error")
       titleError = <p className="missing-title">Enter a title.</p>
     }
+    let submitActions = <div className="button-section"><div className="uploading">Uploading...</div></div>
+    if (!this.state.uploading) {
+      submitActions = (
+        <div className="button-section">
+          <button className="song-form-cancel" onClick={() => this.props.closeModal()}>Cancel</button>
+          <button className="song-form-submit" onClick={this.handleSubmit}>Save</button>
+        </div> 
+      )
+    }
+
     if (this.state.song) {
       songInfo = (
         <div className="song-info">
@@ -143,10 +143,7 @@ class UploadForm extends React.Component {
                 </label>
               </div>
           </div>
-          <div className="button-section">
-            <button className="song-form-cancel" onClick={this.clearForm}>Cancel</button>
-            <button className="song-form-submit" onClick={this.handleSubmit}>Save</button>
-          </div>  
+          {submitActions}
         </div>
       )
     }

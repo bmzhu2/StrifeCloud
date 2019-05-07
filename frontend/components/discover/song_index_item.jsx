@@ -8,7 +8,6 @@ class SongIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.yo = false;
     this.fetched = false;
     this.handleImageLink = this.handleImageLink.bind(this)
     this.handlePlay = this.handlePlay.bind(this);
@@ -26,7 +25,9 @@ class SongIndexItem extends React.Component {
 
   handlePlay(e) {
     e.stopPropagation();
-
+    if (!this.fetched || !Object.keys(this.props.songs).includes(this.props.songId.toString())) {
+      return;
+    }
     if (this.props.currentSong && this.props.currentSong.id === this.props.songId) {
       if (this.props.paused) {
         this.props.unpause()
@@ -62,7 +63,6 @@ class SongIndexItem extends React.Component {
 
       title = song.title;
       titleLink = `/songs/${song.id}`;
-      debugger;
       if(Object.keys(this.props.users).includes(song.uploader_id.toString())) {
         uploader = this.props.users[song.uploader_id].username;
       }

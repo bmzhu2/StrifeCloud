@@ -1,5 +1,6 @@
 class Api::SongsController < ApplicationController
   def create
+
     @song = Song.new(song_params)
     if @song.save
       render :show
@@ -9,7 +10,13 @@ class Api::SongsController < ApplicationController
   end
 
   def update 
+    @song = Song.find_by(id: params[:id])
 
+    if(@song && current_user.id == @song.uploader_id && @song.update_attributes(song_params))
+      render :show
+    else
+      render json: @song.errors.full_messages, status: 400
+    end
   end
 
   def show

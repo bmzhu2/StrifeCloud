@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {howLongAgo} from '../../util/date_util';
 
 class SongBanner extends React.Component {
   constructor(props) {
@@ -29,7 +30,6 @@ class SongBanner extends React.Component {
     if (!this.props.paused && this.props.song && this.props.currentSong && this.props.currentSong.id === this.props.song.id) {
       playButton = <button className="song-banner-play" onClick={this.handleButton}><i className="fas fa-pause-circle"></i></button>
     }
-      
     return(
       <div className="song-banner">
         <div className="song-banner-main">
@@ -41,7 +41,10 @@ class SongBanner extends React.Component {
             <p className="song-banner-title">{this.props.song.title}</p>
           </div>
         </div>
-        {picture}
+        <div className="banner-right-side">
+          <div className="banner-upload-time-ago">{howLongAgo(this.props.song.created_at)}</div>
+          {picture}
+        </div>
       </div>
     )
   }

@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import SongDetail from './song_detail'
 import {fetchSong, remove, clearRouteErrors, play, pause, unpause} from '../../actions/songs_actions';
 import {fetchUser} from '../../actions/user_actions';
+import {openModal} from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
   users: state.entities.users,
@@ -20,7 +21,8 @@ const mapDispatchToProps = dispatch => ({
   clearRouteErrors: () => dispatch(clearRouteErrors()),
   play: song => dispatch(play(song)),
   pause: () => dispatch(pause()),
-  unpause: () => dispatch(unpause())
+  unpause: () => dispatch(unpause()),
+  openModal: mode => dispatch(openModal(mode))
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SongDetail));

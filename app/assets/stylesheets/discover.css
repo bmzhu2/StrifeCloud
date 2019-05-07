@@ -77,6 +77,10 @@
   font-size: 46pt;
 }
 
+.song-index-item .play > i:hover {
+  color: #e04b00;
+}
+
 .song-index-item > .song-item-image:hover .play, .song-index-item > .blank-image:hover .play, .play.nowPlaying{
   display:inline;
 }

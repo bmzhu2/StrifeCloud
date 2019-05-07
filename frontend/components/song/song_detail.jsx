@@ -1,5 +1,6 @@
 import React from 'react';
 import SongBanner from './song_banner';
+import UpdateModal from './update_modal'
 
 class SongDetail extends React.Component {
 
@@ -34,18 +35,22 @@ class SongDetail extends React.Component {
     let song = this.props.songs[this.props.match.params.id];
     let uploader;
     let editControls = null;
+    let updateModal = null;
     if (song) {
       uploader = this.props.users[song.uploader_id];
       if (song.uploader_id === this.props.currentUserId) {
         editControls = (
           <div className="song-edit-controls">
-            <button className="edit-song"><i className="fas fa-pencil-alt"></i>Edit</button>
+            <button 
+              className="edit-song"
+              onClick={() => this.props.openModal('update')}><i className="fas fa-pencil-alt"></i>Edit</button>
             <button 
               className="delete-song"
               onClick={this.handleDelete}><i className="fas fa-trash"></i>Delete song</button>
           </div>
         )
       }
+      updateModal = <UpdateModal song={song}/>
     }
     let notFound = null;
     if (this.props.notFound) {
@@ -58,6 +63,7 @@ class SongDetail extends React.Component {
     }
     return (
       <div className="main-body">
+        {updateModal}
         {banner}
         {editControls}
         {notFound}

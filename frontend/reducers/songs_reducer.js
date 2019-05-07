@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_SONG, RECEIVE_SONG, RECEIVE_SONGS, UPDATE_SONG, REMOVE_SONG } from "../actions/songs_actions";
+import { RECEIVE_SONG, RECEIVE_SONGS, UPDATE_SONG, REMOVE_SONG } from "../actions/songs_actions";
 import merge from 'lodash/merge';
 
 const songsReducer = (state = {}, action) => {
@@ -12,7 +12,10 @@ const songsReducer = (state = {}, action) => {
         nextState[song.id] = song;
       });
       return nextState;
-    // case UPDATE_SONG:
+    case UPDATE_SONG:
+      nextState = merge({}, state);
+      nextState[action.song.id] = action.song;
+      return nextState
     case REMOVE_SONG:
       nextState = merge({}, state);
       delete nextState[action.songId]

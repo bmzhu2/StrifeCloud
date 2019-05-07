@@ -23,12 +23,16 @@ body, main, html {
 }
 
 .main-body {
+  margin: 46px auto 0 auto;
   width: 1240px;
   min-height: 100%;
-  margin: inherit;
   background: white;
   position: relative;
 } 
+
+.main-body.splash {
+  margin: 0 auto;
+}
 
 .error-404 {
   font-size: 30pt;
@@ -57,15 +61,23 @@ body, main, html {
   color: rgb(60, 60, 60);
 }
 
-.modal-child {
+.modal-child, .update-modal-child {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -52%);
 
+  background: white;
+}
+
+.modal-child {
   width: 450px;
   height: 625px;
-  background: white;
+}
+
+.update-modal-child {
+  width: 850px;
+  height: auto;
 }
 
 .modal-box {
@@ -73,6 +85,13 @@ body, main, html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.update-modal-box {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 .modal-box > * {

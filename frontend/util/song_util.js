@@ -22,13 +22,15 @@ export const upload = song => (
   })
 )
 
-export const update = song => (
-  $.ajax({
+export const update = (song, id) => {
+  return $.ajax({
     method: 'PATCH',
-    url: `/api/songs/${song.id}`,
-    data: {song}
+    url: `/api/songs/${id}`,
+    data: song,
+    contentType: false,
+    processData: false
   })
-)
+}
 
 export const remove = id => (
   $.ajax({

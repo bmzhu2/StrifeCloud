@@ -5,7 +5,7 @@ export const PAUSE_SONG = "PAUSE_SONG";
 export const UNPAUSE_SONG = "UNPAUSE_SONG";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
-export const UPDATE_SONGS = "UPDATE_SONGS";
+export const UPDATE_SONG = "UPDATE_SONG";
 export const REMOVE_SONG = "REMOVE_SONG";
 export const RECEIVE_UPLOAD_ERRORS = "RECEIVE_UPLOAD_ERRORS";
 export const CLEAR_UPLOAD_ERRORS = "CLEAR_UPLOAD_ERRORS";
@@ -36,7 +36,7 @@ const receiveSongs = songs => ({
 })
 
 const updateSong = song => ({
-  type: UPDATE_SONGS,
+  type: UPDATE_SONG,
   song
 })
 
@@ -83,6 +83,11 @@ export const upload = song => dispatch => (
 export const fetchSong = id => dispatch => (
   SongAPIUtil.fetch(id).then(song => dispatch(receiveSong(song)),
     err => dispatch(receiveRouteErrors(err.responseJSON)))
+)
+
+export const update = ({song, id}) => dispatch => (
+  SongAPIUtil.update(song, id).then(song => dispatch(updateSong(song)),
+    err => dispatch(receiveUploadErrors(err.responseJSON)))
 )
 
 export const remove = id => dispatch => (

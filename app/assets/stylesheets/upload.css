@@ -275,6 +275,7 @@
 
 .text-input-section textarea {
   height: 100px;
+  padding-top: 7px;
 }
 
 .text-input-section .title-label.title-error input {

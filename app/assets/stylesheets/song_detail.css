@@ -20,19 +20,19 @@
 
 .song-banner .song-banner-play {
   position: relative;
-  height: 60px;
-  width: 60px;
+  height: 57px;
+  width: 57px;
   background: white;
   border: none;
   border-radius: 50%;
-  margin: 30px 5px 0 30px
+  margin: 31px 5px 0 31px
 }
 
 .song-banner .song-banner-play i {
   position: absolute;
-  left: -3px;
-  top: -1px;
-  font-size: 50pt;
+  left: -2px;
+  top: 0;
+  font-size: 47pt;
   color: #ff5700;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .song-banner > .song-banner-main > .song-banner-info {
-  margin: 25px 0 0 5px;
+  margin: 28px 0 0 7px;
   display: flex;
   flex-direction: column;
 }
@@ -53,26 +53,41 @@
 .song-banner .song-banner-uploader {
   position: absolute;
   margin-bottom: 4px;
-  padding: 5px 5px;
-  color: rgb(230,230,230);
+  padding: 3px 7px 5px 7px;
+  color: rgb(210,210,210);
   font-size: 12pt;
   text-decoration: none;
 }
 
+.song-banner .song-banner-uploader:hover {
+  color: white;
+}
+
 .song-banner .song-banner-title {
-  margin-top: 30px;
-  padding: 8px 5px;
+  margin-top: 28px;
+  padding: 7px 7px 6px 7px;
   color: white;
   font-size: 18pt;
 }
 
-.song-banner > .song-picture, .song-banner > .blank-image {
+.song-banner .banner-right-side {
+  display:flex;
+  justify-content: flex-end;
+}
+
+.song-banner .banner-upload-time-ago {
+  color: white;
+  font-size: 11pt;
+  margin: 35px 10px 0 0;
+}
+
+.song-banner  .song-picture, .song-banner > .blank-image {
   width: 340px;
   height: 340px;
   margin: 20px;
 }
 
-.song-banner > .blank-image {
+.song-banner  .blank-image {
   background: rgb(120, 122, 135);
 }
 

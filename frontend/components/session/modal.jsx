@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import LoginFormContainer from './login_form_container';
 import SignupFormContainer from './signup_form_container';
 
-class Modal extends React.Component {
+class SessionModal extends React.Component {
 
   constructor(props) {
     super(props)
@@ -92,4 +92,4 @@ const mapDispatchToProps = dispatch => ({
   clearErrors: () => dispatch(clearErrs())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(SessionModal);

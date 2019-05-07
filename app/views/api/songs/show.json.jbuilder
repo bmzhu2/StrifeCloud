@@ -1,4 +1,4 @@
-json.extract! @song, :id, :title, :description, :uploader_id
+json.extract! @song, :id, :title, :description, :uploader_id, :created_at
 json.songFileUrl url_for(@song.song_file)
 
 if @song.picture_file.attached?

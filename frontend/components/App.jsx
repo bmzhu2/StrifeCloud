@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import Modal from './session/modal';
+import SessionModal from './session/modal';
 import NavigationBar from './navigation_bar';
 import MusicPlayer from './music_player';
 import Splash from './splash/splash';
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <>
       <header>
-        <Modal />
+        <SessionModal />
         <Route path="/:subpath" component={NavigationBar} />
       </header>
 
