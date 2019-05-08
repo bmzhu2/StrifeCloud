@@ -1,11 +1,18 @@
 import React from 'react';
 import SongBanner from './song_banner';
-import UpdateModal from './update_modal'
+import SongCommentForm from './song_comment_form';
+import CommentsSection from './comments_section';
+import UpdateModal from './update_modal';
 
 class SongDetail extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+      deleted: false
+    }
+
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -15,27 +22,32 @@ class SongDetail extends React.Component {
 
   componentDidMount(){
     this.props.fetchSong(this.props.match.params.id)
-      .then(result => this.props.fetchUser(result.song.uploader_id));
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.url !== nextProps.match.url) {
       this.props.clearRouteErrors();
       this.props.fetchSong(nextProps.match.params.id)
-        .then(result => this.props.fetchUser(result.song.uploader_id));
     }
   }
 
   handleDelete() {
     this.props.delete(this.props.match.params.id);
-    this.render();
+    this.setState({
+      deleted: true
+    })
   }
 
   render() {
+    if (this.props.notFound || this.state.deleted) {
+      return <div className="main-body"><div className="no-song">This song doesn't exist, or no longer exists.</div></div>
+    }
+
     let song = this.props.songs[this.props.match.params.id];
     let uploader;
-    let editControls = null;
+    let editControls = <div className="empty-song-edit-controls"></div>;
     let updateModal = null;
+    let commentsSection = <CommentsSection />;
     if (song) {
       uploader = this.props.users[song.uploader_id];
       if (song.uploader_id === this.props.currentUserId) {
@@ -51,11 +63,9 @@ class SongDetail extends React.Component {
         )
       }
       updateModal = <UpdateModal song={song}/>
+      commentsSection = <CommentsSection uploader={uploader} description={song.description}/>
     }
-    let notFound = null;
-    if (this.props.notFound) {
-      notFound = <div className="no-song">This song doesn't exist, or no longer exists.</div>
-    }
+    
     let banner = (<div></div>)
     if(song && uploader) {
       banner = <SongBanner song={song} uploader={uploader} currentSong={this.props.currentSong} paused={this.props.paused}
@@ -65,8 +75,17 @@ class SongDetail extends React.Component {
       <div className="main-body">
         {updateModal}
         {banner}
-        {editControls}
-        {notFound}
+        <div className="song-detail-below-banner">
+          <div className="song-detail-left">
+            <SongCommentForm />
+            {editControls}
+            {commentsSection}
+          </div>
+          <div className="song-detail-right">
+            other songs
+          </div>
+        </div>
+        
       </div>
     )
   }

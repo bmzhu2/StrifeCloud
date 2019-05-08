@@ -6,7 +6,7 @@ const songsReducer = (state = {}, action) => {
   let nextState = {};
   switch (action.type) {
     case RECEIVE_SONG:
-      return merge({}, state, { [action.song.id]: action.song });
+      return merge({}, state, { [action.song.song.id]: action.song.song });
     case RECEIVE_SONGS:
       Object.values(action.songs).forEach(song => {
         nextState[song.id] = song;
@@ -14,7 +14,7 @@ const songsReducer = (state = {}, action) => {
       return nextState;
     case UPDATE_SONG:
       nextState = merge({}, state);
-      nextState[action.song.id] = action.song;
+      nextState[action.song.song.id] = action.song.song;
       return nextState
     case REMOVE_SONG:
       nextState = merge({}, state);

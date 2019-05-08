@@ -35,6 +35,6 @@ export const update = (song, id) => {
 export const remove = id => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/songs/${id}`,
+    url: `/api/songs/${id}`
   })
 )

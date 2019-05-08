@@ -18,6 +18,16 @@ class Song < ApplicationRecord
     foreign_key: :uploader_id,
     class_name: :User
 
+  has_many :comments,
+    primary_key: :id,
+    foreign_key: :song_id,
+    class_name: :Comment,
+    dependent: :destroy
+
+  has_many :commenters,
+    through: :comments,
+    source: :user
+
   has_one_attached :song_file
   has_one_attached :picture_file
 end

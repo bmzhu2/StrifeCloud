@@ -38,7 +38,7 @@ class UploadForm extends React.Component {
     this.setState({uploading: true})
 
     this.props.upload(formData)
-      .then(result => this.props.history.push(`/songs/${result.song.id}`), 
+      .then(result => this.props.history.push(`/songs/${result.song.song.id}`), 
         err => this.setState({uploading: false}) );
   }
 

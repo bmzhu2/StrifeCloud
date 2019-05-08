@@ -11,31 +11,34 @@ class NavigationBar extends React.Component {
     this.settingsShown = false;
     this.toggleUser = this.toggleUser.bind(this);
     this.toggleSettings = this.toggleSettings.bind(this);
-    // this.closeMenu = this.closeMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
   }
 
-  // closeMenu() {
-  //   if (this.userShown) {
-  //     this.toggleUser();
-  //   }
-  //   if (this.settingsShown) {
-  //     this.toggleSettings();
-  //   }
-  // }
-
-  // componentDidMount() {
-  //   document.addEventListener("click", this.closeMenu);
-  // }
-
-  // componentWillUnmount() {
-  //   document.removeEventListener("click", this.closeMenu);
-  // }
-
-  toggleUser() {
-    
+  closeMenu(e) {
+    if (this.userShown) {
+      this.toggleUser(e);
+    }
+    if (this.settingsShown) {
+      this.toggleSettings(e);
+    }
   }
 
-  toggleSettings() {
+  componentDidMount() {
+    document.body.addEventListener("click", this.closeMenu);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.closeMenu);
+  }
+
+  toggleUser(e) {
+    return;
+  }
+
+  toggleSettings(e) {
+    if(e.currentTarget === e.target){
+      e.stopPropagation();
+    }
     let settingsButton = document.getElementById("settings-button");
     let settingsDropdown = document.getElementById("settings-dropdown-content");
 
@@ -43,7 +46,7 @@ class NavigationBar extends React.Component {
     settingsDropdown.classList.toggle("show");
     this.settingsShown = !this.settingsShown;
 
-    if(userShown) {
+    if(this.userShown) {
       this.toggleUser();
     }
   }
@@ -105,10 +108,9 @@ class NavigationBar extends React.Component {
               onClick={this.toggleSettings}
             ><i className='fas fa-ellipsis-h'></i></button>
             <div className="settings-dropdown-content" id="settings-dropdown-content">
-              <button 
-                className="logout" 
-                onClick={() => this.props.logout().then(() => this.props.history.push("/"))}
-              ><p> Sign out</p></button>
+                <button className="logout"
+                  onClick={() => this.props.logout().then(() => this.props.history.push("/"))}
+                  > Sign out</button>
             </div>
           </div>
         </nav>

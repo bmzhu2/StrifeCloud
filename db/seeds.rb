@@ -19,3 +19,8 @@ users = User.create([
   {email: "eventide@springfield.com", username: "Eventide", password: "springfield"},
   {email: "certifiedfella@springfield.com", username: "Fern", password: "springfield"}
 ])
+
+comments = Comment.create([
+  {body:'This is better than the original', song_id: 1, user_id: 9},
+  {body:'I cri every time', song_id: 1, user_id: 5}
+])

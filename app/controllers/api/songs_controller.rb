@@ -1,8 +1,10 @@
 class Api::SongsController < ApplicationController
   def create
-
     @song = Song.new(song_params)
+
     if @song.save
+      @uploader = @song.uploader
+
       render :show
     else
       render json: @song.errors.full_messages, status: 400
@@ -13,6 +15,9 @@ class Api::SongsController < ApplicationController
     @song = Song.find_by(id: params[:id])
 
     if(@song && current_user.id == @song.uploader_id && @song.update_attributes(song_params))
+      @uploader = @song.uploader
+      @comments = @song.comments
+      @commenters = @song.commenters
       render :show
     else
       render json: @song.errors.full_messages, status: 400
@@ -23,6 +28,9 @@ class Api::SongsController < ApplicationController
     @song = Song.find_by(id: params[:id])
 
     if @song
+      @uploader = @song.uploader
+      @comments = @song.comments
+      @commenters = @song.commenters
       render :show
     else
       render json: ["This song does not exist"], status: 404

@@ -15,7 +15,6 @@ class SongIndexItem extends React.Component {
 
   componentDidMount() {
     this.props.fetchSong(this.props.songId)
-      .then(result => this.props.fetchUser(result.song.uploader_id));
     this.fetched = true;
   }
 
