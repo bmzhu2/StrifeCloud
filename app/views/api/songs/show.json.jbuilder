@@ -34,11 +34,13 @@ json.users do
     end
   end
   
-  json.extract! @uploader, :id, :username
+  json.set! @uploader.id do 
+    json.extract! @uploader, :id, :username
 
-  if @uploader.profile_picture.attached?
-   json.profilePictureUrl url_for(@uploader.profile_picture)
-  else
-    json.profilePictureUrl ""
+    if @uploader.profile_picture.attached?
+    json.profilePictureUrl url_for(@uploader.profile_picture)
+    else
+      json.profilePictureUrl ""
+    end
   end
 end
