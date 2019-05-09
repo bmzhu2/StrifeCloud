@@ -19,6 +19,7 @@ body, main, html {
   font-family: "interstatelight";
   letter-spacing: 0.05em;
   background: rgb(240, 240, 240);
+  padding-bottom: 100px;
 }
 
 html {
