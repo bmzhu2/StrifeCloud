@@ -75,13 +75,13 @@ class SongDetail extends React.Component {
       <div className="main-body">
         {updateModal}
         {banner}
-        <div className="song-detail-below-banner">
-          <div className="song-detail-left">
+        <div className="below-banner">
+          <div className="below-banner-left">
             <SongCommentForm />
             {editControls}
             {commentsSection}
           </div>
-          <div className="song-detail-right">
+          <div className="below-banner-right">
             other songs
           </div>
         </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
 import {fetchSong, play, pause, unpause} from '../../actions/songs_actions';
-import {fetchUser} from '../../actions/user_actions';
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -88,7 +87,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchSong: id => dispatch(fetchSong(id)),
-  fetchUser: id => dispatch(fetchUser(id)),
   play: song => dispatch(play(song)),
   pause: () => dispatch(pause()),
   unpause: () => dispatch(unpause())

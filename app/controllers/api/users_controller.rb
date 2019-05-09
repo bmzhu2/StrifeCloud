@@ -29,10 +29,23 @@ class Api::UsersController < ApplicationController
 
   end
 
+  def update
+    @user = User.find_by(id: params[:id])
+
+    if @user && @user.id == current_user.id && @user.update_attributes(user_params)
+      @songs = @user.songs
+      render :show
+    else
+      render json: @user.errors.full_messages, status: 400
+    end
+
+  end
+
   def show
     @user = User.find_by(id: params[:id])
 
     if @user
+      @songs = @user.songs
       render :show
     else
       render json: ["User not found"], status: 404
@@ -41,7 +54,7 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :username, :password)
+    params.require(:user).permit(:email, :username, :password, :profile_picture)
   end
 
   def parse_type(input)

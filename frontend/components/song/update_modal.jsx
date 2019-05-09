@@ -8,7 +8,11 @@ class UpdateModal extends React.Component {
     if(!this.props.modal) {
       return null;
     }
-    let form = this.props.modal === 'update' ? <UpdateForm /> : null
+    let song = {};
+    if(this.props.song) {
+      song = this.props.song
+    }
+    let form = this.props.modal === 'update' ? <UpdateForm song={song}/> : null
   
     return (
       <div className="modal-background fadeIn" onClick={this.props.closeModal}>
@@ -24,7 +28,8 @@ class UpdateModal extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  modal: state.ui.modal
+  modal: state.ui.modal,
+  song: state.ui.update
 })
 
 const mapDispatchToProps = dispatch => ({

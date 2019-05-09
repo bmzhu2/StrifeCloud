@@ -43,7 +43,7 @@ class SongBanner extends React.Component {
         </div>
         <div className="banner-right-side">
           <div className="banner-upload-time-ago">{howLongAgo(this.props.song.created_at)}</div>
-          {picture}
+          <div className="song-picture-frame">{picture}</div>
         </div>
       </div>
     )

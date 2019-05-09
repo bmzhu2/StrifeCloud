@@ -1,0 +1,229 @@
+.user-profile-banner {
+  width: 100%;
+  height: 260px;
+  background-image: linear-gradient(to bottom right, rgb(249, 249, 249), rgb(124, 124, 124));
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user-profile-banner > .profile-picture-section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.profile-picture-section > .user-profile-picture-frame {
+  margin: 30px 30px 0 30px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: white;
+}
+
+.user-profile-picture-frame > .user-banner-profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.user-profile-picture-frame > .blank-banner-profile-picture {
+  width: 200px;
+  height: 200px;
+  background: rgb(120, 122, 135);
+  border-radius: 50%;
+}
+
+.profile-picture-section > .picture-input-button {
+  width: 125px;
+  position: absolute;
+  bottom: 4px ;
+  left: 55px;
+  height: 22px;
+  background: rgb(230, 230, 230);
+  border-radius: 3px;
+  padding: 0 10px;
+  
+  cursor: pointer;
+  text-align: center;
+  line-height: 22px;
+
+  transition: background-color 500ms;
+}
+
+.picture-input-button:hover {
+  background: white;
+}
+
+.user-profile-banner-name {
+  height: 24px;
+  display: inline-block;
+  background: rgb(30,30,30);
+  margin-top: 30px;
+  padding: 11px 7px 10px 7px;
+  color: white;
+  font-size: 18pt;
+  text-decoration: none;
+}
+
+/* BELOW BANNER */
+
+.below-banner-header {
+  width: 100%;
+  padding: 0 25px 10px 25px;
+  border-bottom: 1px solid rgb(240,240,240);
+}
+
+.profile-songs-index {
+  width: 820px;
+  padding-bottom: 50px;
+}
+
+.profile-songs-index-header {
+  font-size: 14pt;
+}
+
+/* SONG INDEX ITEM */
+
+.profile-songs-index-item {
+  display: flex;
+  padding: 25px 0;
+}
+
+.song-item-picture-frame {
+  width: 158px;
+  height: 158px;
+
+  background: white;
+  border: 1px solid rgb(200,200,200);
+}
+
+.song-item-picture-frame:hover {
+  cursor: pointer;
+}
+
+.song-item-picture {
+  width: inherit;
+  height: inherit;
+}
+
+.song-item-blank-picture {
+  width: inherit;
+  height: inherit;
+  background: rgb(120, 122, 135);
+}
+
+.song-item-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 15px;
+}
+
+.song-item-top {
+  display: flex;
+  padding-top: 6px;
+}
+
+.user-profile-song-play {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  margin-right: 5px;
+}
+
+.user-profile-song-play i {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  color: #ff5700;
+  font-size: 36px;
+}
+
+.song-item-info {
+  width: 603px;
+  display: flex;
+  flex-direction: column;
+}
+
+.song-item-uploader-and-time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.song-item-uploader {
+  font-size: 9pt;
+  color: rgb(160,160,160);
+  text-decoration: none;
+}
+
+.song-item-uploader:hover {
+  color: black;
+}
+
+.song-item-upload-time {
+  font-size: 9pt;
+  color: rgb(200,200,200);
+}
+
+.song-item-title {
+  padding-top: 3px;
+  font-size: 12pt;
+  color: rgb(60,60,60);
+  text-decoration: none;
+}
+
+.song-item-title:hover {
+  color: black;
+}
+
+.song-item-waveform {
+  height: 75px;
+  width: 645px;
+  background-image: url( <%= image_path "waveform.png" %> );
+  position: relative;
+}
+
+.song-item-duration {
+  min-width: 20px;
+  min-height: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 29px;
+  padding: 2px 3px 2px 3px;
+  background: black;
+  font-size: 9pt;
+  color: rgb(120,120,120);
+}
+
+.empty-song-edit-controls {
+  width: 817px;
+  height: 50px;
+  border-bottom: 1px solid rgb(240, 240, 240);
+  margin-bottom: 20px;
+}
+
+.song-item-controls {
+  /* width: 817px;
+  padding: 12px 0 10px 0;
+  border-bottom: 1px solid rgb(240, 240, 240);
+  margin-bottom: 20px; */
+}
+
+.song-item-controls button {
+  margin-right: 5px;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 4px;
+  padding: 3px 10px 3px 5px;
+  font-size: 9pt;
+}
+
+.song-item-controls button:hover {
+  border: 1px solid rgb(200,200,200);
+}
+
+.song-item-controls button > i {
+  margin: 0 10px 0 5px;
+  font-size: 8pt;
+}

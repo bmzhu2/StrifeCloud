@@ -2,7 +2,6 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import SongDetail from './song_detail'
 import {fetchSong, remove, clearRouteErrors, play, pause, unpause} from '../../actions/songs_actions';
-import {fetchUser} from '../../actions/user_actions';
 import {openModal} from '../../actions/modal_actions';
 
 const mapStateToProps = state => ({
@@ -16,7 +15,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchSong: id => dispatch(fetchSong(id)),
-  fetchUser: id => dispatch(fetchUser(id)),
   delete: id => dispatch(remove(id)),
   clearRouteErrors: () => dispatch(clearRouteErrors()),
   play: song => dispatch(play(song)),

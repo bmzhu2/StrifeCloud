@@ -9,6 +9,7 @@ import Discover from './discover/discover';
 import Upload from './upload/upload';
 import ErrorPage from './error_page';
 import SongDetailContainer from './song/song_detail_container';
+import UserProfile from './user/user_profile';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/discover" component={Discover} />
         <Route path="/upload" component={Upload} />
         <Route path="/songs/:id" component={SongDetailContainer} />
+        <Route path="/users/:id" component={UserProfile} />
         <Route path="/" component={ErrorPage}/>
       </Switch>
 

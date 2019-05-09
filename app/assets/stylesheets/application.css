@@ -18,8 +18,15 @@ body, main, html {
   margin: 0 auto;
   font-family: "interstatelight";
   letter-spacing: 0.05em;
-  height: 100%;
   background: rgb(240, 240, 240);
+}
+
+html {
+  height: 100%;
+}
+
+body, main {
+  min-height: 100%
 }
 
 .main-body {

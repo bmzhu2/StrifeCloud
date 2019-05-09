@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
+import { OPEN_MODAL, CLOSE_MODAL, UPDATE_SONG_MODAL } from '../actions/modal_actions';
 
 export default function modalReducer(state = null, action) {
   switch (action.type) {
@@ -6,6 +6,8 @@ export default function modalReducer(state = null, action) {
       return action.modal;
     case CLOSE_MODAL:
       return null;
+    case UPDATE_SONG_MODAL:
+      return "update";
     default:
       return state;
   }

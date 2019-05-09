@@ -7,7 +7,11 @@ import { closeModal } from '../../actions/modal_actions';
 class UpdateForm extends React.Component {
   constructor(props) {
     super(props);
-    this.song = this.props.songs[this.props.match.params.id]
+    if (this.props.song) {
+      this.song = this.props.song
+    } else {
+      this.song = this.props.songs[this.props.match.params.id]
+    }
 
     this.state = {
       title: this.song.title,

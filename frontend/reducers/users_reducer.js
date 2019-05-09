@@ -9,9 +9,9 @@ const userReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_USER:
-      return merge({}, state, { [action.user.id]: action.user })
+      return merge({}, state, { [action.user.user.id]: action.user.user })
     case RECEIVE_CURRENT_USER:
-      return merge({}, state, { [action.currentUser.id]: action.currentUser })
+      return merge({}, state, { [action.currentUser.user.id]: action.currentUser.user })
     case RECEIVE_SONG:
       Object.values(action.song.users).forEach(user => {
         nextState[user.id] = user;

@@ -1,4 +1,5 @@
 import { RECEIVE_SONG, RECEIVE_SONGS, UPDATE_SONG, REMOVE_SONG } from "../actions/songs_actions";
+import {RECEIVE_USER} from '../actions/user_actions';
 import merge from 'lodash/merge';
 
 const songsReducer = (state = {}, action) => {
@@ -19,6 +20,14 @@ const songsReducer = (state = {}, action) => {
     case REMOVE_SONG:
       nextState = merge({}, state);
       delete nextState[action.songId]
+      return nextState;
+    case RECEIVE_USER:
+      nextState = merge({}, state);
+      if(action.user.songs) {
+        Object.values(action.user.songs).forEach(song => {
+          nextState[song.id] = song
+        })
+      }
       return nextState;
     default:
       return state;

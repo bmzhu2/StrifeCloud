@@ -83,9 +83,13 @@
   margin: 35px 10px 0 0;
 }
 
-.song-banner  .song-picture, .song-banner > .blank-image {
+.song-banner .song-picture-frame, .song-banner .song-picture, .song-banner .blank-image {
   width: 340px;
   height: 340px;
+}
+
+.song-banner .song-picture-frame {
+  background: white;
   margin: 20px;
 }
 
@@ -95,19 +99,17 @@
 
 /* BELOW BANNER */
 
-.song-detail-below-banner {
+.below-banner {
   width: 100%;
   padding: 21px 30px 20px 31px;
-  display: flex;  
 }
 
-.song-detail-left {
+.below-banner-left {
   width: 848px;
-  height: 500px;
   border-right: 1px solid rgb(240, 240, 240);
 }
 
-.song-detail-right {
+.below-banner-right {
   margin: 0 auto;
 }
 
@@ -121,9 +123,8 @@
 }
 
 .song-comment-form > .user-picture-thumbnail-frame {
-  height: 38px;
-  width: 38px;
-  border: 1px solid rgb(115,115,115);
+  height: 40px;
+  width: 40px;
 }
 
 .song-comment-form .user-picture-thumbnail {

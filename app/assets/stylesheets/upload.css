@@ -187,11 +187,11 @@
   transition: background-color 500ms;
 }
 
-.song-info .picture-input-button:hover {
+.picture-input-button:hover {
   background: white;
 }
 
-.song-info .picture-input-button > i {
+.picture-input-button > i {
   height: inherit;
   font-size: 10pt;
   display: flex;
@@ -199,11 +199,11 @@
   align-items: center;
 }
 
-.song-info .picture-input-button p {
+.picture-input-button p {
   font-family: "interstatelight";
 } 
 
-.song-info .picture-input-button > p {
+.picture-input-button > p {
   font-size: 10pt;
   display: none;
 }

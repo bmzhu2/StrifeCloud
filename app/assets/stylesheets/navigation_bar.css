@@ -45,7 +45,7 @@ header {
   height: 30px;
 }
 
-.home, .stream, .library, .upload, .user {
+.home, .stream, .library, .upload {
   background: transparent;
   border: none;
 
@@ -156,23 +156,75 @@ header {
 
 .user {
   width: auto;
+  position: relative;
+}
+
+.user-button {
+  width: auto;
   display: flex;
   align-items: center;
+  background: transparent;
+  border: none;
+  color: rgb(200,200,200);
 
   font-size: .9em;
 }
 
-.user > .profile-picture {
+.user-button > .current-user-picture-frame {
   height: 25px;
   width: 25px;
-  background: transparent;
+  background: white;
   border-radius: 50%;
 }
 
-.user > .name {
+.user-button > .current-user-picture-frame > .blank-current-user-picture {
+  height: 25px;
+  width: 25px;
+  background: rgb(120, 122, 135);
+  border-radius: 50%;
+}
+
+.user-button > .current-user-picture-frame > .current-user-profile-picture {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+.user-button > .name {
   margin: 10px;
   white-space: nowrap;
 }
+
+.user > .user-dropdown-content {
+  display: none;
+
+  height: auto;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 45px;
+}
+
+.user > .user-dropdown-content > .to-profile {
+  width: 140px;
+  height: 30px;
+  border: none;
+  background: black;
+  color: rgb(200, 200, 200);
+  font-size: .8em;
+  text-align: left;
+  line-height: 30px;
+}
+
+.user > .user-dropdown-content > .to-profile > i {
+  margin-right: 10px;
+}
+
+.user > .user-dropdown-content > .to-profile:hover {
+  background: rgb(50, 50, 50);
+  color: white;
+}
+
 
 .settings {
   width: 45px;
@@ -192,11 +244,11 @@ header {
   color: rgb(200, 200, 200);
 }
 
-.settings > .settings-button:hover {
+.user > .user-button:hover, .settings > .settings-button:hover {
   color: white;
 }
 
-.settings > .settings-button.clicked {
+.user > .user-button.clicked, .settings > .settings-button.clicked {
   color: white;
   background: black;
 }
@@ -216,12 +268,12 @@ header {
   top: 45px;
 }
 
-.settings > .settings-dropdown-content.show {
+.user > .user-dropdown-content.show, .settings > .settings-dropdown-content.show {
   display: block;
 }
 
 .settings > .settings-dropdown-content > .logout {
-  width: 170px;
+  width: 140px;
   height: 30px;
   border: none;
   background: black;
