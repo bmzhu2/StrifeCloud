@@ -130,6 +130,7 @@
 }
 
 .song-index-item.splash {
+  width: 173px;
   margin: 0 12px 35px 12px;
   display: flex;
   flex-direction: column;
