@@ -26,7 +26,7 @@ json.users do
         json.extract! commenter, :id, :username
 
         if commenter.profile_picture.attached?
-          json.profilePictureUrl = url_for(commenter.profile_picture)
+          json.profilePictureUrl url_for(commenter.profile_picture)
         else
           json.profilePictureUrl ""
         end
