@@ -19,6 +19,8 @@ class UpdateForm extends React.Component {
       updating: false
     }
 
+    debugger;
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePictureFile = this.handlePictureFile.bind(this);
     this.updateTitle = this.updateTitle.bind(this);

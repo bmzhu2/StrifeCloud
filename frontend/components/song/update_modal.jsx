@@ -8,8 +8,8 @@ class UpdateModal extends React.Component {
     if(!this.props.modal) {
       return null;
     }
-    let song = {};
-    if(this.props.song) {
+    let song = null;
+    if(Object.entries(this.props.song).length > 0) {
       song = this.props.song
     }
     let form = this.props.modal === 'update' ? <UpdateForm song={song}/> : null
