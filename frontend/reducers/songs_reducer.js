@@ -22,7 +22,6 @@ const songsReducer = (state = {}, action) => {
       delete nextState[action.songId]
       return nextState;
     case RECEIVE_USER:
-      nextState = merge({}, state);
       if(action.user.songs) {
         Object.values(action.user.songs).forEach(song => {
           nextState[song.id] = song

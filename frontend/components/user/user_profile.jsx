@@ -22,23 +22,51 @@ class UserProfile extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.url !== nextProps.match.url) {
-      debugger;
       this.props.fetchUser(nextProps.match.params.id)
     }
   }
 
   render() {
+    let numSongs;
+    if (this.props.songs) {
+      numSongs = Object.keys(this.props.songs).length
+    }
+    let songsIndex = null;
+    let emptyIndexMessage = <p>Nothing to hear</p>
+    if (this.props.currentUserId == this.props.match.params.id) {
+      emptyIndexMessage = (
+        <>
+          <p>Seems a little quiet over here</p>
+          <button onClick={() => this.props.history.push('/upload/')}>Upload Now</button>
+        </>
+      )
+    }
+
+    if (numSongs === 0) {
+      songsIndex = (
+      <div class="empty-songs-index">
+        <div class="empty-songs-index-image"></div>
+        {emptyIndexMessage}
+      </div>
+      )
+    } else {
+      songsIndex = <ProfileSongsIndex fetched={this.state.fetched} />
+    }
+
     return(
       <div className="main-body">
         <UserProfileBanner />
         <div className="below-banner">
-          <div className="below-banner-header">
-            <h2 className="profile-songs-index-header">Songs</h2>
-          </div>
-          <div className="below-banner-left"> 
-            <ProfileSongsIndex fetched={this.state.fetched}/>
-          </div>
-          <div className="below-banner-right-user-page">num songs and dev info</div>
+          <h2 className="below-banner-header">Songs</h2>
+          <div className="below-banner-main">
+            <div className="below-banner-left">
+              {songsIndex}
+            </div>
+            <div className="below-banner-right-user-profile">
+              <h3 className="user-profile-right-songs">Songs</h3>
+              <div className="user-profile-right-songs-count">{numSongs}</div>
+            </div>
+          </div> 
         </div>
         <UpdateModal />
       </div>
@@ -46,8 +74,13 @@ class UserProfile extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  currentUserId: state.session.currentUserId,
+  songs: state.entities.songs
+})
+
 const mapDispatchToProps = dispatch => ({
   fetchUser: id => dispatch(fetchUser(id))
 })
 
-export default connect(null, mapDispatchToProps)(UserProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

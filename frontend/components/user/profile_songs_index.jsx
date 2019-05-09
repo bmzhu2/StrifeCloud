@@ -9,7 +9,7 @@ class ProfileSongsIndex extends React.Component{
     if(this.props.fetched) {
       songs = (
         <>
-          {Object.values(this.props.songs).map(song => (
+          {Object.values(this.props.songs).reverse().map(song => (
             <ProfileSongsIndexItem key={song.id} song={song} />
           ))}
         </>
