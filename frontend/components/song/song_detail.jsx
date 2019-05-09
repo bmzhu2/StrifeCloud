@@ -65,6 +65,14 @@ class SongDetail extends React.Component {
       updateModal = <UpdateModal song={song}/>
       commentsSection = <CommentsSection uploader={uploader} description={song.description}/>
     }
+    let numComments = <div></div>
+    if (this.props.comments) {
+      
+      numComments = <div className="below-banner-comment-count">
+          <i className="fas fa-comment-alt"></i>
+          {Object.keys(this.props.comments).length}
+        </div>
+    }
     
     let banner = (<div></div>)
     if(song && uploader) {
@@ -78,7 +86,10 @@ class SongDetail extends React.Component {
         <div className="below-banner">
           <div className="below-banner-left">
             <SongCommentForm />
-            {editControls}
+            <div className="below-banner-stats">
+              {editControls}
+              {numComments}
+            </div>
             {commentsSection}
           </div>
           <div className="below-banner-right">

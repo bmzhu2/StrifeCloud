@@ -47,7 +47,10 @@ class ProfileSongsIndexItem extends React.Component {
     const uploader = this.props.users[this.props.match.params.id];
     let songPic = <div className="song-item-blank-picture"></div>
     if (this.props.song.pictureFileUrl) {
-      songPic = <img src={this.props.song.pictureFileUrl} className="song-item-picture"></img>
+      songPic = <img src={this.props.song.pictureFileUrl} 
+                  className="song-item-picture" onClick={this.handlePictureLink}></img>
+    } else if (this.props.song.pictureFileUrl === "") {
+      songPic = <div className="song-item-blank-picture" onClick={this.handlePictureLink}></div>
     }
 
     let time = ""

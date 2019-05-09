@@ -44,8 +44,8 @@ class UserProfile extends React.Component {
 
     if (numSongs === 0) {
       songsIndex = (
-      <div class="empty-songs-index">
-        <div class="empty-songs-index-image"></div>
+      <div className="empty-songs-index">
+        <div className="empty-songs-index-image"></div>
         {emptyIndexMessage}
       </div>
       )
@@ -56,7 +56,7 @@ class UserProfile extends React.Component {
     return(
       <div className="main-body">
         <UserProfileBanner />
-        <div className="below-banner">
+        <div className="below-banner-profile">
           <h2 className="below-banner-header">Songs</h2>
           <div className="below-banner-main">
             <div className="below-banner-left">

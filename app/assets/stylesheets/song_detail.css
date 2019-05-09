@@ -102,6 +102,7 @@
 .below-banner {
   width: 100%;
   padding: 21px 30px 20px 31px;
+  display: flex;
 }
 
 .below-banner-left {
@@ -111,6 +112,20 @@
 
 .below-banner-right {
   margin: 0 auto;
+}
+
+.below-banner-comment-count  {
+  padding-right: 15px;
+  font-size: 9pt;
+  color: rgb(160,160,160);
+  display: flex;
+  align-items: center;
+}
+
+.below-banner-comment-count i {
+  padding-right: 5px;
+  font-size: 8pt;
+  color: rgb(160,160,160);
 }
 
 /* COMMENT FORM */
@@ -170,18 +185,20 @@
 }
 
 /* SONG EDIT CONTROLS */
-.empty-song-edit-controls {
-  width: 817px;
-  height: 50px;
+.below-banner-stats {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid rgb(240, 240, 240);
-  margin-bottom: 20px;
+  margin-right: 30px;
+}
+
+.empty-song-edit-controls {
+  height: 50px;
+  width: 50px;
 }
 
 .song-edit-controls {
-  width: 817px;
   padding: 12px 0 10px 0;
-  border-bottom: 1px solid rgb(240, 240, 240);
-  margin-bottom: 20px;
 }
 
 .song-edit-controls button {
@@ -201,9 +218,11 @@
   font-size: 9pt;
 }
 
+
 /* UPLOADER INFO */
 
 .song-comments-section {
+  padding-top: 20px;
   display: flex;
 }
 
@@ -316,6 +335,11 @@
 
 .comment-left > .commenter-picture-frame:hover {
   cursor: pointer;
+}
+
+.comment-left > .commenter-picture-frame > .commenter-profile-picture {
+  width: inherit;
+  height: inherit;
 }
 
 .comment-left > .comment-main {

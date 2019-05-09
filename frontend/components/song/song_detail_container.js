@@ -7,6 +7,7 @@ import {openModal} from '../../actions/modal_actions';
 const mapStateToProps = state => ({
   users: state.entities.users,
   songs: state.entities.songs,
+  comments: state.entities.comments,
   currentUserId: state.session.currentUserId,
   currentSong: state.session.currentSong,
   paused: state.ui.paused,
