@@ -192,7 +192,7 @@
   margin-right: 30px;
 }
 
-.empty-song-edit-controls {
+.below-banner-stats > .empty-song-edit-controls {
   height: 50px;
   width: 50px;
 }

@@ -68,6 +68,20 @@ class ProfileSongsIndexItem extends React.Component {
       playButton = <button className="user-profile-song-play" onClick={this.handlePlay}><i className="fas fa-pause-circle"></i></button>
     }
 
+    let songEditControls = <div className="empty-song-edit-controls"></div>
+
+    if (this.props.currentUserId === this.props.song.uploader_id) {
+      songEditControls = (<div className="song-item-controls">
+        <button
+          className="edit-song"
+          onClick={() => this.props.updateSong(this.props.song)}>
+          <i className="fas fa-pencil-alt"></i>Edit</button>
+        <button
+          className="delete-song"
+          onClick={this.handleDelete}><i className="fas fa-trash"></i>Delete song</button>
+      </div>)
+    }
+
     return(
       <div className="profile-songs-index-item">
         <div className="song-item-picture-frame">
@@ -84,18 +98,10 @@ class ProfileSongsIndexItem extends React.Component {
               <Link to={`/songs/${this.props.song.id}`} className="song-item-title">{this.props.song.title}</Link>
             </div>
           </div>
-            <div className="song-item-waveform">
-              <div className="song-item-duration">{time}</div>
-            </div>
-          <div className="song-item-controls">
-            <button
-              className="edit-song"
-              onClick={() => this.props.updateSong(this.props.song)}>
-                <i className="fas fa-pencil-alt"></i>Edit</button>
-            <button
-              className="delete-song"
-              onClick={this.handleDelete}><i className="fas fa-trash"></i>Delete song</button>
+          <div className="song-item-waveform">
+            <div className="song-item-duration">{time}</div>
           </div>
+          {songEditControls}
         </div>
       </div>
     )
@@ -105,6 +111,7 @@ class ProfileSongsIndexItem extends React.Component {
 const mapStateToProps = state => ({
   users: state.entities.users,
   paused: state.ui.paused,
+  currentUserId: state.session.currentUserId,
   currentSong: state.session.currentSong
 })
 
