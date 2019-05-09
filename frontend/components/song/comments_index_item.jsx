@@ -28,7 +28,7 @@ class CommentsIndexItem extends React.Component {
                         <i className="fas fa-trash"></i>
                       </button>
     }
-    let commenterPic = null;
+    let commenterPic = <div className="commenter-blank-profile-picture"></div>;
 
     if (commenter.profilePictureUrl && commenter.profilePictureUrl !== "") {
       commenterPic = <img className="commenter-profile-picture" 

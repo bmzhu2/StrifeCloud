@@ -328,7 +328,7 @@
 .comment-left > .commenter-picture-frame {
   width: 38px;
   height: 38px;
-  background: rgb(120, 122, 135);
+  background: white;
   border: 1px solid rgb(220,220,220);
   border-radius: 50%;
 }
@@ -340,6 +340,14 @@
 .comment-left > .commenter-picture-frame > .commenter-profile-picture {
   width: inherit;
   height: inherit;
+  border-radius: 50%;
+}
+
+.comment-left > .commenter-picture-frame > .commenter-blank-profile-picture {
+  width: inherit;
+  height: inherit;
+  background: rgb(120, 122, 135);
+  border-radius: 50%;
 }
 
 .comment-left > .comment-main {
