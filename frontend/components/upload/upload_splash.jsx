@@ -7,9 +7,11 @@ class UploadSplash extends React.Component {
   render() {
     return (
       <div>
-        First upload to first album
-        Share your tracks and access the tools you need to break through and build your legacy.
-        <button className="upload-splash-button" onClick={this.props.openModal}>Upload your first track</button>
+        <div className="upload-splash-hero-image">
+          <h1 className="upload-splash-header">Make your first upload today</h1>
+          <h2 className="upload-splash-body">Share your songs and build your memetic legacy</h2>
+          <button className="upload-splash-button" onClick={() => this.props.openModal("signup")}>Upload your first track</button>
+        </div>
       </div>
     )
   }

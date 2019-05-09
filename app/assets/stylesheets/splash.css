@@ -108,3 +108,39 @@
   border-color: transparent;
   border-radius: 4px;
 }
+
+/* SONG SAMPLES */
+
+.splash-song-samples {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash-song-samples > .splash-song-samples-header {
+  text-align: center;
+  padding: 50px 0 30px 0;
+  font-size: 18pt;
+}
+
+.splash-song-samples > .splash-songs-index {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.song-index-item.splash {
+  margin: 0 12px 35px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.splash-song-samples > .splash-discover-button {
+  background: #ff5700;
+  font-size: 14pt;
+  color: white;
+  margin-top: 15px;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+}

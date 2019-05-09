@@ -21,6 +21,7 @@ class CommentsSection extends React.Component {
     let uploaderLink = "#";
     let description = ""
     let numComments = ""
+    let numSongs = ""
     let plural;
     if (this.props.uploader) {
       if (this.props.uploader.profilePictureUrl && this.props.uploader.profilePictureUrl !== "") {
@@ -30,7 +31,7 @@ class CommentsSection extends React.Component {
       uploaderName = this.props.uploader.username;
       uploaderLink = `/users/${this.props.uploader.id}`
       description = this.props.description
-
+      numSongs = this.props.uploader.numSongs
       numComments = Object.keys(this.props.comments).length;
       plural = numComments === 1 ? "" : "s"
     }
@@ -50,6 +51,7 @@ class CommentsSection extends React.Component {
         <div className="uploader-info">
           <div className="uploader-picture-frame" onClick={this.handleProfilePicClick}>{uploaderPic}</div>
           <Link to={uploaderLink} className="uploader-username">{uploaderName}</Link>
+          <Link to={uploaderLink} className="song-uploader-song-count"><i className="fas fa-music"></i>{numSongs}</Link>
         </div>
         <div className="comments-column">
           <div className="song-description">{description}</div>

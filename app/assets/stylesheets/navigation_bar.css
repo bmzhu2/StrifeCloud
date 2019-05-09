@@ -173,26 +173,30 @@ header {
 .user-button > .current-user-picture-frame {
   height: 25px;
   width: 25px;
+  overflow: hidden;
   background: white;
   border-radius: 50%;
 }
 
 .user-button > .current-user-picture-frame > .blank-current-user-picture {
-  height: 25px;
-  width: 25px;
+  height: inherit;
+  width: inherit;
   background: rgb(120, 122, 135);
   border-radius: 50%;
 }
 
 .user-button > .current-user-picture-frame > .current-user-profile-picture {
-  height: 25px;
-  width: 25px;
+  object-fit: cover;
   border-radius: 50%;
 }
 
 .user-button > .name {
   margin: 10px;
   white-space: nowrap;
+}
+
+.user-button > i {
+  padding-top: 7px;
 }
 
 .user > .user-dropdown-content {

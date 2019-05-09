@@ -111,7 +111,25 @@
 }
 
 .below-banner-right {
-  margin: 0 auto;
+  position: relative;
+}
+
+.below-banner-right > .github-link {
+  background-image:url(<%= image_path "github_logo_med.png" %>);
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  bottom: 75px;
+  left: 140px;
+}
+
+.below-banner-right > .side-panel-legalese {
+  background-image: url(<%= image_path "legalese.png" %>);
+  width: 320px;
+  height: 60px;
+  position: absolute;
+  left: 25px;
+  bottom: 0;
 }
 
 .below-banner-comment-count  {
@@ -229,6 +247,8 @@
 .uploader-info {
   transform: translate(-2px, -2px);
   padding-right: 25px;
+  display: flex;
+  flex-direction: column;
 }
 
 .uploader-info > .uploader-picture-frame {
@@ -267,6 +287,19 @@
 
 .uploader-info > .uploader-username:hover {
   color: black;
+}
+
+.song-uploader-song-count {
+  padding-top: 10px;
+  font-size: 9pt;
+  color: rgb(160,160,160);
+  text-decoration: none;
+}
+.song-uploader-song-count i {
+  padding-right: 5px;
+  font-size: 8pt;
+  color: rgb(160,160,160);
+  text-decoration: none;
 }
 
 .comments-column {

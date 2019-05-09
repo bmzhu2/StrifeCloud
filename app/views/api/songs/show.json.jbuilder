@@ -42,5 +42,8 @@ json.users do
     else
       json.profilePictureUrl ""
     end
+
+    json.numSongs @uploader.songs.count
+
   end
 end

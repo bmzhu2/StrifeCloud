@@ -62,7 +62,9 @@ class SongDetail extends React.Component {
           </div>
         )
       }
-      updateModal = <UpdateModal song={song}/>
+      if (this.props.currentUserId) {
+        updateModal = <UpdateModal song={song}/>
+      }
       commentsSection = <CommentsSection uploader={uploader} description={song.description}/>
     }
     let numComments = <div></div>
@@ -93,7 +95,8 @@ class SongDetail extends React.Component {
             {commentsSection}
           </div>
           <div className="below-banner-right">
-            other songs
+            <a href="https://github.com/bmzhu2/StrifeCloud" className="github-link"></a>
+            <div className="side-panel-legalese"></div>
           </div>
         </div>
         

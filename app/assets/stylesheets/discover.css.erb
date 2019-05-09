@@ -30,7 +30,7 @@
   display: flex;
 }
 
-.song-index-item {
+.song-index-item.discover {
   margin-right: 42px;
   display: flex;
   flex-direction: column;
@@ -98,4 +98,28 @@
   font-size: 9pt;
   color: rgb(160,160,160);
   text-decoration: none;
+}
+
+/* SIDE PANEL */
+
+.side-panel {
+  position: relative;
+}
+
+.side-panel > .github-link {
+  background-image:url(<%= image_path "github_logo_med.png" %>);
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  bottom: 175px;
+  left: 140px;
+}
+
+.side-panel > .side-panel-legalese {
+  background-image: url(<%= image_path "legalese.png" %>);
+  width: 320px;
+  height: 60px;
+  position: absolute;
+  left: 25px;
+  bottom: 100px;
 }

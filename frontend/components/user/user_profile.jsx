@@ -33,7 +33,9 @@ class UserProfile extends React.Component {
     }
     let songsIndex = null;
     let emptyIndexMessage = <p>Nothing to hear</p>
+    let updateModal = null
     if (this.props.currentUserId == this.props.match.params.id) {
+      updateModal = <UpdateModal />;
       emptyIndexMessage = (
         <>
           <p>Seems a little quiet over here</p>
@@ -65,10 +67,12 @@ class UserProfile extends React.Component {
             <div className="below-banner-right-user-profile">
               <h3 className="user-profile-right-songs">Songs</h3>
               <div className="user-profile-right-songs-count">{numSongs}</div>
+              <div className="github-link"></div>
+              <div className="side-panel-legalese"></div>
             </div>
           </div> 
         </div>
-        <UpdateModal />
+        {updateModal}
       </div>
     )
   }

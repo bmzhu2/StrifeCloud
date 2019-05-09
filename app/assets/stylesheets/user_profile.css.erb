@@ -83,7 +83,26 @@
 }
 
 .below-banner-right-user-profile {
+  position: relative;
   padding: 25px;
+}
+
+.below-banner-right-user-profile > .github-link {
+  background-image:url(<%= image_path "github_logo_med.png" %>);
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  bottom: 75px;
+  left: 140px;
+}
+
+.below-banner-right-user-profile > .side-panel-legalese {
+  background-image: url(<%= image_path "legalese.png" %>);
+  width: 320px;
+  height: 60px;
+  position: absolute;
+  left: 25px;
+  bottom: 0;
 }
 
 .user-profile-right-songs {
@@ -192,6 +211,10 @@
   left: -1px;
   color: #ff5700;
   font-size: 36px;
+}
+
+.user-profile-song-play i:hover {
+  color: #e04b00;
 }
 
 .song-item-info {

@@ -66,10 +66,12 @@ class SongIndexItem extends React.Component {
       }
       uploaderLink = `/users/${song.uploader_id}`;
     }
-    
-
+    let splash=" discover"
+    if (this.props.splash) {
+      splash=" splash"
+    }
     return(
-      <div className="song-index-item">
+      <div className={`song-index-item${splash}`}>
         {picture}
         <Link to={`${titleLink}`} className="song-item-title">{title}</Link>
         <Link to={`${uploaderLink}`} className="song-item-uploader">{uploader}</Link>

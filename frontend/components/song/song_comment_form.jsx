@@ -45,7 +45,6 @@ class SongCommentForm extends React.Component {
   }
 
   render() {
-    debugger;
     let profilePic = <div className="blank-user-picture-thumbnail"></div>;
     if(this.props.currentUserId) {
       const source = this.props.users[this.props.currentUserId].profilePictureUrl
