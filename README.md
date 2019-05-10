@@ -24,7 +24,7 @@ The controls, progress bar, and volume slider were all built and styled from scr
 An interesting challenge when building this feature was letting the music player interact with other components on the page, e.g. changing songs. This was accomplished by storing the current song and its play/pause status in the ui slice of the store, rather than in the music player's state. Thus, the play button on the body of the page could update the current song while the music player would be listening for a change in the current song to know when to load the song.
 
 ```  
-componentDidUpdate(prevProps, prevState){
+componentDidUpdate(prevProps){
   //if there is a new song
   if (this.props.song && this.props.song !== prevProps.song) {
     //if a song is already playing, stop playing it
