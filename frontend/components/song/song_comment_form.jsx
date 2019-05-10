@@ -22,6 +22,7 @@ class SongCommentForm extends React.Component {
     if(e.keyCode !== 13) {
       return
     }
+
     if (!this.props.currentUserId) {
       this.props.openModal("signup");
       return;
@@ -42,6 +43,15 @@ class SongCommentForm extends React.Component {
     this.setState({
       body: e.target.value
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    debugger;
+    if (prevProps.currentUserId !== this.props.currentUserId) {
+      this.setState({
+        user_id: this.props.currentUserId
+      })
+    }
   }
 
   render() {
