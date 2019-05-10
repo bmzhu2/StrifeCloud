@@ -11,9 +11,11 @@ class MusicPlayer extends React.Component {
 
     this.state = {
       song: null,
+      loop: false
     }
 
     this.togglePlay = this.togglePlay.bind(this);
+    this.toggleLoop = this.toggleLoop.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -42,11 +44,9 @@ class MusicPlayer extends React.Component {
     }
   }
 
-  // restart() {
-  //   if(this.state.song) {
-  //     this.state.song.load();
-  //   }
-  // }
+  toggleLoop() {
+    this.setState({loop: !this.state.loop})
+  }
 
   render() {
     let songRoute = "#";
@@ -57,7 +57,7 @@ class MusicPlayer extends React.Component {
     let uploaderName = null;
     let songTitle = null;
     if(this.props.song) {
-      progress = <Progress song={this.state.song} pause={this.props.pause}/>
+      progress = <Progress song={this.state.song} pause={this.props.pause} loop={this.state.loop}/>
       volume = <Volume song={this.state.song}/>
       songRoute = `/songs/${this.props.song.id}`
       userRoute = `users/${this.props.song.uploader_id}`
@@ -76,12 +76,17 @@ class MusicPlayer extends React.Component {
       <button className="icon play" onClick={this.togglePlay}>Play</button>
     : <button className="icon pause" onClick={this.togglePlay}>Pause</button>
 
+    let loopButton = this.state.loop ?
+      <button className="icon loop" onClick={this.toggleLoop}>Loop</button>
+    : <button className="icon no-loop" onClick={this.toggleLoop}>No Loop</button>
+    
     return(
       <section className="music-player">
         <div className="play-controls">
           <button className="icon prev">Previous</button>
           {playButton}
           <button className="icon next">Next</button>
+          {loopButton}
         </div>
         {progress}
         {volume}

@@ -5,8 +5,7 @@ class Progress extends React.Component {
     super(props)
 
     this.state = {
-      progress: 0,
-
+      progress: 0
     }
 
     this.dragging = false;
@@ -29,15 +28,23 @@ class Progress extends React.Component {
   updateProgress() {
     if (this.props.song.currentTime === this.props.song.duration) {
       this.props.song.load();
-      this.props.song.pause();
       this.setState({
         progress: 0
       })
-      this.props.pause();
+      if(!this.props.loop) {
+        this.props.song.pause();
+        this.props.pause();
+      } else {
+        this.props.song.play();
+        if(!this.interval) {
+         this.interval = setInterval(() => {
+            this.updateProgress()
+         }, 250)}
+      }
     } else {
       this.setState({
         progress: `${this.props.song.currentTime / this.props.song.duration}`
-      })
+      })    
     }
   }
 
@@ -111,7 +118,7 @@ class Progress extends React.Component {
           this.updateProgress()
         }, 250)
       } else if (this.props.song.paused && this.interval) {
-        clearInterval(this.interval)
+        clearInterval(this.interval);
         this.interval = null;
       }
     }
