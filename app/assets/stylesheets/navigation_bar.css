@@ -176,18 +176,17 @@ header {
   overflow: hidden;
   background: white;
   border-radius: 50%;
-}
+} 
 
 .user-button > .current-user-picture-frame > .blank-current-user-picture {
   height: inherit;
   width: inherit;
   background: rgb(120, 122, 135);
-  border-radius: 50%;
+  
 }
 
 .user-button > .current-user-picture-frame > .current-user-profile-picture {
-  object-fit: cover;
-  border-radius: 50%;
+
 }
 
 .user-button > .name {

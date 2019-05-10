@@ -2,7 +2,7 @@ function parseCreatedAt(createdAt) {
   const year = +createdAt.substring(0, 4);
   const month = +createdAt.substring(5, 7);
   const day = +createdAt.substring(8, 10);
-  const hour = +createdAt.substring(11, 13) - 7;
+  const hour = (+createdAt.substring(11, 13) + 17)%24;
   const minute = +createdAt.substring(14, 16);
 
   return [year, month, day, hour, minute];
@@ -50,7 +50,7 @@ export function howLongAgo(createdAt) {
   } else if (difHour < -1) {
     difHour += 24;
   }
-  
+
   if (difHour > 1) {
     return `${difHour} hours ago`;
   } else if (difHour === 1) {
