@@ -12,7 +12,7 @@ json.songs do
   if @songs
     @songs.each do |song|
       json.set! song.id do
-        json.extract! song, :id, :title, :uploader_id, :created_at
+        json.extract! song, :id, :title, :description, :uploader_id, :created_at
         json.songFileUrl url_for(song.song_file)
 
         if song.picture_file.attached?
