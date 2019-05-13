@@ -18,7 +18,7 @@ class MusicPlayer extends React.Component {
     this.toggleLoop = this.toggleLoop.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps){
     if (this.props.song && this.props.song !== prevProps.song) {
       if(this.state.song) {
         this.state.song.pause();
@@ -60,7 +60,7 @@ class MusicPlayer extends React.Component {
       progress = <Progress song={this.state.song} pause={this.props.pause} loop={this.state.loop}/>
       volume = <Volume song={this.state.song}/>
       songRoute = `/songs/${this.props.song.id}`
-      userRoute = `users/${this.props.song.uploader_id}`
+      userRoute = `/users/${this.props.song.uploader_id}`
       songThumbnail = this.props.song.pictureFileUrl !== "" ? 
         <img className="song-thumbnail" src={`${this.props.song.pictureFileUrl}`} />
         : <div className="blank-thumbnail"></div>;
