@@ -63,9 +63,18 @@ class Volume extends React.Component {
   }
 
   toggleMute() {
-    this.setState({
-      muted: !this.state.muted
-    })
+    if (!this.state.muted) {
+      this.setState({
+        volume: 0,
+        prevVolume: this.state.volume,
+        muted: true
+      });
+    } else {
+      this.setState({
+        volume: this.state.prevVolume,
+        muted: false
+      })
+    }
   }
 
   render() {
