@@ -18,6 +18,7 @@ class UploadForm extends React.Component {
     this.updateTitle = this.updateTitle.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleSubmit() {
@@ -40,6 +41,19 @@ class UploadForm extends React.Component {
     this.props.upload(formData)
       .then(result => this.props.history.push(`/songs/${result.song.song.id}`), 
         err => this.setState({uploading: false}) );
+  }
+
+  handleCancel() {
+    const songFileForm = document.getElementsByClassName("song-form")[0];
+    songFileForm.classList.remove("small");
+    this.setState({
+      uploaderId: this.props.currentUser.id,
+      title: "",
+      picture: null,
+      song: null,
+      description: "",
+      uploading: false
+    })
   }
 
   handleSongFile(e) {
@@ -98,7 +112,7 @@ class UploadForm extends React.Component {
     if (!this.state.uploading) {
       submitActions = (
         <div className="button-section">
-          <button className="song-form-cancel" onClick={() => this.props.closeModal()}>Cancel</button>
+          <button className="song-form-cancel" onClick={this.handleCancel}>Cancel</button>
           <button className="song-form-submit" onClick={this.handleSubmit}>Save</button>
         </div> 
       )
