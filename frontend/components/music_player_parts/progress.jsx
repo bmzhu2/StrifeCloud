@@ -116,7 +116,7 @@ class Progress extends React.Component {
       if(!this.props.song.paused && !this.interval) {
         this.interval = setInterval(() => {
           this.updateProgress()
-        }, 250)
+        }, 50)
       } else if (this.props.song.paused && this.interval) {
         clearInterval(this.interval);
         this.interval = null;
