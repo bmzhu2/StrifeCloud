@@ -4,6 +4,11 @@ StrifeCloud a Final Fantasy themed clone of SoundCloud, a music sharing applicat
 
 This application was built in a two week timeframe.
 
+## Technologies
+* React/Redux for frontend rendering
+* Ruby on Rails for backend MVC framework
+* PostgresQL and AWS S3 for database
+
 ## Features
 * Account creation and authentication, using secure password storage with BCrypt
 * Music player that continues to play while browing the site
@@ -72,12 +77,6 @@ switch(this.props.modal) {
     form = null;
 }
 ```
-
-
-## Technologies
-* React/Redux for frontend rendering
-* Ruby on Rails for backend MVC framework
-* PostgresQL and AWS S3 for database
 
 ## Planned future features
 * Basic search implementation
