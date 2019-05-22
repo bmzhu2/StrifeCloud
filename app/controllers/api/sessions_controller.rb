@@ -11,6 +11,7 @@ class Api::SessionsController < ApplicationController
     end
     if pw.length < 7
       render json: ["Use at least 7 characters."], status: 400
+      return
     end
 
     @user = User.find_by_credentials(email, pw)
@@ -18,8 +19,10 @@ class Api::SessionsController < ApplicationController
     if @user 
       login!(@user)
       redirect_to "/api/users/#{@user.id}"
+      return
     else
-      render json: errors << ["This password is incorrect."], status: 400
+      render json: ["This password is incorrect."], status: 400
+      return
     end
   end
 
