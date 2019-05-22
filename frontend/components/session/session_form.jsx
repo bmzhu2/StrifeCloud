@@ -53,6 +53,7 @@ class SessionForm extends React.Component {
 
     if(this.props.errors.errors) {
       this.props.errors.errors.forEach(err => {
+        debugger;
         if (err.search("email") !== -1) {
           emailErrText = (<p className="error-text">{err}</p>)
           emailErrField = "error";
