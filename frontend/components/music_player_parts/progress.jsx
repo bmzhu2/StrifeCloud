@@ -26,26 +26,29 @@ class Progress extends React.Component {
   }
 
   updateProgress() {
-    if (this.props.song.currentTime === this.props.song.duration) {
-      this.props.song.load();
-      this.setState({
-        progress: 0
-      })
-      if(!this.props.loop) {
-        this.props.song.pause();
-        this.props.pause();
+    if(this.props.song) {
+      if (this.props.song.currentTime === this.props.song.duration) {
+        this.props.song.load();
+        this.setState({
+          progress: 0
+        })
+        if (!this.props.loop) {
+          this.props.song.pause();
+          this.props.pause();
+        } else {
+          this.props.song.play();
+          if (!this.interval) {
+            this.interval = setInterval(() => {
+              this.updateProgress()
+            }, 250)
+          }
+        }
       } else {
-        this.props.song.play();
-        if(!this.interval) {
-         this.interval = setInterval(() => {
-            this.updateProgress()
-         }, 250)}
+        this.setState({
+          progress: `${this.props.song.currentTime / this.props.song.duration}`
+        })
       }
-    } else {
-      this.setState({
-        progress: `${this.props.song.currentTime / this.props.song.duration}`
-      })    
-    }
+    } 
   }
 
   offsetX(e) {
@@ -120,7 +123,9 @@ class Progress extends React.Component {
       } else if (this.props.song.paused && this.interval) {
         clearInterval(this.interval);
         this.interval = null;
-      }
+      } 
+    } else if (this.interval) {
+      clearInterval(this.interval)
     }
 
     let progressLength = 500 * this.state.progress;

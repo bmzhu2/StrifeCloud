@@ -29,6 +29,14 @@ class MusicPlayer extends React.Component {
         this.state.song.play();
           this.props.unpause();
       });
+    } else {
+      if(!this.props.song && this.state.song) {
+        this.state.song.pause();
+        this.props.pause();
+        this.setState({
+          song: null
+        })
+      }
     }
   }
 
