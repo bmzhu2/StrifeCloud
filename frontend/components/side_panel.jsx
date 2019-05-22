@@ -6,7 +6,6 @@ class SidePanel extends React.Component {
     return(
       <div className="side-panel">
         <a href="https://github.com/bmzhu2/StrifeCloud" className="github-link"></a>
-        <div className="side-panel-legalese"></div>
       </div>
     )
   }

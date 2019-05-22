@@ -68,7 +68,6 @@ class UserProfile extends React.Component {
               <h3 className="user-profile-right-songs">Songs</h3>
               <div className="user-profile-right-songs-count">{numSongs}</div>
               <div className="github-link"></div>
-              <div className="side-panel-legalese"></div>
             </div>
           </div> 
         </div>

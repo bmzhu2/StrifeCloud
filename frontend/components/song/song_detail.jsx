@@ -96,7 +96,6 @@ class SongDetail extends React.Component {
           </div>
           <div className="below-banner-right">
             <a href="https://github.com/bmzhu2/StrifeCloud" className="github-link"></a>
-            <div className="side-panel-legalese"></div>
           </div>
         </div>
         

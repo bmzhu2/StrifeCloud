@@ -8,12 +8,11 @@ header {
 .full-bar {
   width: 100%;
   height: 46px;
-
   background: rgb(50, 50, 50);
 }
 
 .navigation-bar {
-  width: 1240px;
+  width: 86.11vw;
   height: 100%;
 
   margin: 0 auto;
