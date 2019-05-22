@@ -72,7 +72,7 @@ body, main {
 .modal-child, .update-modal-child {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 50vw;
   transform: translate(-50%, -52%);
 
   background: white;
