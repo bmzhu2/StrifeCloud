@@ -106,11 +106,16 @@
   position: relative;
 }
 
-.side-panel > .github-link {
-  background-image:url(<%= image_path "github_logo_med.png" %>);
-  width: 64px;
-  height: 64px;
+.side-panel > .links {
+  display: flex;
   position: absolute;
-  bottom: 175px;
-  left: 140px;
+  bottom: 10vw;
+  left: 5vw;
+}
+
+.side-panel > .links > a {
+  text-decoration: none;
+  color: black;
+  font-size: 3em;
+  padding: 0 1vw;
 }
