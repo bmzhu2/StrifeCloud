@@ -114,13 +114,16 @@
   position: relative;
 }
 
-.below-banner-right > .github-link {
-  background-image:url(<%= image_path "github_logo_med.png" %>);
-  width: 64px;
-  height: 64px;
+.below-banner-right > .links {
+  display: flex;
   position: absolute;
   bottom: 75px;
   left: 140px;
+}
+
+.below-banner-right > .links > a {
+  text-decoration: none;
+  font-size: 3em;
 }
 
 .below-banner-comment-count  {

@@ -6,6 +6,7 @@ import NavigationBar from './navigation_bar';
 import MusicPlayer from './music_player';
 import Splash from './splash/splash';
 import Discover from './discover/discover';
+import SearchPage from './search/search_page';
 import Upload from './upload/upload';
 import ErrorPage from './error_page';
 import ConstructionPage from './construction_page';
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/discover" component={Discover} />
         <Route path="/stream" component={ConstructionPage} />
         <Route path="/library" component={ConstructionPage} />
+        <Route path="/search" component={SearchPage} />
         <Route path="/upload" component={Upload} />
         <Route path="/songs/:id" component={SongDetailContainer} />
         <Route path="/users/:id" component={UserProfile} />

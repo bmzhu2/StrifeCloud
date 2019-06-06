@@ -85,6 +85,11 @@ export const fetchSong = id => dispatch => (
     err => dispatch(receiveRouteErrors(err.responseJSON)))
 )
 
+export const search = query => dispatch => (
+  SongAPIUtil.search(query).then(songs => dispatch(receiveSongs(songs)),
+    err => dispatch(receiveRouteErrors(err.responseJSON)))
+)
+
 export const update = ({song, id}) => dispatch => (
   SongAPIUtil.update(song, id).then(song => dispatch(updateSong(song)),
     err => dispatch(receiveUploadErrors(err.responseJSON)))

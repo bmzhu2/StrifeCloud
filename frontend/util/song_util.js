@@ -12,6 +12,17 @@ export const fetch = id => (
   })
 )
 
+export const search = query => (
+  $.ajax({
+    method: 'GET',
+    url: '/users/search',
+    dataType: 'json',
+    data: {
+      query: `${query}`
+    }
+  })
+)
+
 export const upload = song => (
   $.ajax({
     method: 'POST',
