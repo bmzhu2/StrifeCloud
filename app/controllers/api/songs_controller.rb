@@ -48,6 +48,16 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def search
+    if params[:query].present?
+      @songs = Song.where('title ~ ?', params[:query])
+    else
+      @songs = Song.none
+    end
+
+      render json: @songs
+  end
+
   private
   def song_params
     params.require(:song).permit(:title, :picture_file, :song_file, :description, :uploader_id)

@@ -7,11 +7,17 @@ class NavigationBar extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      query: ""
+    }
+
     this.userShown = false;
     this.settingsShown = false;
     this.toggleUser = this.toggleUser.bind(this);
     this.toggleSettings = this.toggleSettings.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   closeMenu(e) {
@@ -20,6 +26,18 @@ class NavigationBar extends React.Component {
     }
     if (this.settingsShown) {
       this.toggleSettings(e);
+    }
+  }
+
+  updateSearch(e) {
+    this.setState({
+      query: e.target.value
+    })
+  }
+
+  handleSearch() {
+    if(this.state.query) {
+      this.props.history.push(`/search?query=${this.state.query}`)
     }
   }
 
@@ -129,8 +147,9 @@ class NavigationBar extends React.Component {
             <input 
               className="search-box"
               type="text" 
-              placeholder="Search is not implemented yet"></input>
-            <button className="search-submit"><i className="fas fa-search"></i></button>
+              placeholder="Search is not implemented yet"
+              onChange={this.updateSearch}></input>
+            <button onClick={this.handleSearch} className="search-submit"><i className="fas fa-search"></i></button>
           </form>
           {sessionButtons}
           <button className="upload"
