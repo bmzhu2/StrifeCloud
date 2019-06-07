@@ -37,6 +37,7 @@ header {
   font-family: "interstateregular";
   user-select: none;
   line-height: 46px;
+  overflow: hidden;
 }
 
 .logo > img {

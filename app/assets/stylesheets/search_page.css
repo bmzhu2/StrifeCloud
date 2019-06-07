@@ -1,0 +1,28 @@
+.search-query {
+  position: fixed;
+  width: 1180px;
+  margin: 0 30px;
+  padding: 34px 0 4px 0;
+  border-bottom: 1px solid rgb(240,240,240);
+
+  font-size: 1.4em;
+  font-family: interstateregular;
+  font-weight: bold;
+  color: rgb(50,50,50)
+}
+
+.search-options {
+  position: fixed;
+  width: 225px;
+  margin: 100px 0 0 35px;
+}
+
+  .search-options li {
+    font-size: .9em;
+    font-family: interstatelight;
+    padding-bottom: 15px;
+  }
+
+  .search-options li i {
+    padding-right: 10px;
+  }

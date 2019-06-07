@@ -4,8 +4,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update, :show]
     resource :session, only: [:create, :destroy]
     resources :songs, only: [:create, :update, :show, :destroy] do 
+      get 'search', on: :collection
       resources :comments, only: [:create, :destroy]
     end
+    # get 'songs/search', to: 'songs#search'
   end
 
   root to: 'static_pages#root'

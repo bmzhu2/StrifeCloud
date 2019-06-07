@@ -15,7 +15,7 @@ export const fetch = id => (
 export const search = query => (
   $.ajax({
     method: 'GET',
-    url: '/users/search',
+    url: '/api/songs/search',
     dataType: 'json',
     data: {
       query: `${query}`
