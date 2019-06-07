@@ -20,7 +20,7 @@ class UserProfileBanner extends React.Component {
     if (pictureFile && pictureFile.type.search("image") !== -1) {
       const formData = new FormData();
       formData.append('user[profile_picture]', pictureFile)
-      this.props.updateUser({user: formData, id: this.props.currentUserId})
+      this.props.updateUser({user: formData, id: this.props.currentUser.id})
         .then(() => this.setState({upload: !this.state.upload}))
     }
   }
@@ -38,7 +38,7 @@ class UserProfileBanner extends React.Component {
 
     let updatePicInput = null;
     let updatePicButton = null;
-    if (this.props.currentUserId && this.props.currentUserId == this.props.match.params.id) {
+    if (this.props.currentUser && this.props.currentUser.id == this.props.match.params.id) {
       updatePicInput = (
         <input
           type="file"
@@ -72,7 +72,7 @@ class UserProfileBanner extends React.Component {
 
 const mapStateToProps = state => ({
   users: state.entities.users,
-  currentUserId: state.session.currentUserId
+  currentUser: state.session.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({

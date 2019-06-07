@@ -12,7 +12,7 @@ class CommentsIndex extends React.Component {
         <div className="comments-index-inside">
           {Object.values(this.props.comments).reverse().map( comment => (
             <CommentsIndexItem key={comment.id} comment={comment} users={this.props.users} 
-              currentUserId={this.props.currentUserId}/>
+              currentUser={this.props.currentUser}/>
           ))}
         </div>
       )
@@ -29,7 +29,7 @@ class CommentsIndex extends React.Component {
 const dispatchStateToProps = state => ({
   users: state.entities.users,
   comments: state.entities.comments,
-  currentUserId: state.session.currentUserId
+  currentUser: state.session.currentUser
 })
 
 export default connect(dispatchStateToProps, null)(CommentsIndex);

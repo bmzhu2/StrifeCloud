@@ -16,7 +16,7 @@ class Upload extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.entities.users[state.session.currentUserId]
+  currentUser: state.session.currentUser
 });
 
 export default connect(mapStateToProps, null)(Upload);

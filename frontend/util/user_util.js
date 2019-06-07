@@ -14,3 +14,14 @@ export const updateUser = (user, id) => (
     processData: false
   })
 )
+
+export const search = query => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/users/search',
+    dataType: 'json',
+    data: {
+      query: `${query}`
+    }
+  })
+)

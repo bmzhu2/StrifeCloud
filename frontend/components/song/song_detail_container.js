@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   users: state.entities.users,
   songs: state.entities.songs,
   comments: state.entities.comments,
-  currentUserId: state.session.currentUserId,
+  currentUser: state.session.currentUser,
   currentSong: state.session.currentSong,
   paused: state.ui.paused,
   notFound: state.errors.songRoute.errors

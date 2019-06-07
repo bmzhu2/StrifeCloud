@@ -70,7 +70,7 @@ class ProfileSongsIndexItem extends React.Component {
 
     let songEditControls = <div className="empty-song-edit-controls"></div>
 
-    if (this.props.currentUserId === this.props.song.uploader_id) {
+    if (this.props.currentUser.id === this.props.song.uploader_id) {
       songEditControls = (<div className="song-item-controls">
         <button
           className="edit-song"
@@ -111,7 +111,7 @@ class ProfileSongsIndexItem extends React.Component {
 const mapStateToProps = state => ({
   users: state.entities.users,
   paused: state.ui.paused,
-  currentUserId: state.session.currentUserId,
+  currentUser: state.session.currentUser,
   currentSong: state.session.currentSong
 })
 

@@ -25,7 +25,7 @@ class ProfileSongsIndex extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  currentUserId: state.session.currentUserId,
+  currentUser: state.session.currentUser,
   songs: state.entities.songs
 })
 
