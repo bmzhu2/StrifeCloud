@@ -8,21 +8,116 @@
   font-size: 1.4em;
   font-family: interstateregular;
   font-weight: bold;
-  color: rgb(50,50,50)
+  color: rgb(50,50,50);
+  background: white;
 }
 
 .search-options {
   position: fixed;
-  width: 225px;
-  margin: 100px 0 0 35px;
+  width: 205px;
+  margin: 94px 0 0 30px;
 }
 
   .search-options li {
     font-size: .9em;
     font-family: interstateregular;
-    padding-bottom: 15px;
+    padding: 8px 0 8px 8px;
   }
 
-  .search-options li i {
-    padding-right: 10px;
+    .search-options li i {
+      padding-right: 10px;
+    }
+
+  .search-options li:hover {
+    cursor: pointer;
   }
+
+  .search-options li.selected {
+    position: relative;
+    background: #ff5700;
+    color: white;
+  }
+
+  .search-options li.selected::after {
+    content: '';
+    position: absolute;
+    left: 205px;
+    top: 0;
+
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  
+    border-left: 15px solid #ff5700;
+  }
+
+.search-results {
+  padding: 100px 0 0 280px;
+}
+
+.search-results p {
+  color: rgb(160,160,160);
+  font-size: 11pt;
+}
+
+/* USER RESULT */
+
+.user-result {
+  display: flex;
+  padding: 23px 0;
+}
+
+  .user-result > .user-picture-frame {
+    width: 160px;
+    height: 160px;
+    background: rgb(120, 122, 135);
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 50%;
+  }
+
+  .user-result > .user-picture-frame:hover {
+    cursor: pointer;
+  }
+
+    .user-result > .user-picture-frame > .user-profile-picture, 
+    .user-result > .user-picture-frame > .blank-user-profile-picture {
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+    }
+
+    .user-result > .user-picture-frame > .blank-user-profile-picture {
+      background: rgb(120, 122, 135);
+    }
+  
+  .user-result > .user-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+  }
+
+    .user-result .user-username,
+    .user-result .user-song-count {
+      display: block;
+      text-decoration: none;
+    }
+
+    .user-result .user-username {
+      color: rgb(50,50,50);
+      font-family: interstateregular;
+    }
+
+    .user-result .user-song-count {
+      padding-top: 20px;
+      color: rgb(160,160,160);
+      font-size: 9pt;
+    }
+
+      .user-result .user-song-count i {
+        color: rgb(50,50,50);
+        padding-right: 10px;
+      }
+
+    .user-result .user-username:hover,
+    .user-result .user-song-count:hover {
+      color: black;
+    }

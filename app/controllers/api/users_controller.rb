@@ -61,7 +61,7 @@ class Api::UsersController < ApplicationController
       @users = User.none
     end
 
-      render json: @users
+      render :results
   end
 
   private
