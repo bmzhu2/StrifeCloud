@@ -8,9 +8,15 @@ class SongCommentForm extends React.Component {
   constructor(props) {
     super(props)
 
+    let user_id;
+
+    if(this.props.currentUser) {
+      user_id = this.props.currentUser.id
+    }
+
     this.state = {
       song_id: this.props.match.params.id,
-      currentUser: this.props.currentUser,
+      user_id: user_id,
       body: ""
     }
 
@@ -48,7 +54,7 @@ class SongCommentForm extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.currentUser && prevProps.currentUser && prevProps.currentUser.id !== this.props.currentUser.id) {
       this.setState({
-        currentUser: this.props.currentUser
+        user_id: this.props.currentUser.id
       })
     }
   }
