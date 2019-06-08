@@ -34,7 +34,7 @@ class UserProfile extends React.Component {
     let songsIndex = null;
     let emptyIndexMessage = <p>Nothing to hear</p>
     let updateModal = null
-    if (this.props.currentUserId == this.props.match.params.id) {
+    if (this.props.currentUser.id == this.props.match.params.id) {
       updateModal = <UpdateModal />;
       emptyIndexMessage = (
         <>
@@ -67,7 +67,11 @@ class UserProfile extends React.Component {
             <div className="below-banner-right-user-profile">
               <h3 className="user-profile-right-songs">Songs</h3>
               <div className="user-profile-right-songs-count">{numSongs}</div>
-              <div className="github-link"></div>
+              <section className="links">
+                <a href="https://github.com/bmzhu2/StrifeCloud" className="icon fab fa-github"></a>
+                <a href="https://www.linkedin.com/in/brianmzhu/" className="icon fab fa-linkedin"></a>
+                <a href="http://www.brianmzhu.com" className="icon fas fa-user"></a>
+              </section>
             </div>
           </div> 
         </div>
@@ -78,7 +82,7 @@ class UserProfile extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUserId: state.session.currentUserId,
+  currentUser: state.session.currentUser,
   songs: state.entities.songs
 })
 

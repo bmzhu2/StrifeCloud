@@ -10,7 +10,7 @@ class SongCommentForm extends React.Component {
 
     this.state = {
       song_id: this.props.match.params.id,
-      user_id: this.props.currentUserId,
+      user_id: this.props.currentUser.id,
       body: ""
     }
 
@@ -23,7 +23,7 @@ class SongCommentForm extends React.Component {
       return
     }
 
-    if (!this.props.currentUserId) {
+    if (!this.props.currentUser) {
       this.props.openModal("signup");
       return;
     }
@@ -46,17 +46,17 @@ class SongCommentForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.currentUserId !== this.props.currentUserId) {
+    if (prevProps.currentUser.id !== this.props.currentUser.id) {
       this.setState({
-        user_id: this.props.currentUserId
+        user_id: this.props.currentUser.id
       })
     }
   }
 
   render() {
     let profilePic = <div className="blank-user-picture-thumbnail"></div>;
-    if(this.props.currentUserId) {
-      const source = this.props.users[this.props.currentUserId].profilePictureUrl
+    if(this.props.currentUser) {
+      const source = this.props.currentUser.profilePictureUrl
       if (source) {
         profilePic = <img src={source} className="user-picture-thumbnail"></img>
       }
@@ -74,7 +74,7 @@ class SongCommentForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUserId: state.session.currentUserId,
+  currentUser: state.session.currentUser,
   users: state.entities.users
 })
 

@@ -49,13 +49,14 @@ class Api::SongsController < ApplicationController
   end
 
   def search
+
     if params[:query].present?
-      @songs = Song.where('title ~ ?', params[:query])
+      title = "%" + params[:query].match(/\?query=([^&]*)/)[1] + "%"
+      @songs = Song.where('LOWER(title) LIKE ?', title.downcase)
     else
       @songs = Song.none
     end
-
-      render json: @songs
+      render :results
   end
 
   private

@@ -9,9 +9,11 @@ const songsReducer = (state = {}, action) => {
     case RECEIVE_SONG:
       return merge({}, state, { [action.song.song.id]: action.song.song });
     case RECEIVE_SONGS:
-      Object.values(action.songs).forEach(song => {
-        nextState[song.id] = song;
-      });
+      if(action.songs.songs) {
+        Object.values(action.songs.songs).forEach(song => {
+          nextState[song.id] = song;
+        });
+      }
       return nextState;
     case UPDATE_SONG:
       nextState = merge({}, state);

@@ -2,7 +2,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from "../actions/session_ac
 import { RECEIVE_CURRENT_SONG, REMOVE_SONG } from '../actions/songs_actions';
 
 const _nullSession = {
-  currentUserId: null,
+  currentUser: null,
   currentSong: null
 }
 
@@ -11,10 +11,10 @@ const sessionReducer = (state = _nullSession, action) => {
   const nextState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      nextState.currentUserId = action.currentUser.user.id;
+      nextState.currentUser = action.currentUser.user;
       return nextState;
     case LOGOUT_CURRENT_USER:
-      nextState.currentUserId = null;
+      nextState.currentUser = null;
       return nextState;
     case RECEIVE_CURRENT_SONG:
       nextState.currentSong = action.currentSong;

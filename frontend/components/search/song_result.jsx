@@ -1,11 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {withRouter, Link} from 'react-router-dom';
-import {openModal, updateSong} from '../../actions/modal_actions';
-import {remove, play, pause, unpause} from '../../actions/songs_actions';
-import {howLongAgo} from '../../util/date_util';
+import {connect} from 'react-redux'
+import { Link, withRouter } from 'react-router-dom';
+import { openModal, updateSong } from '../../actions/modal_actions';
+import { remove, play, pause, unpause } from '../../actions/songs_actions';
+import { howLongAgo } from '../../util/date_util';
 
-class ProfileSongsIndexItem extends React.Component {
+class SongResult extends React.Component {
   constructor(props) {
     super(props)
 
@@ -13,11 +13,12 @@ class ProfileSongsIndexItem extends React.Component {
       duration: ""
     })
 
+    
     this.audio = new Audio(this.props.song.songFileUrl);
     this.audio.addEventListener('loadedmetadata', () => {
       this.setState({ duration: this.audio.duration })
     })
-
+    
     this.handlePictureLink = this.handlePictureLink.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
@@ -50,17 +51,16 @@ class ProfileSongsIndexItem extends React.Component {
   }
 
   render() {
-    const uploader = this.props.users[this.props.match.params.id];
     let songPic = <div className="song-item-blank-picture"></div>
     if (this.props.song.pictureFileUrl) {
-      songPic = <img src={this.props.song.pictureFileUrl} 
-                  className="song-item-picture" onClick={this.handlePictureLink}></img>
+      songPic = <img src={this.props.song.pictureFileUrl}
+        className="song-item-picture" onClick={this.handlePictureLink}></img>
     } else if (this.props.song.pictureFileUrl === "") {
       songPic = <div className="song-item-blank-picture" onClick={this.handlePictureLink}></div>
     }
 
     let time = ""
-    if(this.state.duration) {
+    if (this.state.duration) {
       let minutes = Math.floor(this.state.duration / 60).toString()
       let seconds = Math.floor(this.state.duration % 60)
 
@@ -76,7 +76,7 @@ class ProfileSongsIndexItem extends React.Component {
 
     let songEditControls = <div className="empty-song-edit-controls"></div>
 
-    if (this.props.currentUser.id === this.props.song.uploader_id) {
+    if (this.props.currentUser.id === this.props.uploader.id) {
       songEditControls = (<div className="song-item-controls">
         <button
           className="edit-song"
@@ -88,17 +88,17 @@ class ProfileSongsIndexItem extends React.Component {
       </div>)
     }
 
-    return(
+    return (
       <div className="profile-songs-index-item">
         <div className="song-item-picture-frame">
           {songPic}
         </div>
         <div className="song-item-right">
           <div className="song-item-top">
-              {playButton}
+            {playButton}
             <div className="song-item-info">
               <div className="song-item-uploader-and-time">
-                <Link to={`${uploader.id}`} className="song-item-uploader">{uploader.username}</Link>
+                <Link to={`/users/${this.props.uploader.id}`} className="song-item-uploader">{this.props.uploader.username}</Link>
                 <p className="song-item-upload-time">{howLongAgo(this.props.song.created_at)}</p>
               </div>
               <Link to={`/songs/${this.props.song.id}`} className="song-item-title">{this.props.song.title}</Link>
@@ -115,7 +115,6 @@ class ProfileSongsIndexItem extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.entities.users,
   paused: state.ui.paused,
   currentUser: state.session.currentUser,
   currentSong: state.session.currentSong
@@ -130,4 +129,4 @@ const mapDispatchToProps = dispatch => ({
   unpause: () => dispatch(unpause())
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfileSongsIndexItem));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SongResult));

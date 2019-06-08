@@ -50,7 +50,7 @@ class SongDetail extends React.Component {
     let commentsSection = <CommentsSection />;
     if (song) {
       uploader = this.props.users[song.uploader_id];
-      if (song.uploader_id === this.props.currentUserId) {
+      if (song.uploader_id === this.props.currentUser.id) {
         editControls = (
           <div className="song-edit-controls">
             <button 
@@ -62,7 +62,7 @@ class SongDetail extends React.Component {
           </div>
         )
       }
-      if (this.props.currentUserId) {
+      if (this.props.currentUser) {
         updateModal = <UpdateModal song={song}/>
       }
       commentsSection = <CommentsSection uploader={uploader} description={song.description}/>

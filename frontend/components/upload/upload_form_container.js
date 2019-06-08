@@ -4,7 +4,7 @@ import UploadForm from './upload_form';
 import {upload} from '../../actions/songs_actions';
 
 const mapStateToProps = state => ({
-  currentUser: state.entities.users[state.session.currentUserId]
+  currentUser: state.session.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({

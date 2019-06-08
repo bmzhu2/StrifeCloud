@@ -52,6 +52,18 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def search
+
+    if params[:query].present?
+      username = "%" + params[:query].match(/\?query=([^&]*)/)[1] + "%"
+      @users = User.where('LOWER(username) LIKE ?', username.downcase)
+    else
+      @users = User.none
+    end
+
+      render :results
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :username, :password, :profile_picture)
