@@ -76,7 +76,7 @@ class ProfileSongsIndexItem extends React.Component {
 
     let songEditControls = <div className="empty-song-edit-controls"></div>
 
-    if (this.props.currentUser.id === this.props.song.uploader_id) {
+    if (this.props.currentUser && this.props.currentUser.id === this.props.song.uploader_id) {
       songEditControls = (<div className="song-item-controls">
         <button
           className="edit-song"

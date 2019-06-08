@@ -34,7 +34,7 @@ class UserProfile extends React.Component {
     let songsIndex = null;
     let emptyIndexMessage = <p>Nothing to hear</p>
     let updateModal = null
-    if (this.props.currentUser.id == this.props.match.params.id) {
+    if (this.props.currentUser && this.props.currentUser.id == this.props.match.params.id) {
       updateModal = <UpdateModal />;
       emptyIndexMessage = (
         <>

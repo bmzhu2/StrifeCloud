@@ -20,7 +20,7 @@ class CommentsIndexItem extends React.Component {
       className="commenter-username">{commenter.username}</Link>;
     let highlighted = "";
     let deleteButton = null;
-    if(this.props.currentUser.id === this.props.comment.user_id) {
+    if(this.props.currentUser && this.props.currentUser.id === this.props.comment.user_id) {
       commenterName = <div className="commenter-username">You</div>
       highlighted = " highlighted";
       deleteButton =  <button className="delete-comment" 
