@@ -56,7 +56,7 @@ class Api::SongsController < ApplicationController
     else
       @songs = Song.none
     end
-      render json: @songs
+      render :results
   end
 
   private

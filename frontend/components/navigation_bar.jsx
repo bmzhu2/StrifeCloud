@@ -147,7 +147,7 @@ class NavigationBar extends React.Component {
             <input 
               className="search-box"
               type="text" 
-              placeholder="Search is not implemented yet"
+              placeholder="Search"
               onChange={this.updateSearch}></input>
             <button onClick={this.handleSearch} className="search-submit"><i className="fas fa-search"></i></button>
           </form>

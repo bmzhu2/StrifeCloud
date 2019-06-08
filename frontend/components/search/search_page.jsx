@@ -39,7 +39,7 @@ class SearchPage extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(this.props.location.search !== prevProps.location.search) {
-      this.props.search(query)
+      this.search(this.props.location.search)
     }
   }
 
@@ -74,7 +74,7 @@ class SearchPage extends React.Component {
           {users}
         </ul>
         <SearchResults query={query} option={this.state.option} searched={this.state.searched}
-          songs={this.props.songs} users={this.props.users} />
+          songs={this.props.songs} users={this.props.users} searchedUsers={this.props.searchedUsers}/>
       </div>
     )
   }
@@ -82,7 +82,8 @@ class SearchPage extends React.Component {
 
 const mapStateToProps = state => ({
   songs: state.entities.songs,
-  users: state.entities.users
+  users: state.entities.users,
+  searchedUsers: state.entities.searchedUsers
 })
 
 const mapDispatchToProps = dispatch => ({

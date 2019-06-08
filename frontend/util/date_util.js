@@ -1,8 +1,19 @@
 function parseCreatedAt(createdAt) {
-  const year = +createdAt.substring(0, 4);
-  const month = +createdAt.substring(5, 7);
-  const day = +createdAt.substring(8, 10);
+  let year = +createdAt.substring(0, 4);
+  let month = +createdAt.substring(5, 7);
+  let day = +createdAt.substring(8, 10);
   const hour = (+createdAt.substring(11, 13) + 17)%24;
+  if ((+createdAt.substring(11, 13) - 7) < 0) {
+    day -= 1;
+    if (day < 1) {
+      day += 30
+      month -= 1
+      if (month < 1) {
+        month += 12
+        year -= 1
+      }
+    }
+  }
   const minute = +createdAt.substring(14, 16);
 
   return [year, month, day, hour, minute];
@@ -31,7 +42,7 @@ export function howLongAgo(createdAt) {
     return `${difYear} years ago`;
   } else if (difYear === 1) {
     return `${difYear} year ago`;
-  } else if (difMonth < -1) {
+  } else if (difMonth < 0) {
     difMonth += 12;
   }
   
@@ -39,7 +50,7 @@ export function howLongAgo(createdAt) {
     return `${difMonth} months ago`;
   } else if (difMonth === 1) {
     return `${difMonth} month ago`;
-  } else if (difDay < -1) {
+  } else if (difDay < 0) {
     difDay += 30;
   }
 
@@ -47,7 +58,7 @@ export function howLongAgo(createdAt) {
     return `${difDay} days ago`;
   } else if (difDay === 1) {
     return `${difDay} day ago`;
-  } else if (difHour < -1) {
+  } else if (difHour < 0) {
     difHour += 24;
   }
 
@@ -55,7 +66,7 @@ export function howLongAgo(createdAt) {
     return `${difHour} hours ago`;
   } else if (difHour === 1) {
     return `${difHour} hour ago`;
-  } else if (difMinute < -1) {
+  } else if (difMinute < 0) {
     difMinute += 60;
   }
   

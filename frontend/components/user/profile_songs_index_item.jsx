@@ -23,6 +23,12 @@ class ProfileSongsIndexItem extends React.Component {
     this.handlePlay = this.handlePlay.bind(this);
   }
 
+  componentWillUnmount() {
+    this.audio.removeEventListener('loadedmetadata', () => {
+      this.setState({ duration: this.audio.duration })
+    })
+  }
+
   handlePlay() {
     if (this.props.currentSong && this.props.currentSong.id === this.props.song.id) {
       if (this.props.paused) {

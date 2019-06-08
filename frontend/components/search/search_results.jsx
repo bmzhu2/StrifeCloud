@@ -1,16 +1,16 @@
 import React from 'react';
 import EmptyResult from './empty_result';
-import SongResult from './song_result'
+import SongResult from './song_result';
 import UserResult from './user_result';
 
 const SearchResults = (props) => {
   let results = null;
   let resultList = null;
   let songs = Object.values(props.songs).map(song => (
-    <SongResult key={song.id} song={song}/>
+    <SongResult key={song.id} song={song} uploader={props.users[song.uploader_id]}/>
   ))
-  let users = Object.values(props.users).map(user => (
-    <UserResult key={user.id} user={user}/>
+  let users = Array.from(props.searchedUsers).map(id => (
+    <UserResult key={id} user={props.users[id]}/>
   ))
 
   if(!props.searched) {
