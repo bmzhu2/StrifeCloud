@@ -46,7 +46,7 @@ class SongCommentForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.currentUser && prevProps.currentUser.id !== this.props.currentUser.id) {
+    if (this.props.currentUser && prevProps.currentUser && prevProps.currentUser.id !== this.props.currentUser.id) {
       this.setState({
         currentUser: this.props.currentUser
       })
