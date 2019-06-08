@@ -50,7 +50,7 @@ class SongDetail extends React.Component {
     let commentsSection = <CommentsSection />;
     if (song) {
       uploader = this.props.users[song.uploader_id];
-      if (song.uploader_id === this.props.currentUser.id) {
+      if (this.props.currentUser && song.uploader_id === this.props.currentUser.id) {
         editControls = (
           <div className="song-edit-controls">
             <button 
