@@ -20,7 +20,7 @@ const SearchResults = (props) => {
   switch (props.option) {
     case "everything":
       if(songs.length === 0 && users.length === 0) {
-        resultList = <EmptyResult />
+        resultList = <EmptyResult query={props.query}/>
       } else {
         if(songs.length === 1 && users.length === 0) {
           results = <p>Found 1 song</p>
@@ -49,7 +49,7 @@ const SearchResults = (props) => {
       break;
     case "songs":
       if(songs.length === 0) {
-        resultList = <EmptyResult />
+        resultList = <EmptyResult query={props.query}/>
       } else {
         if (songs.length === 1) {
           results = <p>Found 1 song</p>
@@ -65,7 +65,7 @@ const SearchResults = (props) => {
       break;
     case "users":
       if(users.length === 0) {
-        resultList = <EmptyResult />
+        resultList = <EmptyResult query={props.query}/>
       } else {
         if (users.length === 1) {
           results = <p>Found 1 person</p>

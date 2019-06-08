@@ -87,13 +87,18 @@
   padding: 25px;
 }
 
-.below-banner-right-user-profile > .github-link {
-  background-image:url(<%= image_path "github_logo_med.png" %>);
-  width: 64px;
-  height: 64px;
+.below-banner-right-user-profile > .links {
+  display: flex;
   position: absolute;
-  bottom: 75px;
-  left: 140px;
+  bottom: 0vw;
+  left: 5vw;
+}
+
+.below-banner-right-user-profile > .links > a {
+  text-decoration: none;
+  color: black;
+  font-size: 3em;
+  padding: 0 1vw;
 }
 
 .user-profile-right-songs {
@@ -265,9 +270,8 @@
 }
 
 .song-item-right > .empty-song-edit-controls {
-  width: 817px;
-  height: 50px;
-  margin-bottom: 20px;
+  width: 645px;
+  height: 23px;
 }
 
 .song-item-controls button {
