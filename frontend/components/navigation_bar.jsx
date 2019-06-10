@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { openModal } from '../actions/modal_actions';
 import { logout } from '../actions/session_actions';
 
@@ -7,8 +8,16 @@ class NavigationBar extends React.Component {
   constructor(props) {
     super(props)
 
+    let query = ""
+    const re = /\?query=([^&]*)/;
+
+    
+    if(this.props.location.search) {
+      query = this.props.location.search.match(re)[1];
+    }
+    
     this.state = {
-      query: ""
+      query: query
     }
 
     this.userShown = false;
@@ -148,6 +157,7 @@ class NavigationBar extends React.Component {
               className="search-box"
               type="text" 
               placeholder="Search"
+              value={this.state.query}
               onChange={this.updateSearch}></input>
             <button onClick={this.handleSearch} className="search-submit"><i className="fas fa-search"></i></button>
           </form>
@@ -184,4 +194,4 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavigationBar));
