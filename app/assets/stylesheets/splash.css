@@ -109,6 +109,78 @@
   border-radius: 4px;
 }
 
+/* SEARCH BAR */
+
+.splash-below-banner {
+  margin: 50px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  .splash-search-bar {
+    width: 600px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+
+    position: relative;
+  }
+
+    .splash-search-box {
+      height: 100%;
+      width: 100%;
+
+      padding: 20px;
+      margin: 10px;
+      background: rgb(240, 240, 240);
+      border: none;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+      font-size: 1em;
+      color: rgb(100, 100, 100);
+    }
+
+    .splash-search-bar > .splash-search-box::placeholder {
+      opacity: .6;
+    }
+
+    .splash-search-bar > .splash-search-submit {
+      height: 20px;
+      width: 20px;
+      
+      background: transparent;
+      border: none;
+
+      position: absolute;
+      right: 15px;
+    }
+
+    .splash-search-bar > .splash-search-submit > i {
+      position: absolute;
+      right: 10px;
+      bottom: 1px;
+
+      font-size: 1.2em;
+      color: rgb(100, 100, 100);
+    }
+
+  .splash-below-banner-or {
+    font-family: interstateregular;
+    padding: 0 12px 0 2px;
+  }
+
+  .splash-below-banner-upload {
+    height: 45px;
+    background: #ff5700;
+    color: white;
+    padding: 0 25px;
+
+    border-color: transparent;
+    border-radius: 4px;
+  }
+
 /* SONG SAMPLES */
 
 .splash-song-samples {
@@ -120,7 +192,7 @@
 
 .splash-song-samples > .splash-song-samples-header {
   text-align: center;
-  padding: 50px 0 30px 0;
+  padding: 10px 0 30px 0;
   font-size: 18pt;
 }
 
