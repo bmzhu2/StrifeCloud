@@ -31,7 +31,7 @@ class SearchBar extends React.Component {
           <input
             className="splash-search-box"
             type="text"
-            placeholder="Search for artists or songs"
+            placeholder="Search for artists or songs (e.g. Eyes On Me)"
             onChange={this.updateSearch}></input>
           <button onClick={this.handleSearch} className="splash-search-submit"><i className="fas fa-search"></i></button>
         </form>
