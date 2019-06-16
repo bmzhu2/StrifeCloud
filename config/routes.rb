@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   namespace :api, default: {format: :json} do 
     resources :users, only: [:create, :update, :show] do
       get 'search', on: :collection
+      get '/play', to: 'users#play'
+      post '/play/:song_id', to: 'users#play'
     end
     resource :session, only: [:create, :destroy]
     resources :songs, only: [:create, :update, :show, :destroy] do 

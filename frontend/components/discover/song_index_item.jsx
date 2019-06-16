@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
-import {fetchSong, play, pause, unpause} from '../../actions/songs_actions';
+import {fetchSong, pause, unpause} from '../../actions/songs_actions';
+import { play } from '../../actions/user_actions';
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -33,7 +34,11 @@ class SongIndexItem extends React.Component {
         this.props.pause()
       }
     } else {
-      this.props.play(this.props.songs[this.props.songId]);
+      let userId = null;
+      if (this.props.currentUser) {
+        userId = this.props.currentUser.id
+      }
+      this.props.play(this.props.songs[this.props.songId], userId);
     }
   }
   
@@ -84,12 +89,13 @@ const mapStateToProps = state => ({
   songs: state.entities.songs,
   users: state.entities.users,
   currentSong: state.session.currentSong,
+  currentUser: state.session.currentUser,
   paused: state.ui.paused
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchSong: id => dispatch(fetchSong(id)),
-  play: song => dispatch(play(song)),
+  play: (song, userId) => dispatch(play(song, userId)),
   pause: () => dispatch(pause()),
   unpause: () => dispatch(unpause())
 })

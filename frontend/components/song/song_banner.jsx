@@ -17,7 +17,11 @@ class SongBanner extends React.Component {
         this.props.pause()
       }
     } else {
-      this.props.play(this.props.song);
+      let userId = null;
+      if (this.props.currentUser) {
+        userId = this.props.currentUser.id
+      }
+      this.props.play(this.props.song, userId);
     }
   }
 

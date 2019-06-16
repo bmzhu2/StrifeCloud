@@ -18,7 +18,8 @@
         window.currentUser = {
           'id': <%= current_user.id %>,
           'username': "<%= current_user.username %>",
-          'profilePictureUrl': profPicUrl
+          'profilePictureUrl': profPicUrl,
+          'recentlyPlayed': "<%= current_user.recently_played %>"
         };
       </script>
     <% end %>
