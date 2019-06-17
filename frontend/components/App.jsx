@@ -6,6 +6,7 @@ import NavigationBar from './navigation_bar';
 import MusicPlayer from './music_player';
 import Splash from './splash/splash';
 import Discover from './discover/discover';
+import Library from './library/library';
 import SearchPage from './search/search_page';
 import Upload from './upload/upload';
 import ErrorPage from './error_page';
@@ -24,8 +25,8 @@ const App = () => {
       <Switch>
         <AuthRoute exact path="/" component={Splash} />
         <Route path="/discover" component={Discover} />
-        <Route path="/stream" component={ConstructionPage} />
-        <Route path="/library" component={ConstructionPage} />
+        {/* <Route path="/stream" component={ConstructionPage} /> */}
+        <Route path="/library" component={Library} />
         <Route path="/search" component={SearchPage} />
         <Route path="/upload" component={Upload} />
         <Route path="/songs/:id" component={SongDetailContainer} />

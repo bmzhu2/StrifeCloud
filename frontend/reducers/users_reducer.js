@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
-import { RECEIVE_USER, RECEIVE_USERS } from "../actions/user_actions";
+import { RECEIVE_USER, RECEIVE_USERS, RECEIVE_RECENTLY_PLAYED } from "../actions/user_actions";
 import { RECEIVE_SONG, RECEIVE_SONGS } from '../actions/songs_actions';
 import merge from 'lodash/merge';
 
@@ -28,6 +28,11 @@ const userReducer = (state = {}, action) => {
           nextState[user.id] = user;
         });
       }
+      return nextState;
+    case RECEIVE_RECENTLY_PLAYED:
+      Object.values(action.result.users).forEach(user => {
+        nextState[user.id] = user;
+      });
       return nextState;
     default:
       return state;

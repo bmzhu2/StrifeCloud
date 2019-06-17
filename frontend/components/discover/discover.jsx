@@ -1,6 +1,6 @@
 import React from 'react'
 import CategoryIndex from './category_index'
-import SidePanel from '../side_panel'
+import SidePanel from './side_panel'
 
 class Discover extends React.Component {
 

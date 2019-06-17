@@ -1,5 +1,5 @@
 import { RECEIVE_SONG, RECEIVE_SONGS, UPDATE_SONG, REMOVE_SONG } from "../actions/songs_actions";
-import {RECEIVE_USER} from '../actions/user_actions';
+import {RECEIVE_USER, RECEIVE_RECENTLY_PLAYED} from '../actions/user_actions';
 import merge from 'lodash/merge';
 
 const songsReducer = (state = {}, action) => {
@@ -29,6 +29,12 @@ const songsReducer = (state = {}, action) => {
           nextState[song.id] = song
         })
       }
+      return nextState;
+    case RECEIVE_RECENTLY_PLAYED:
+      nextState = merge({}, state);
+      Object.values(action.result.songs).forEach(song => {
+        nextState[song.id] = song;
+      })
       return nextState;
     default:
       return state;

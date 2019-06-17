@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux'
 import { Link, withRouter } from 'react-router-dom';
 import { openModal, updateSong } from '../../actions/modal_actions';
-import { remove, play, pause, unpause } from '../../actions/songs_actions';
+import { remove, pause, unpause } from '../../actions/songs_actions';
+import { play } from '../../actions/user_actions';
 import { howLongAgo } from '../../util/date_util';
 
 class SongResult extends React.Component {
@@ -38,7 +39,11 @@ class SongResult extends React.Component {
         this.props.pause()
       }
     } else {
-      this.props.play(this.props.song);
+      let userId = null;
+      if (this.props.currentUser) {
+        userId = this.props.currentUser.id
+      }
+      this.props.play(this.props.song), userId;
     }
   }
 
@@ -124,7 +129,7 @@ const mapDispatchToProps = dispatch => ({
   updateSong: song => dispatch(updateSong(song)),
   openModal: mode => dispatch(openModal(mode)),
   remove: id => dispatch(remove(id)),
-  play: song => dispatch(play(song)),
+  play: (song, userId) => dispatch(play(song, userId)),
   pause: () => dispatch(pause()),
   unpause: () => dispatch(unpause())
 })

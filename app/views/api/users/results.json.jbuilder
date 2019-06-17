@@ -1,6 +1,6 @@
 @users.each do |user|
   json.set! user.id do
-    json.extract! user, :id, :username
+    json.extract! user, :id, :username, :recently_played
 
     json.numSongs user.songs.count
 

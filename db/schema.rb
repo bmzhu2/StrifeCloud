@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_07_221820) do
+ActiveRecord::Schema.define(version: 2019_06_14_184547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 2019_05_07_221820) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "recently_played_songs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "song_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_221820) do
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "recently_played", default: ""
     t.index ["session_token"], name: "index_users_on_session_token"
   end
 

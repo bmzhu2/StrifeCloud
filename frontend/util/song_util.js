@@ -1,10 +1,3 @@
-export const play = id => (
-  $.ajax({
-    method: 'GET',
-    url: `/api/songs/${id}`
-  })
-)
-
 export const fetch = id => (
   $.ajax({
     method: 'GET',

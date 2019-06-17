@@ -1,5 +1,7 @@
 import * as UserAPIUtil from '../util/user_util';
 
+export const RECEIVE_CURRENT_SONG = "RECEIVE_CURRENT_SONG";
+export const RECEIVE_RECENTLY_PLAYED = "RECEIVE_RECENTLY_PLAYED";
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_FETCH_ERRORS = 'RECEIVE_FETCH_ERRORS';
@@ -12,6 +14,16 @@ const receiveUser = user => ({
 const receiveUsers = users => ({
   type: RECEIVE_USERS,
   users
+})
+
+const receiveCurrentSong = result => ({
+  type: RECEIVE_CURRENT_SONG,
+  result
+});
+
+const receiveRecentlyPlayed = result => ({
+  type: RECEIVE_RECENTLY_PLAYED,
+  result
 })
 
 const receiveErrors = errors => ({
@@ -32,4 +44,12 @@ export const updateUser = ({user, id}) => dispatch => (
 export const searchUsers = query => dispatch => (
   UserAPIUtil.search(query).then(users => dispatch(receiveUsers(users)),
     err => dispatch(receiveRouteErrors(err.responseJSON)))
+)
+
+export const play = (song, userId) => dispatch => (
+  UserAPIUtil.play(song.id, userId).then(result => dispatch(receiveCurrentSong(result)))
+)
+
+export const recents = userId => dispatch => (
+  UserAPIUtil.recents(userId).then(result => dispatch(receiveRecentlyPlayed(result)))
 )

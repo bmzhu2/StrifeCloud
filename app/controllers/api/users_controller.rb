@@ -26,7 +26,6 @@ class Api::UsersController < ApplicationController
       errorsJson += @user.errors.full_messages
       render json: errorsJson, status: 400
     end
-
   end
 
   def update
@@ -38,7 +37,6 @@ class Api::UsersController < ApplicationController
     else
       render json: @user.errors.full_messages, status: 400
     end
-
   end
 
   def show
@@ -53,15 +51,40 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-
     if params[:query].present?
       username = "%" + params[:query].match(/\?query=([^&]*)/)[1] + "%"
       @users = User.where('LOWER(username) LIKE ?', username.downcase)
     else
       @users = User.none
     end
-
       render :results
+  end
+
+  def play
+    @user = User.find_by(id: params[:user_id]) if params[:user_id]
+    @song = Song.find_by(id: params[:song_id])
+    @songs = []
+
+    if @user && @song 
+      recents = @user.recently_played
+      updated_recents = update_recents(recents, @song.id)
+      if updated_recents != recents
+        @user.update_attributes(:recently_played => updated_recents)
+      end
+      @user.recently_played.split(",").each do |song_id|
+        song = Song.find_by(id: song_id)
+        @songs.push(song) if song
+      end
+      render :recently_played
+    elsif @user && !@song
+      @user.recently_played.split(",").each do |song_id|
+        song = Song.find_by(id: song_id)
+        @songs.push(song) if song
+      end
+      render :recently_played
+    else
+      render json: ["User or song not found"], status: 404
+    end
   end
 
   private
@@ -89,5 +112,24 @@ class Api::UsersController < ApplicationController
     end
 
     type
+  end
+
+  def update_recents(prev, song_id)
+    prev_queue = prev.split(",")
+
+    left = []
+    mid = prev_queue.index(song_id.to_s)
+    right = []
+    if mid
+      left = prev_queue[0...mid]
+      right = prev_queue[mid+1..-1]
+      prev_queue = left + right
+    end
+
+    prev_queue.unshift(song_id)
+    if prev_queue.length > 6
+      prev_queue.pop
+    end
+    prev_queue.join(",")
   end
 end

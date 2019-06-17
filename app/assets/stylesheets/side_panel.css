@@ -4,4 +4,93 @@
   position: fixed;
   right: 100px;
   border-left: 1px solid rgb(240, 240, 240);
+  background: white;
 }
+
+.discover-recents {
+  padding: 35px 30px;
+}
+
+  .discover-recents-link {
+    display: block;
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgb(240,240,240);
+    font-size: 11pt;
+    color: rgb(160,160,160);
+    text-decoration: none;
+    
+  }
+
+.discover-recent-item {
+  margin: 20px 0;
+  display: flex;
+}
+
+  .discover-recent-frame {
+    width: 50px;
+    height: 50px;
+  }
+
+  .discover-recent-picture {
+    width: 50px;
+    height: 50px;
+  }
+
+  .discover-recent-blank-image {
+    width: 50px;
+    height: 50px;
+    background: rgb(120, 122, 135);
+  }
+
+    .discover-recent-item  .play {
+      display: none;
+      position: relative;
+      width: 27px;
+      height: 27px;
+      left: 12px;
+      top: -39px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+    }
+
+    .discover-recent-item  .play > i{
+      position: absolute;
+      top: -3px;
+      left: -4px;
+      color: #ff5700;
+      font-size: 25pt;
+    }
+
+    .discover-recent-item .play > i:hover {
+      color: #e04b00;
+    }
+
+    .discover-recent-item:hover .play, .discover-recent-item:hover .play, .play.nowPlaying{
+      display:inline;
+    }
+
+  .discover-recent-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 10pt;
+  }
+
+  .discover-recent-links a {
+    text-decoration: none;
+    font-size: 11pt;
+    width: fit-content;
+  }
+
+  .discover-recent-links a:hover {
+    color: black;
+  }
+
+    .discover-recent-uploader {
+      color: rgb(160,160,160)
+    }
+
+    .discover-recent-title {
+      color: rgb(60,60,60)
+    }

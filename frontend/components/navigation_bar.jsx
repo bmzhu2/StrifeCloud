@@ -146,9 +146,9 @@ class NavigationBar extends React.Component {
           <button className="home"
             onClick={() => this.props.history.push("/discover")}
           >Home</button>
-          <button className="stream"
+          {/* <button className="stream"
             onClick={() => this.props.history.push("/stream")}
-          >Stream</button>
+          >Stream</button> */}
           <button className="library"
             onClick={() => this.props.history.push("/library")}
           >Library</button>
@@ -156,7 +156,7 @@ class NavigationBar extends React.Component {
             <input 
               className="search-box"
               type="text" 
-              placeholder="Search"
+              placeholder="Search for artists or songs (e.g. Eyes On Me)"
               value={this.state.query}
               onChange={this.updateSearch}></input>
             <button onClick={this.handleSearch} className="search-submit"><i className="fas fa-search"></i></button>
