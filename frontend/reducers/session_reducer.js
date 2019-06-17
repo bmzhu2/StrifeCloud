@@ -18,7 +18,8 @@ const sessionReducer = (state = _nullSession, action) => {
       nextState.currentUser = null;
       return nextState;
     case RECEIVE_CURRENT_SONG:
-      let currentSong = +action.result.user.recently_played.split(',')[0];
+      nextState.currentUser = action.result.currentUser
+      let currentSong = +action.result.currentUser.recently_played.split(',')[0];
       nextState.currentSong = action.result.songs[currentSong];
       return nextState;
     case REMOVE_SONG:

@@ -127,7 +127,7 @@ class Api::UsersController < ApplicationController
     end
 
     prev_queue.unshift(song_id)
-    if prev_queue.length > 5
+    if prev_queue.length > 6
       prev_queue.pop
     end
     prev_queue.join(",")
