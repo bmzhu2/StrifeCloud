@@ -13,13 +13,14 @@
 #
 
 class User < ApplicationRecord
-  validates :email, :session_token, presence: true, uniqueness: true
-  validates :username, :password_digest, presence: true
+  validates :email, :session_token, presence: true, uniqueness: true,
+  validates :username, :password_digest, :recently_played, presence: true
   validates :password, length: {minimum: 7, allow_nil: true}
 
   attr_reader :password
 
   after_initialize :ensure_session_token
+  after_validation :ensure_recently_played
 
   has_many :songs,
     primary_key: :id,
@@ -56,6 +57,10 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= generate_session_token
+  end
+
+  def ensure_recently_played
+    self.recently_played ||= ""
   end
 
   def generate_session_token
