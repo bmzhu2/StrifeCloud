@@ -20,10 +20,18 @@ class RecentlyPlayed extends React.Component {
     }
   }
 
+  componentDidUpdate(prev) {
+    if(!this.state.fetched && this.props.currentUser && !prev.currentUser) {
+      this.props.recents(this.props.currentUser.id)
+        .then(() => this.setState({ fetched: true }))
+    }
+  }
+
   render() {
     let recentItems = null;
-    if (this.state.fetched) {
-      const recentIds = this.props.currentUser.recently_played.split(",")
+    if (this.state.fetched && this.props.currentUser) {
+      let recentIds = this.props.currentUser.recently_played.split(",")
+      recentIds = recentIds.slice(0,3)
       recentItems = recentIds.map(id => {
         return <RecentlyPlayedItem key={id} song={this.props.songs[id]} 
                 uploader={this.props.users[this.props.songs[id].uploader_id]} />

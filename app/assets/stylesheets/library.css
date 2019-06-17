@@ -1,0 +1,76 @@
+.library-page {
+  padding: 0 30px;
+}
+
+.library-page h3 {
+  font-family: interstateregular;
+  font-size: 14pt;
+  padding-bottom: 30px;
+}
+
+.library-index {
+  padding-top: 50px;
+  border-bottom: 1px solid rgb(240,240,240);
+}
+
+  .library-index-items {
+    display: flex;
+    justify-content: space-between;
+  }
+
+    .library-index-item {
+      width: 180px;
+    }
+
+    .library-frame, .library-picture, .library-blank-frame, .library-empty-picture {
+      width: 180px;
+      height: 180px;
+    }
+
+    .library-frame:hover, .library-blank-frame:hover {
+      cursor: pointer;
+    }
+
+    .library-frame {
+      border: 1px solid rgb(220,220,220)
+    }
+
+    .library-blank-frame {
+      background-color: rgb(120, 122, 135);
+    }
+
+    .library-empty-picture {
+      border: 1px solid rgb(200,200,200)
+    }
+
+    .library-links {
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .library-links a {
+      display: block;
+      text-decoration: none;
+      padding-top: 5px;
+    }
+
+    .library-links a:hover {
+      color: black;
+    }
+
+    .library-item-title {
+      font-size: 10pt;
+      color: rgb(60,60,60);
+    }
+
+    .library-item-uploader {
+      font-size: 9pt;
+      color: rgb(160,160,160);
+      width: fit-content;
+    }
+
+.library-construction {
+  font-size: 24pt;
+  padding: 40px 20px;
+}
