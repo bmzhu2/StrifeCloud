@@ -63,7 +63,7 @@ header {
 }
 
 .search-bar {
-  max-width: 475px;
+  max-width: 600px;
   width: inherit;
   display: flex;
   align-items: center;
