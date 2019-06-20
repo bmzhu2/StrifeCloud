@@ -8,8 +8,8 @@ class Library extends React.Component {
       <div className="main-body">
         <div className="library-page">
           <LibraryIndex category="Recently played"/>
-          <LibraryIndex category="Likes" construction={true} />
-          <LibraryIndex category="Playlists" construction={true} />
+          {/* <LibraryIndex category="Likes" construction={true} />
+          <LibraryIndex category="Playlists" construction={true} /> */}
         </div>
       </div>
     )
