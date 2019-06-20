@@ -156,7 +156,7 @@ class NavigationBar extends React.Component {
             <input 
               className="search-box"
               type="text" 
-              placeholder="Search for artists or songs (e.g. Eyes On Me)"
+              placeholder="Search for artists or songs (e.g. Aerith)"
               value={this.state.query}
               onChange={this.updateSearch}></input>
             <button onClick={this.handleSearch} className="search-submit"><i className="fas fa-search"></i></button>
