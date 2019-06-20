@@ -2,7 +2,7 @@ header {
   position: fixed;
   width: 100vw;
   top: 0;
-  z-index: 2;
+  z-index: 3;
 }
 
 .full-bar {
@@ -63,7 +63,7 @@ header {
 }
 
 .search-bar {
-  max-width: 600px;
+  max-width: 500px;
   width: inherit;
   display: flex;
   align-items: center;

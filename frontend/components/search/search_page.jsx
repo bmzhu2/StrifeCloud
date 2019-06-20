@@ -45,7 +45,7 @@ class SearchPage extends React.Component {
 
   render() {
     const re = /\?query=([^&]*)/;
-    const query = this.props.location.search.match(re)[1];
+    const query = this.props.location.search.match(re)[1].split('%20').join(' ');
 
     let everything = <li onClick={() => this.setOption("everything")}><i className="fas fa-search"></i>Everything</li>
     let songs = <li onClick={() => this.setOption("songs")}><i className="fas fa-music"></i>Songs</li>

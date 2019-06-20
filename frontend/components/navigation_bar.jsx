@@ -13,7 +13,7 @@ class NavigationBar extends React.Component {
 
     
     if(this.props.location.search) {
-      query = this.props.location.search.match(re)[1];
+      query = this.props.location.search.match(re)[1].split('%20').join(' ');
     }
     
     this.state = {
