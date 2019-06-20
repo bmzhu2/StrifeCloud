@@ -46,9 +46,14 @@ export const searchUsers = query => dispatch => (
     err => dispatch(receiveRouteErrors(err.responseJSON)))
 )
 
-export const play = (song, userId) => dispatch => (
-  UserAPIUtil.play(song.id, userId).then(result => dispatch(receiveCurrentSong(result)))
-)
+export const play = (song, userId) => dispatch => {
+  if(userId) {
+    UserAPIUtil.play(song.id, userId).then(result => dispatch(receiveCurrentSong(result)))
+  } else {
+    dispatch(receiveCurrentSong({song}))
+  }
+}
+
 
 export const recents = userId => dispatch => (
   UserAPIUtil.recents(userId).then(result => dispatch(receiveRecentlyPlayed(result)))

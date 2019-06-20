@@ -23,7 +23,6 @@ class RecentlyPlayedItem extends React.Component {
     } else {
       let userId = null;
       if (this.props.currentUser) {
-        
         userId = this.props.currentUser.id
       }
       this.props.play(this.props.song, userId);
