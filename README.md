@@ -15,6 +15,7 @@ This application was built in a two week timeframe.
 * Users can upload, edit, delete, and listen to music
 * Users have a profile that shows off their uploaded songs
 * Users can comment on each others' (or their own!) songs
+* Search for songs or artists
 
 ### Music Player
 
@@ -79,5 +80,5 @@ switch(this.props.modal) {
 ```
 
 ## Planned future features
-* Basic search implementation
 * Playlists
+* Likes
