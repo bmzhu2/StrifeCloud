@@ -1,0 +1,1 @@
+json.extract! @like, :user_id, :song_id, :created_at

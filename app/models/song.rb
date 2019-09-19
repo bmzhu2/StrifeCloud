@@ -28,6 +28,12 @@ class Song < ApplicationRecord
     through: :comments,
     source: :user
 
+  has_many :likes,
+    primary_key: :id,
+    foreign_key: :song_id,
+    class_name: :Like,
+    dependent: :destroy
+
   has_one_attached :song_file
   has_one_attached :picture_file
 end
